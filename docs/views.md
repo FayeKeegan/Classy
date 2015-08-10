@@ -34,14 +34,14 @@
 ![New_Chart_partial]
 
 
-[sessions_new]: ./wireframes/new_session.png
-[my_charts]: ./wireframes/feed_show.png
-[New_class]: ./wireframes/blog_show.png
-[new_students]: ./wireframes/post_show.png
-[new_classroom]: ./wireframes/post_form.png
-[new_seat_assignment]: ./wireframes/search_results.png
-[new_chart_auto]: ./wireframes/search_results.png
-[new_chart_shuffle]: ./wireframes/search_results.png
-[new_chart_category]: ./wireframes/search_results.png
-[new_chart_drag]: ./wireframes/search_results.png
-[new_chart_partial]: ./wireframes/search_results.png
+[sessions_new]: ./wireframes/sessions_new.png
+[my_charts]: ./wireframes/my_charts.png
+[New_class]: ./wireframes/new_class.png
+[new_students]: ./wireframes/new_students.png
+[new_classroom]: ./wireframes/new_classroom.png
+[new_seat_assignment]: ./wireframes/new_seat_assignment.png
+[new_chart_auto]: ./wireframes/new_chart_auto.png
+[new_chart_shuffle]: ./wireframes/new_chart_shuffle.png
+[new_chart_category]: ./wireframes/new_chart_category.png
+[new_chart_drag]: ./wireframes/new_chart_drag.png
+[new_chart_partial]: ./wireframes/new_chart_partial.png
