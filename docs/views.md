@@ -7,41 +7,41 @@
 ![My_charts]
 
 ## New Class
-![New_class]
+![New_Class]
 
 ## New Students
 ![New_Students]
 
 ## New Classroom
-![New_classroom]
+![New_Classroom]
 
 ## New Seat Assignment
 ![New_Seat_Assignment]
 
 ## New Seat Assignment - Generate Seating Chart
-![New_chart_auto]
+![New_Chart_Auto]
 
 ## New Seat Assignment - Shuffle
-![New_Chart_shuffle]
+![New_Chart_Shuffle]
 
 ## New Seat Assignment - Select Category
-![New_chart_category]
+![New_Chart_Category]
 
 ## New Seat Assignment - Drag and Drop
-![New_Chart_drag]
+![New_Chart_Drag]
 
 ## New Seat Assignment - Partial
-![New_Chart_partial]
+![New_Chart_Partial]
 
 
-[sessions_new]: ./wireframes/sessions_new.png
-[my_charts]: ./wireframes/my_charts.png
-[New_class]: ./wireframes/new_class.png
-[new_students]: ./wireframes/new_students.png
-[new_classroom]: ./wireframes/new_classroom.png
-[new_seat_assignment]: ./wireframes/new_seat_assignment.png
-[new_chart_auto]: ./wireframes/new_chart_auto.png
-[new_chart_shuffle]: ./wireframes/new_chart_shuffle.png
-[new_chart_category]: ./wireframes/new_chart_category.png
-[new_chart_drag]: ./wireframes/new_chart_drag.png
-[new_chart_partial]: ./wireframes/new_chart_partial.png
+[Sessions_New]: ./wireframes/sessions_new.png
+[My_Charts]: ./wireframes/my_charts.png
+[New_Class]: ./wireframes/new_class.png
+[New_Students]: ./wireframes/new_students.png
+[New_Classroom]: ./wireframes/new_classroom.png
+[New_Seat_Sssignment]: ./wireframes/new_seat_assignment.png
+[New_Chart_Auto]: ./wireframes/new_chart_auto.png
+[New_Chart_Shuffle]: ./wireframes/new_chart_shuffle.png
+[New_Chart_Category]: ./wireframes/new_chart_category.png
+[New_Chart_Drag]: ./wireframes/new_chart_drag.png
+[New_Chart_Partial]: ./wireframes/new_chart_partial.png
