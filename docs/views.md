@@ -18,23 +18,23 @@
 ## New Seat Assignment
 ![New_Seat_Assignment]
 
-## New Seat Assignment - Generate Seating Chart
+## New Seat Assignment (Generate Seating Chart)
 ![New_Chart_Auto]
 
-## New Seat Assignment - Shuffle
+## New Seat Assignment - (Shuffle)
 ![New_Chart_Shuffle]
 
-## New Seat Assignment - Select Category
+## New Seat Assignment - (Select Category)
 ![New_Chart_Category]
 
-## New Seat Assignment - Drag and Drop
+## New Seat Assignment - (Drag and Drop)
 ![New_Chart_Drag]
 
-## New Seat Assignment - Partial
+## New Seat Assignment - (Partial)
 ![New_Chart_Partial]
 
 
-[Sessions_New]: ./wireframes/sessions_new.png
+[Sessions_New]: ./wireframes/Sessions_New.png
 [My_Charts]: ./wireframes/my_charts.png
 [New_Class]: ./wireframes/new_class.png
 [New_Students]: ./wireframes/new_students.png
