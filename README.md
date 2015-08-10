@@ -32,7 +32,7 @@ generation of seating charts based on basic students data. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
+### Phase 1: User Authentication, Seating Chart Creation (~1 day)
 I will implement user authentication in Rails based on the practices learned at
 App Academy. By the end of this phase, users will be able to create classes, 
 create class rooms, create students for classrooms, and create seating charts
