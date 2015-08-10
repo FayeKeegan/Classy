@@ -4,7 +4,7 @@
 ![Sessions_New]
 
 ## Charts Index (landing page)
-![My_charts]
+![My_Charts]
 
 ## New Class
 ![New_Class]
@@ -40,7 +40,7 @@
 [New_Class]: ./wireframes/New_Class.png
 [New_Students]: ./wireframes/New_Students.png
 [New_Classroom]: ./wireframes/New_Classroom.png
-[New_Seat_Sssignment]: ./wireframes/New_Seat_Assignment.png
+[New_Seat_Assignment]: ./wireframes/New_Seat_Assignment.png
 [New_Chart_Auto]: ./wireframes/New_Chart_Auto.png
 [New_Chart_Shuffle]: ./wireframes/New_Chart_Shuffle.png
 [New_Chart_Category]: ./wireframes/New_Chart_Category.png
