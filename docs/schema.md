@@ -1,45 +1,51 @@
 # Schema Information
+## Teacher
+* id
+* username
+* password_digest
+* session_token
+* Relationships
+    * has many classes
+    * has many classrooms through classes
+    * has many students through classes
 
-## blogs
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-owner_id    | integer   | not null, foreign key (references users)
-title       | string    | not null
+## Class
+* name
+* teacher_id
+* relationships
+    * has many students
+    * belongs to a teacher
+    * has one classroom
 
-## followings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-blog_id     | integer   | not null, foreign key (references blogs)
-follower_id | integer   | not null, foreign key (references users)
+## Classroom
+* id
+* width
+* height
+* class_id
 
-## posts
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-author_id   | integer   | not null, foreign key (references users)
-title       | string    | not null
-body        | string    |
+## Desk
+* id
+* row
+* column
+* classroom_id## followings
 
-## tags
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-label       | string    | not null, unique
+## Student
+* id
+* class_id
+* name
+* reading level
+* math level
+* language background
+* gender
 
-## taggings
-column name | data type | details
-------------|-----------|-----------------------
-id          | integer   | not null, primary key
-post_id     | integer   | not null, foreign key (references posts)
-tag_id      | integer   | not null, foreign key (references tags)
+## Seat Assignment
+* id
+* desk_id
+* student_id
+* seating_chart_id
 
-## users
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-email           | string    | not null, unique
-password_digest | string    | not null
-session_token   | string    | not null, unique
+## Seating Chart
+* id
+* name
+* classroom_id
 
