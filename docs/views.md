@@ -1,26 +1,47 @@
 # View Wireframes
 
 ## New Session
-![new-session]
+![Sessions_New]
 
-## Feed Show (landing page)
-![feed-show]
+## Charts Index (landing page)
+![My_charts]
 
-## Blog Show
-![blog-show]
+## New Class
+![New_class]
 
-## Post Show
-![post-show]
+## New Students
+![New_Students]
 
-## Post Form
-![post-form]
+## New Classroom
+![New_classroom]
 
-## Search Results
-![search-results]
+## New Seat Assignment
+![New_Seat_Assignment]
 
-[new-session]: ./wireframes/new_session.png
-[feed-show]: ./wireframes/feed_show.png
-[blog-show]: ./wireframes/blog_show.png
-[post-show]: ./wireframes/post_show.png
-[post-form]: ./wireframes/post_form.png
-[search-results]: ./wireframes/search_results.png
+## New Seat Assignment - Generate Seating Chart
+![New_chart_auto]
+
+## New Seat Assignment - Shuffle
+![New_Chart_shuffle]
+
+## New Seat Assignment - Select Category
+![New_chart_category]
+
+## New Seat Assignment - Drag and Drop
+![New_Chart_drag]
+
+## New Seat Assignment - Partial
+![New_Chart_partial]
+
+
+[sessions_new]: ./wireframes/new_session.png
+[my_charts]: ./wireframes/feed_show.png
+[New_class]: ./wireframes/blog_show.png
+[new_students]: ./wireframes/post_show.png
+[new_classroom]: ./wireframes/post_form.png
+[new_seat_assignment]: ./wireframes/search_results.png
+[new_chart_auto]: ./wireframes/search_results.png
+[new_chart_shuffle]: ./wireframes/search_results.png
+[new_chart_category]: ./wireframes/search_results.png
+[new_chart_drag]: ./wireframes/search_results.png
+[new_chart_partial]: ./wireframes/search_results.png
