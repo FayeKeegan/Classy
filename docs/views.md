@@ -34,14 +34,15 @@
 ![New_Chart_Partial]
 
 
+
 [Sessions_New]: ./wireframes/Sessions_New.png
-[My_Charts]: ./wireframes/my_charts.png
-[New_Class]: ./wireframes/new_class.png
-[New_Students]: ./wireframes/new_students.png
-[New_Classroom]: ./wireframes/new_classroom.png
-[New_Seat_Sssignment]: ./wireframes/new_seat_assignment.png
-[New_Chart_Auto]: ./wireframes/new_chart_auto.png
-[New_Chart_Shuffle]: ./wireframes/new_chart_shuffle.png
-[New_Chart_Category]: ./wireframes/new_chart_category.png
-[New_Chart_Drag]: ./wireframes/new_chart_drag.png
-[New_Chart_Partial]: ./wireframes/new_chart_partial.png
+[My_Charts]: ./wireframes/My_Charts.png
+[New_Class]: ./wireframes/New_Class.png
+[New_Students]: ./wireframes/New_Students.png
+[New_Classroom]: ./wireframes/New_Classroom.png
+[New_Seat_Sssignment]: ./wireframes/New_Seat_Assignment.png
+[New_Chart_Auto]: ./wireframes/New_Chart_Auto.png
+[New_Chart_Shuffle]: ./wireframes/New_Chart_Shuffle.png
+[New_Chart_Category]: ./wireframes/New_Chart_Category.png
+[New_Chart_Drag]: ./wireframes/New_Chart_Drag.png
+[New_Chart_Partial]: ./wireframes/New_Chart_Partial.png
