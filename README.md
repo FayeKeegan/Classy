@@ -1,4 +1,4 @@
-# Flux-capacitr
+# Seating App
 
 [Heroku link][heroku]
 
