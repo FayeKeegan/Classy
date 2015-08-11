@@ -1,17 +1,17 @@
 # Schema Information
-## Teacher
+## User
 * id
 * username
 * password_digest
 * session_token
 * Relationships
-    * has many classes
-    * has many classrooms through classes
+    * has many subjects
+    * has many classrooms through subjects
     * has many seating charts through classrooms
-    * has many sections through classes
+    * has many sections through subjects
     * has many students through sections
 
-## Class
+## Subject
 * name
 * teacher_id
 * relationships
@@ -23,14 +23,14 @@
 * id
 * width
 * height
-* class_id
+* subject_id
 
 ## Section
 * id
 * name
-* class_id
+* subject_id
 * Relationships
-	* belongs to a class
+	* belongs to a subject
 	* has many students
 
 ## Desk
