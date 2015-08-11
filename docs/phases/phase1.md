@@ -2,8 +2,9 @@
 
 ## Rails
 ### Models
-* Teacher
+* User
 * Class
+* Section
 * Classroom
 * Desk
 * Student
@@ -11,7 +12,14 @@
 * Seating Chart
 
 ### Controllers
-
+* User
+* Class
+* Section
+* Classroom
+* Desk
+* Student
+* Seat Assignment
+* Seating Chart
 
 ### Views
 
