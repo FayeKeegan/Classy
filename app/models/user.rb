@@ -7,10 +7,8 @@ class User < ActiveRecord::Base
 	has_many :subjects, foreign_key: :teacher_id
 	has_many :sections, through: :subjects
 	has_many :classrooms, through: :subjects
-	has_many :students, through: :sections
 	has_many :seating_charts, through: :classrooms
-
-
+	has_many :students
 
 	attr_reader :password
 	

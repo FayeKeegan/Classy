@@ -24,6 +24,9 @@
 * width
 * height
 * subject_id
+* Relationships
+	* belongs to subject
+	* has many seating charts
 
 ## Section
 * id

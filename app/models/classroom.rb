@@ -3,5 +3,6 @@ class Classroom < ActiveRecord::Base
 	validates :subject, presence: true
 
 	belongs_to :subject
+	has_many :seating_charts
 
 end
