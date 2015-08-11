@@ -9,7 +9,7 @@
     * has many classrooms through subjects
     * has many seating charts through classrooms
     * has many sections through subjects
-    * has many students through sections
+    * has many students through classrooms
 
 ## Subject
 * name
