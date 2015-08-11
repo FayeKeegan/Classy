@@ -4,5 +4,6 @@ class Classroom < ActiveRecord::Base
 
 	belongs_to :subject
 	has_many :seating_charts
+	has_many :desks
 
 end
