@@ -45,10 +45,7 @@
 * id
 * section_id
 * name
-* reading level
-* math level
-* gender
-* relationships
+* readit
 	* belongs to a section
 	* has many seat assignments
 
