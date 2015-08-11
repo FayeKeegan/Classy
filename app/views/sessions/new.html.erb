@@ -1,0 +1,16 @@
+<h1> Welcome to Classy! </h1>
+<h2> Log in </h2>
+
+<form action="<%=session_url%>" method = "POST">
+	<input type = "hidden" name = "authenticity_token" value="<%=form_authenticity_token%>" >
+
+	<label id = "username"> Username 	</label>
+	<input type = "text" name = "user[username]" id = "username" value="<%=@user.username%>">
+	<br>
+	<label id = "password"> Password </label>
+	<input type = "password" name = "user[password]" id = "password">
+	<br>
+	<input type = "submit" name = "Log in" >
+</form>
+
+<%= link_to "I'm a New User", new_user_url %>
