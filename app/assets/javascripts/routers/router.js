@@ -5,7 +5,12 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	},
 
 	routes: {
-		"": "seatingChartsIndex"
+		"": "seatingChartsIndex",
+		"seating_chart/:id": "seatingChartShow"
+	},
+
+	seatingChartShow: function(id){
+		
 	},
 
 	seatingChartsIndex: function(){
@@ -15,7 +20,6 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	},
 
 	_swapView : function(view){
-
 		this._currentView && this._currentView.remove()
 		this._currentView = view
 		this.$rootEl.html(view.render().$el)
