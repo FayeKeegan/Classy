@@ -1,8 +1,14 @@
 class Api::StudentsController < ApplicationController
 
 	def index
-			@students = current_user.sections
-			render :index
+		@students = Student.all 
+		render json: @students
 	end
+
+	def show
+		@student = Student.find(params[:id])
+		render json: @student
+	end
+
 
 end

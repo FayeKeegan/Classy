@@ -20,11 +20,9 @@ class Api::SeatingChartsController < ApplicationController
 	end
 
 	def show
-		@seating_chart = SeatingCHart.find(params[:id])
+		@seating_chart = SeatingChart.find(params[:id])
 		render :show
 	end
-
-
 
 	def seating_chart_params
 		params.require(:seating_chart).permit(:name, :section_id)

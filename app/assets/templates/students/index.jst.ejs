@@ -1,0 +1,8 @@
+<ul>
+<% students.each(function(student) { %>
+	<li>
+	<%= student.escape("first_name") %>  <%= student.escape("last_name") %>
+	</li>
+<% }) %>
+
+</ul>
