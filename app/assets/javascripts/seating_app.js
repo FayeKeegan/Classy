@@ -4,11 +4,10 @@ window.SeatingApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-
-  	var $rootEl = $("root")
+  	var $rootEl = $("#root")
     new SeatingApp.Routers.Router({
     	$rootEl: $rootEl,
-      $seatingCharts: new SeatingApp.Collections.SeatingCharts()
+      seatingCharts: new SeatingApp.Collections.SeatingCharts()
     })
     Backbone.history.start()
   }

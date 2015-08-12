@@ -1,3 +1,3 @@
-SeatingApp.Models.SeatingChart = Backbone.Model.SeatingChart.extend({
+SeatingApp.Models.SeatingChart = Backbone.Model.extend({
 	urlRoot: "api/seating_charts"
 })

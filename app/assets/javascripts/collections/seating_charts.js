@@ -1,3 +1,5 @@
 SeatingApp.Collections.SeatingCharts = Backbone.Collection.extend({
-	url: "seating_charts"
+	url: "api/seating_charts",
+	
+	model: SeatingApp.Models.SeatingChart
 })
