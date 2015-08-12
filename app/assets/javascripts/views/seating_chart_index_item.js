@@ -5,9 +5,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 		this.listenTo(this.model, "sync", this.render)
 	},
 
-	tagName: "li",
-
-	className: "seating-chart-index-item",
+	className: "seating-chart-index-item col-lg-4",
 
 	render: function(){
 		var content = this.template({ seatingChart: this.model })
