@@ -15,7 +15,7 @@
  */
 
  body {
- 	background-color: darkgrey !important;
+ 	background-color: whitesmoke;
  }
 
  .new-seating-chart-form {
@@ -30,7 +30,7 @@
  	width: 250px;
  	float: left;
  	position: relative;
- 	background-color: whitesmoke;
+ 	background-color: lightgray;
  	border-radius: 5px;
  	padding: 10px 10px;
  	margin: 10px;
@@ -42,7 +42,7 @@
  	position:relative;
  	float: left;
  	border-style: dashed;
- 	border-color: whitesmoke;
+ 	border-color: lightgray;
  	border-radius: 5px;
  	padding: 10px 10px;
  	margin: 10px;
