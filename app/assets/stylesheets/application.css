@@ -18,16 +18,9 @@
  	background-color: whitesmoke;
  }
 
- .new-seating-chart-form {
- 	position:fixed;
- 	margin: 20px 20px;
- 	width: 100%;
- 	height: 100%;
- }
-
  .seating-chart-index-item {
- 	height: 150px;
- 	width: 150px;
+ 	height: 180px;
+ 	width: 180px;
  	float: left;
  	background-color: lightgray;
  	border-radius: 5px;
@@ -36,12 +29,10 @@
  }
 
  .new-seating-chart{
- 	height: 150px;
- 	width: 150px;
- 	position:relative;
+ 	height: 180px;
+ 	width: 180px;
  	float: left;
- 	border-style: dashed;
- 	border-color: lightgray;
+ 	background-color: lightgray;
  	border-radius: 5px;
  	padding: 10px 10px;
  	margin: 10px;
