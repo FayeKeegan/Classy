@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
   	resources :seating_charts, only: [:index, :create, :show, :update, :destroy]
   	resources :sections
-  	# resources :classrooms, only: [:create, :show, :update, :destroy]
-  	# resources :desks, only: [:create, :show, :update, :destroy]
-  	# resources :students, only: [:create, :show, :update, :destroy]
+  	resources :students
+    # resources :classrooms, only: [:create, :show, :update, :destroy]
+    # resources :desks, only: [:create, :show, :update, :destroy]
   	# resources :seat_assignments, only: [:create, :show, :update, :destroy]
   end
 

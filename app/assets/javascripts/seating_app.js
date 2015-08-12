@@ -8,7 +8,7 @@ window.SeatingApp = {
     var $navBar = $(".nav-bar")
     new SeatingApp.Routers.Router({
     	$rootEl: $rootEl,
-      seatingCharts: new SeatingApp.Collections.SeatingCharts()
+      sections: new SeatingApp.Collections.Sections()
     })
     Backbone.history.start()
   }

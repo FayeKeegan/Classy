@@ -1,22 +1,24 @@
 SeatingApp.Routers.Router = Backbone.Router.extend({
 	initialize: function(options){
 		this.$rootEl = options.$rootEl;
-		this.seatingCharts = options.seatingCharts;
+		this.sections = options.sections;
 	},
 
 	routes: {
-		"": "seatingChartsIndex",
+		"": "sectionsIndex",
 		"seating_chart/:id": "seatingChartShow"
 	},
 
-	seatingChartShow: function(id){
-		
+	sectionsIndex: function(){
+		this.sections.fetch();
+		var view = new SeatingApp.Views.SectionsIndex({ collection: this.sections });
+		this._swapView(view)
 	},
 
 	seatingChartsIndex: function(){
-		this.seatingCharts.fetch();
-		var view = new SeatingApp.Views.SeatingChartsIndex({collection: this.seatingCharts})
-		this._swapView(view);
+		// this.seatingCharts.fetch();
+		// var view = new SeatingApp.Views.SeatingChartsIndex({collection: this.seatingCharts})
+		// this._swapView(view);
 	},
 
 	_swapView : function(view){

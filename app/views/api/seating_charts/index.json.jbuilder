@@ -1,4 +1,3 @@
-json.seatingCharts @seating_charts do |seatingChart|
-  json.extract! seatingChart, :name
-	json.extract! seatingChart, :section
+json.array! @seating_charts do |seatingChart|
+  json.extract! seatingChart, :id, :section_id, :name
 end

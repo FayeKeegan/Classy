@@ -3,7 +3,7 @@ SeatingApp.Views.SeatingChartsIndex = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		this.listenTo(this.collection, "add", this.addSeatingChartSubview)
-		this.collection.each(this.addSeatingChartSubview.bind(this))
+		this.collection.each(this.addSeatingChartSubview.bind(this));
 		this.addChartNewSubview();
 	},
 

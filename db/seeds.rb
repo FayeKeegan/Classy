@@ -66,6 +66,35 @@ end
 	seating_chart.save!
 end
 
+[sec1, sec2, sec3, sec4].each do |section|
+	seating_chart = section.seating_charts.create!({name: "Test-Taking"})
+	desks = section.classroom.desks
+	section.students.shuffle.each_with_index do |student, i|
+		desk = desks[i]
+		SeatAssignment.create!({
+			student_id: student.id,
+			seating_chart_id: seating_chart.id,
+			desk_id: desk.id
+			})
+	end
+	seating_chart.save!
+end
+
+[sec1, sec2, sec3, sec4].each do |section|
+	seating_chart = section.seating_charts.create!({name: "Every Day"})
+	desks = section.classroom.desks
+	section.students.shuffle.each_with_index do |student, i|
+		desk = desks[i]
+		SeatAssignment.create!({
+			student_id: student.id,
+			seating_chart_id: seating_chart.id,
+			desk_id: desk.id
+			})
+	end
+	seating_chart.save!
+end
+
+
 
 
 
