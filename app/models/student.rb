@@ -5,8 +5,8 @@ class Student < ActiveRecord::Base
 	has_many :sections, through: :sectionings
 	has_many :seat_assignments
 
-	def assign_to(desk, seating_chart)
-		SeatAssignment.create({
+	def assign_to!(desk, seating_chart)
+		SeatAssignment.create!({
 			student_id: self.id,
 			seating_chart_id: seating_chart.id,
 			desk_id: desk.id})

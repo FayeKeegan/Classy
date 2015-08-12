@@ -54,11 +54,15 @@ end
 end
 
 [sec1, sec2, sec3, sec4].each do |section|
-	seating_chart = section.seating_charts.new({name: "Project Work"})
-	section.students.shuffle.each_with_index do |student|
-		section.classroom.desks.shuffle.each_with_index do |desk|
-			student.assign_to(desk, seating_chart)
-		end
+	seating_chart = section.seating_charts.create!({name: "Project Work"})
+	desks = section.classroom.desks
+	section.students.shuffle.each_with_index do |student, i|
+		desk = desks[i]
+		SeatAssignment.create!({
+			student_id: student.id,
+			seating_chart_id: seating_chart.id,
+			desk_id: desk.id
+			})
 	end
 	seating_chart.save!
 end
