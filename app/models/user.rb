@@ -3,12 +3,16 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6, allow_nil: true }
 
 	validates :username, uniqueness: true
-
-	has_many :subjects, foreign_key: :teacher_id
-	has_many :sections, through: :subjects
-	has_many :classrooms, through: :subjects
-	has_many :seating_charts, through: :classrooms
-	has_many :students
+	has_many( 
+		:sections,
+		class_name: "Section",
+		foreign_key: :teacher_id,
+		primary_key: :id
+	)
+	has_many :sectionings, through: :sections
+	has_many :students, through: :sectionings
+	has_many :classrooms, through: :sections
+	has_many :seating_charts, through: :sections
 
 	attr_reader :password
 	

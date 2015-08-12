@@ -1,46 +1,23 @@
-user1 = User.create({
+user1 = User.create!({
 	username: "MrSmith",
 	password: "Password"
 })
 
-user2 = User.create({
+user2 = User.create!({
 	username: "MsJohnson",
 	password: "Password"
 })
 
-subj1 = user1.subjects.create({name: "9th Grade Bio"})
-subj2 = user1.subjects.create({name: "10th Grade Chemisry"})
 
+cr1 = Classroom.create!({width: 10, height: 10})
+cr2 = Classroom.create!({width: 10, height: 10})
+cr3 = Classroom.create!({width: 10, height: 10})
+cr4 = Classroom.create!({width: 10, height: 10})
 
-subj3 = user2.subjects.create({name: "Calculus"})
-subj4 = user2.subjects.create({name: "Precalculus"})
-
-cr1 = subj1.sections.create({width: 10, height: 10})
-cr2 = subj2.sections.create({width: 10, height: 10})
-cr3 = subj3.sections.create({width: 10, height: 10})
-cr4 = subj4.sections.create({width: 10, height: 10})
-
-sec1 = subj1.sections.create({name: "B Block"})
-sec2 = subj2.sections.create({name: "D Block"})
-sec3 = subj3.sections.create({name: "A Block"})
-sec4 = subj4.sections.create({name: "F Block"})
-
-[sec1, sec2, sec3, sec4].each do |sec|
-	20.times do
-		first_name = Faker::Name.first_name
-		last_name  = Faker::Name.last_name
-		gender = rand(2) == 1 ? "F" : "M"
-		reading_level = rand(5) + 1
-		math_level = rand(5) + 1
-		sec.students.create({
-			first_name: first_name,
-			last_name: last_name,
-			gender: gender,
-			reading_level: reading_level,
-			math_level: math_level
-			})
-	end
-end
+sec1 = user1.sections.create!({name: "9th Grade Bio", classroom_id: cr1.id})
+sec2 = user1.sections.create!({name: "10th Grade Chemisry", classroom_id: cr2.id})
+sec3 = user2.sections.create!({name: "Algebra", classroom_id: cr3.id})
+sec4 = user2.sections.create!({name: "Pre Calc", classroom_id: cr4.id})
 
 desk_positions = [
 	[1, 1], [1, 2], [2, 1], [2, 2],
@@ -52,22 +29,44 @@ desk_positions = [
 
 [cr1, cr2, cr3, cr4].each do |classroom|
 	desk_positions.each do |desk_pos|
-		classroom.desks.create({
-				row: pos[0],
-				col: pos[1]
+		classroom.desks.create!({
+				row: desk_pos[0],
+				column: desk_pos[1]
 			})
 	end
 end
 
+[sec1, sec2, sec3, sec4].each do |sec|
+	20.times do
+		first_name = Faker::Name.first_name
+		last_name  = Faker::Name.last_name
+		gender = rand(2) == 1 ? "F" : "M"
+		reading_level = rand(5) + 1
+		math_level = rand(5) + 1
+		sec.students.create!({
+			first_name: first_name,
+			last_name: last_name,
+			gender: gender,
+			reading_level: reading_level,
+			math_level: math_level
+			})
+	end
+end
 
-sc1 = cr1.seating_charts.create({name: "Test Taking"})
-sc2 = cr1.seating_charts.create({name: "Project Work"})
-sc3 = cr2.seating_charts.create({name: "Project Work"})
-sc4 = cr2.seating_charts.create({name: "Test Taking"})
-sc5 = cr3.seating_charts.create({name: "Pair Work"})
-sc6 = cr3.seating_charts.create({name: "Everyday"})
-sc7 = cr4.seating_charts.create({name: "Everyday"})
-sc8 = cr4.seating_charts.create({name: "Project Work"})
+[sec1, sec2, sec3, sec4].each do |section|
+	seating_chart = section.seating_charts.new({name: "Project Work"})
+	section.students.shuffle.each_with_index do |student|
+		section.classroom.desks.shuffle.each_with_index do |desk|
+			student.assign_to(desk, seating_chart)
+		end
+	end
+	seating_chart.save!
+end
+
+
+
+
+
 
 
 
