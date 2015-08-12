@@ -22,6 +22,6 @@ SeatingApp.Views.SeatingChartsIndex = Backbone.CompositeView.extend({
 	addChartNewSubview: function(){
 		var seatingChart = new SeatingApp.Models.SeatingChart()
 		var chartNewSubview = new SeatingApp.Views.SeatingChartNew({ model: seatingChart });
-		this.addSubview("ul.seating-charts-index", chartNewSubview)
+		this.addSubview("#new-seating-chart-index-item", chartNewSubview)
 	}
 })

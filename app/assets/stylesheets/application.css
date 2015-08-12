@@ -26,10 +26,9 @@
  }
 
  .seating-chart-index-item {
- 	height: 250px;
- 	width: 250px;
+ 	height: 150px;
+ 	width: 150px;
  	float: left;
- 	position: relative;
  	background-color: lightgray;
  	border-radius: 5px;
  	padding: 10px 10px;
@@ -37,8 +36,8 @@
  }
 
  .new-seating-chart{
- 	height: 250px;
- 	width: 250px;
+ 	height: 150px;
+ 	width: 150px;
  	position:relative;
  	float: left;
  	border-style: dashed;

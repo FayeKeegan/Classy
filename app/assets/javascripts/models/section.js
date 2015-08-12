@@ -2,10 +2,6 @@ SeatingApp.Models.Section = Backbone.Model.extend({
 	urlRoot: "api/sections",
 
 parse: function (response) {
-    if (response.students) {
-      this.students().set(response.students);
-      delete response.students;
-    }
     if (response.seatingCharts){
     	this.seatingCharts().set(response.seatingCharts)
     	delete response.seatingCharts
