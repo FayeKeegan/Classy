@@ -4,11 +4,12 @@ window.SeatingApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-    new SeatingApp.Routers.Router()
+
+  	var $rootEl = $("root")
+    new SeatingApp.Routers.Router({
+    	$rootEl: $rootEl,
+      $seatingCharts: new SeatingApp.Collections.SeatingCharts()
+    })
     Backbone.history.start()
   }
 };
-
-$(document).ready(function(){
-  SeatingApp.initialize();
-});

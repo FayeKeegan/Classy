@@ -34,6 +34,7 @@
 * relationships
 	* belongs to a section
 	* has many seat assignments
+	* has one classroom
 
 ## Classroom
 * id

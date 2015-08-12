@@ -1,13 +1,12 @@
 user1 = User.create!({
 	username: "MrSmith",
-	password: "Password"
+	password: "password"
 })
 
 user2 = User.create!({
 	username: "MsJohnson",
-	password: "Password"
+	password: "password"
 })
-
 
 cr1 = Classroom.create!({width: 10, height: 10})
 cr2 = Classroom.create!({width: 10, height: 10})

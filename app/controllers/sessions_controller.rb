@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 		@user = User.find_by_credentials(user_params[:username], user_params[:password])
 		if @user
 			login!(@user)
-			render json: @user
+			redirect_to "/"
 		else
 			redirect_to new_session_url
 		end
