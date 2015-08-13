@@ -12,13 +12,13 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		var studentId = $(e.currentTarget).find("div").attr("data-id")
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("info")
-		square.addClass("danger")
+		square.addClass("active")
 	},
 
 	unHighlightDesk: function(e) {
 		var studentId = $(e.currentTarget).find("div").attr("data-id")
 		var square = this.$("td[student-id='" + studentId + "']")
-		square.removeClass("danger")
+		square.removeClass("success")
 		square.addClass("info")
 	},
 

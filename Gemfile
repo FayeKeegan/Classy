@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'bcrypt'
+gem 'bootstrap-sass', '~> 3.3.5'
 gem 'faker'
 gem 'rails', '4.2.3'
 gem 'pg'

@@ -14,8 +14,11 @@
  *= require_self
  */
 
+ @import 'bootstrap-sprockets';
+ @import 'bootstrap';
+
  body {
- 	background-color: whitesmoke;
+ 	background-color: lightblue;
  }
 
  .classroom-row {
@@ -33,6 +36,7 @@
  }
 
  .occupied {
+
 		background-color: black;
 		border-color: gray;
 		border-radius: 5px;
@@ -40,21 +44,16 @@
  }
 
  .seating-chart-index-item {
-	 	height: 180px;
-	 	width: 180px;
-	 	float: left;
-	 	background-color: lightgray;
-	 	border-radius: 5px;
-	 	padding: 10px 10px;
-	 	margin: 10px;
+ 	margin: 10px 10px;
+ 	height: 150px;
+ 	background-color: whitesmoke;
+	border-radius: 5px;
  }
 
  .new-seating-chart{
-	 	height: 180px;
-	 	width: 180px;
-	 	float: left;
-	 	background-color: lightgray;
-	 	border-radius: 5px;
-	 	padding: 10px 10px;
-	 	margin: 10px;
+ 	margin: 10px 10px;
+ 	height: 150px;
+ 	background-color: whitesmoke;
+ 	border-radius: 5px;
+
  }

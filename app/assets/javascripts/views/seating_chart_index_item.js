@@ -5,7 +5,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 		this.listenTo(this.model, "sync destroy", this.render)
 	},
 
-	className: "seating-chart-index-item col-lg-4",
+	className: "seating-chart-index-item col-xs-2",
 
 	events:{
 		"click .delete-seatingChart" : "deleteSeatingChart"
