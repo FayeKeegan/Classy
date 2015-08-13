@@ -24,8 +24,8 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		seatingChart.set({ section_id: this.model.id })
 		seatingChart.save({},{
 			success: function(){
-				view.chartNewSubview.remove()
 				view.model.seatingCharts().add(seatingChart);
+				Backbone.history.navigate("seating_charts/"+ seatingChart.id + "/edit", { trigger: true })
 			}
 		})
 	},
@@ -44,7 +44,7 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 
 	addChartNewSubview: function(){
 		var seatingChart = new SeatingApp.Models.SeatingChart()
-		this.chartNewSubview = new SeatingApp.Views.SeatingChartNew({ model: seatingChart });
+		this.chartNewSubview = new SeatingApp.Views.SeatingChartNewSmall({ model: seatingChart });
 		this.addSubview("#seating-charts-index", this.chartNewSubview)
 	}
 })

@@ -17,9 +17,14 @@
  @import 'bootstrap-sprockets';
  @import 'bootstrap';
 
- body {
- 	background-color: lightblue;
+ #root {
+ 	margin: 10px;
  }
+ .delete-seatingChart {
+ 		position: absolute;
+ 		bottom: 20px;
+ 	}
+
 
  .classroom-row {
 	 	height:70px;
@@ -36,7 +41,6 @@
  }
 
  .occupied {
-
 		background-color: black;
 		border-color: gray;
 		border-radius: 5px;
@@ -45,15 +49,19 @@
 
  .seating-chart-index-item {
  	margin: 10px 10px;
- 	height: 150px;
+ 	width: 200px;
+ 	height: 200px;
  	background-color: whitesmoke;
 	border-radius: 5px;
  }
 
  .new-seating-chart{
+/* 	color: whitesmoke;*/
+ 	border-color: whitesmoke;
+/* 	background-color: transparent;*/
  	margin: 10px 10px;
- 	height: 150px;
- 	background-color: whitesmoke;
+ 	width: 200px;
+ 	height: 200px;
  	border-radius: 5px;
-
+ 	border-style: dashed;
  }

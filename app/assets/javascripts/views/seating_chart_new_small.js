@@ -1,5 +1,5 @@
-SeatingApp.Views.SeatingChartNew = Backbone.View.extend({
-	template: JST["seating_charts/new"],
+SeatingApp.Views.SeatingChartNewSmall = Backbone.View.extend({
+	template: JST["seating_charts/new_small"],
 
 	className: "new-seating-chart col-xs-2",
 

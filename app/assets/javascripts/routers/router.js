@@ -6,7 +6,15 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		"": "sectionsIndex",
+		"seating_charts/:id/edit": "seatingChartEdit",
 		"seating_charts/:id": "seatingChartShow"
+	},
+
+	seatingChartEdit: function(id) {
+		var seatingChart = new SeatingApp.Models.SeatingChart({ id: id })
+		seatingChart.fetch()
+		var view = new SeatingApp.Views.SeatingChartEdit({ model: seatingChart })
+		this._swapView(view);
 	},
 
 	seatingChartShow: function(id){

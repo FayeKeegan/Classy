@@ -5,6 +5,12 @@ class Api::SeatingChartsController < ApplicationController
 			render :index
 	end
 
+	def new
+		@seating_chart = Section.find(seating_chart_params[:section_id]).seating_charts.new()
+
+	end
+
+
 	def create
 		@seating_chart = SeatingChart.new(seating_chart_params)
 		if @seating_chart.save
