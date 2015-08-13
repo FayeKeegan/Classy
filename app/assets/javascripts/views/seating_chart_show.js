@@ -16,11 +16,13 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 
 	addDesksToGrid: function(){
-		this.model.desks().each(function(desk){
-			var row = desk.get('row');
-			var col = desk.get('column');
+		this.model.seatAssignments().each(function(seatAssignment){
+			var row = seatAssignment.desk().get('row');
+			var col = seatAssignment.desk().get('column');
+			var name = seatAssignment.student().get('first_name')
 			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
-			occupied_square.addClass("occupied");
+			occupied_square.addClass("occupied")
+			occupied_square.text(name.slice(0, 3) + "..")
 		})
 	},
 

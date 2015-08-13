@@ -11,6 +11,10 @@ json.seatAssignments @seating_chart.seat_assignments do |seat_assignment|
 	json.student do 
 		json.extract! seat_assignment.student, :id, :first_name, :last_name, :reading_level, :math_level
 	end
+	json.desk do 
+		json.extract! seat_assignment.desk, :id, :row, :column
+	end
+
 end
 
 json.desks @seating_chart.section.classroom.desks do |desk|
