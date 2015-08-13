@@ -18,22 +18,32 @@
  	background-color: whitesmoke;
  }
 
+ .classroom-row {
+	 	height:40px;
+	 	width:40px;
+ }
+
+ .classroom-square {
+		height:40px;
+	 	width:40px;
+ }
+
  .seating-chart-index-item {
- 	height: 180px;
- 	width: 180px;
- 	float: left;
- 	background-color: lightgray;
- 	border-radius: 5px;
- 	padding: 10px 10px;
- 	margin: 10px;
+	 	height: 180px;
+	 	width: 180px;
+	 	float: left;
+	 	background-color: lightgray;
+	 	border-radius: 5px;
+	 	padding: 10px 10px;
+	 	margin: 10px;
  }
 
  .new-seating-chart{
- 	height: 180px;
- 	width: 180px;
- 	float: left;
- 	background-color: lightgray;
- 	border-radius: 5px;
- 	padding: 10px 10px;
- 	margin: 10px;
+	 	height: 180px;
+	 	width: 180px;
+	 	float: left;
+	 	background-color: lightgray;
+	 	border-radius: 5px;
+	 	padding: 10px 10px;
+	 	margin: 10px;
  }
