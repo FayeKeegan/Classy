@@ -1,6 +1,25 @@
 SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	template: JST["seating_charts/show"],
 
+	events: {
+		"mouseenter .student-index-item": "highlightDesk",
+		"mouseleave .student-index-item": "unHighlightDesk"
+	},
+
+	highlightDesk: function(e) {
+		var studentId = $(e.currentTarget).find("div").attr("data-id")
+		var square = this.$("td[student-id='" + studentId + "']")
+		square.removeClass("info")
+		square.addClass("danger")
+	},
+
+	unHighlightDesk: function(e) {
+		var studentId = $(e.currentTarget).find("div").attr("data-id")
+		var square = this.$("td[student-id='" + studentId + "']")
+		square.removeClass("danger")
+		square.addClass("info")
+	},
+
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render)
 		this.model.students().each(this.addStudentIndexItem.bind(this))
@@ -19,10 +38,12 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		this.model.seatAssignments().each(function(seatAssignment){
 			var row = seatAssignment.desk().get('row');
 			var col = seatAssignment.desk().get('column');
-			var name = seatAssignment.student().get('first_name')
+			var student = seatAssignment.student()
+			var name = student.get('first_name')
 			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
-			occupied_square.addClass("occupied")
-			occupied_square.text(name.slice(0, 3) + "..")
+			occupied_square.addClass("info").attr("student-id", student.get("id"))
+			var nameDiv = $("<div>").addClass("desk-label").text(name.slice(0, 3) + "..")
+			occupied_square.append(nameDiv)
 		})
 	},
 
@@ -46,6 +67,6 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 
 	addStudentIndexItem: function(student){
 		var view = new SeatingApp.Views.StudentIndexItem({ model: student })
-		this.addSubview("#students-index", view)
+		this.addSubview("#students-table", view)
 	}
 })

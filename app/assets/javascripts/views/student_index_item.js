@@ -1,6 +1,10 @@
 SeatingApp.Views.StudentIndexItem = Backbone.View.extend({
 	template: JST["students/index_item"],
 
+	className: "student-index-item",
+
+	tagName: "tr",
+
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render)
 	},

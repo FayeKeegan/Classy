@@ -28,6 +28,10 @@
 	 	width:70px;
  }
 
+ .student-selected {
+ 		background-color: blue;
+ }
+
  .occupied {
 		background-color: black;
 		border-color: gray;
