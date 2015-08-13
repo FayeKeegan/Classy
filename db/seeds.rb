@@ -8,10 +8,10 @@ user2 = User.create!({
 	password: "password"
 })
 
-cr1 = Classroom.create!({width: 10, height: 10})
-cr2 = Classroom.create!({width: 10, height: 10})
-cr3 = Classroom.create!({width: 10, height: 10})
-cr4 = Classroom.create!({width: 10, height: 10})
+cr1 = Classroom.create!({width: 10, height: 8})
+cr2 = Classroom.create!({width: 10, height: 8})
+cr3 = Classroom.create!({width: 10, height: 8})
+cr4 = Classroom.create!({width: 10, height: 8})
 
 sec1 = user1.sections.create!({name: "9th Grade Bio", classroom_id: cr1.id})
 sec2 = user1.sections.create!({name: "10th Grade Chemisry", classroom_id: cr2.id})
@@ -21,7 +21,7 @@ sec4 = user2.sections.create!({name: "Pre Calc", classroom_id: cr4.id})
 desk_positions = [
 	[1, 1], [1, 2], [2, 1], [2, 2],
 	[1, 4], [1, 5], [2, 4], [2, 5],
-	[1, 7], [1, 8], [2, 7], [2, 7],
+	[1, 7], [1, 8], [2, 7], [2, 8],
 	[4, 3], [4, 4], [5, 3], [5, 4],
 	[4, 6], [4, 7], [5, 6], [5, 7]
 ]

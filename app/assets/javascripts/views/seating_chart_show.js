@@ -5,8 +5,6 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync", this.render)
 		this.model.students().each(this.addStudentIndexItem.bind(this))
 		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this))
-		this.model.desks().each(this.addDesksToGrid.bind(this));
-		this.listenTo(this.model.desks(), "add", this.addDesksToGrid)
 	},
 	
 	render: function(){
@@ -14,13 +12,16 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();
-		this.addDesksToGrid();
 		return this;
 	},
 
 	addDesksToGrid: function(){
+
 		this.model.desks().each(function(desk){
-			debugger
+			var row = desk.get('row');
+			var col = desk.get('column');
+			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
+			occupied_square.addClass("occupied");
 		})
 	},
 
@@ -34,6 +35,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 				row.append(cell)
 			}
 		}
+		this.addDesksToGrid();
 	},
 
 	addClassroomShowSubview: function(){

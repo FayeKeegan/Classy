@@ -7,7 +7,7 @@ end
 json.desks @seating_chart.section.classroom.desks do |desk|
 	json.id desk.id
 	json.row desk.row
-	json.col desk.column
+	json.column desk.column
 end
 
 json.students @seating_chart.section.students do |student|
