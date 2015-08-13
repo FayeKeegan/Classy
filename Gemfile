@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'jquery-ui-rails'
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'faker'

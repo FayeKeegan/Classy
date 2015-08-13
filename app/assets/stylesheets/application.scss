@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require jquery-ui
  */
 
  @import 'bootstrap-sprockets';
@@ -25,6 +26,17 @@
  		bottom: 20px;
  	}
 
+ 	.student-icon-draggable {
+ 		font-size: 150%;
+ 	}
+
+ 	.student-icon-dragging {
+ 		color: purple;
+ 	}
+
+ 	.desk {
+ 		border-radius: 5px;
+ 	}
 
  .classroom-row {
 	 	height:70px;

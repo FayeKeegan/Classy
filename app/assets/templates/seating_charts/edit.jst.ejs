@@ -1,14 +1,20 @@
 <div class="container-fluid" >
 	<h1> <%= seatingChart.escape("name") %> </h1>
 </div>
-<div class="container">
+<div class="container" >
 	<div class="row">
 		<div class="col-xs-3" id="students-index">
-			<table class="table table-hover table-condensed" id="students-table">
+			<table class="table
+									  table-hover
+									  table-condensed
+									  connectedSortable" id="students-table">
 			</table>
 		</div>
 		<div class="col-xs-8">
-			<table class="table table table-bordered" id="classroom-grid" > </table>
+			<table class="table
+									  table
+									  table-bordered
+									  connectedSortable" id="classroom-grid" > </table>
 		</div>
 	</div>
 </div>

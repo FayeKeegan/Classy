@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::SeatAssignmentControllerTest < ActionController::TestCase
+class Api::SeatAssignmentsControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
