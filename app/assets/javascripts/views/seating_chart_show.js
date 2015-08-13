@@ -16,7 +16,6 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 
 	addDesksToGrid: function(){
-
 		this.model.desks().each(function(desk){
 			var row = desk.get('row');
 			var col = desk.get('column');

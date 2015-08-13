@@ -14,8 +14,19 @@ SeatingApp.Models.SeatingChart = Backbone.Model.extend({
         this.desks().set(response.desks)
         delete response.desks
       }
+      if (response.seatAssignments){
+        this.seatAssignments().set(response.seatAssignments, {parse: true})
+        delete response.seatAssignments
+      }
     return response;
   },
+
+  seatAssignments: function () {
+      if (!this._seatAssignments) {
+        this._seatAssignments = new SeatingApp.Collections.SeatAssignments([]);
+      }
+      return this._seatAssignments;
+    },
 
   desks: function () {
       if (!this._desks) {

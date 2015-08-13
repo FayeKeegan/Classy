@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   	resources :seating_charts, only: [:index, :create, :show, :update, :destroy]
   	resources :sections
   	resources :students
-    # resources :classrooms, only: [:create, :show, :update, :destroy]
-    # resources :desks, only: [:create, :show, :update, :destroy]
-  	# resources :seat_assignments, only: [:create, :show, :update, :destroy]
+    resources :classrooms
+    resources :desks
+  	resources :seat_assignments
   end
 
 end
