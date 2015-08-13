@@ -3,7 +3,9 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 
 	events: {
 		"mouseenter .student-index-item": "highlightDesk",
-		"mouseleave .student-index-item": "unHighlightDesk"
+		"mouseleave .student-index-item": "unHighlightDesk",
+		"mouseenter .classroom-square" : "highlightStudent",
+		"mouseleave .classroom-square" : "unHighlightStudent"
 	},
 
 	highlightDesk: function(e) {
@@ -18,6 +20,18 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("danger")
 		square.addClass("info")
+	},
+
+	highlightStudent: function(e){
+		var studentId = $(e.currentTarget).attr("student-id")
+		var studentItem = $("div[data-id='" + studentId + "']").parent()
+		studentItem.addClass("info")
+	},
+
+	unHighlightStudent: function(e){
+		var studentId = $(e.currentTarget).attr("student-id")
+		var studentItem = $("div[data-id='" + studentId + "']").parent()
+		studentItem.removeClass("info")
 	},
 
 	initialize: function(){
