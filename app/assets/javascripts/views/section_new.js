@@ -1,10 +1,29 @@
-SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
+SeatingApp.Views.SectionNew = Backbone.View.extend({
 		template: JST["sections/new"],
 
 		className: "new-section",
 
 		events: {
-			"change .select-student" : "addStudentToSection" 
+			"change .select-student" : "addStudentToSection",
+			"click .create-section" : "createSection"
+		},
+
+		createSection: function(e){
+			e.preventDefault();
+			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section
+			var checkedStudents = $(".select-student:checked")
+			var checkedStudentIds = $.map(checkedStudents, function(student){
+				return $(student).attr("student-id")
+			})
+			sectionData.student_ids = checkedStudentIds
+			var sectionData = {section: sectionData}
+			debugger
+			var section = new SeatingApp.Models.Section(sectionData)
+			section.save({}, {
+				success: function(){
+					Backbone.history.navigate("", { trigger: true })
+				}.bind(this)
+			})
 		},
 
 		initialize: function(options) {
@@ -13,22 +32,7 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			this.listenTo(this.model, "sync", this.render)
 			this.listenTo(this.students, "sync", this.render)
 			this.listenTo(this.classrooms, "sync", this.render)
-			this.listenTo(this.model.students(), "add", this.addStudentItem.bind(this))
-
 		},
-
-		addStudentToSection: function(e){
-			var studentId = $(e.currentTarget).attr("student-id")
-			var student = this.students.getOrFetch(studentId)
-			this.model.students().add(student)
-		},
-
-		addStudentItem: function(student){
-			debugger
-			var view = new SeatingApp.Views.AddedStudentItem({ model: student })
-			this.addSubview("#added-students-list", view)
-		},
-
 
 		render: function(){
 			var content = this.template({
@@ -36,7 +40,6 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 				classrooms: this.classrooms,
 				students: this.students
 			})
-			this.attachSubviews();
 			this.$el.html(content)
 			return this;
 		}

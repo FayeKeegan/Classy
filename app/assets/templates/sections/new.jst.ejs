@@ -6,13 +6,13 @@
       <div class="form-group">
         <label for="section-name" class="col-lg-2 control-label">Section Name</label>
         <div class="col-lg-3">
-          <input type="text" class="form-control" id="section-name" placeholder="e.g., History, Biology B Block">
+          <input type="text" name="section[name]" class="form-control" id="section-name" placeholder="e.g., History, Biology B Block">
         </div>
       </div>
       <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Pick From Your Classrooms</label>
         <div class="col-lg-2">
-          <select class="form-control" id="select">
+          <select class="form-control" id="select-classroom" name="section[classroom_id]">
           <% classrooms.each(function(classroom) { %>
             <option> <%= classroom.escape("id") %> </option>
           <% }) %>
@@ -34,17 +34,17 @@
       </div>
       <div class="form-group">
         <div class="col-lg-2 col-lg-offset-2">
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary create-section">Create Section</button>
         </div>
       </div>
     </fieldset>
   </form>
   </div class='row'>
-  <div class='row'>
+  <div class='row added-students-list-row'>
   <label for='added-students-list' class="col-lg-2 control label">
     Added Students
   </label>
-    <ul class="added-students-list list-group" >
+    <ul class="added-students-list list-group col-lg-6" >
     </ul>
   </div>
   </div>

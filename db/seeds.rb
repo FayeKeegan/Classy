@@ -26,6 +26,14 @@ desk_positions = [
 	[4, 6], [4, 7], [5, 6], [5, 7]
 ]
 
+desk_positions_2 = [
+	[1, 1], [1, 2], [2, 1], [2, 2],
+	[1, 4], [1, 5], [2, 4], [2, 5],
+	[1, 7], [1, 8], [2, 7], [2, 8],
+	[4, 3], [4, 4], [5, 3], [5, 4],
+	[4, 6], [4, 7], [5, 6], [5, 7]
+]
+
 [cr1, cr2, cr3, cr4].each do |classroom|
 	desk_positions.each do |desk_pos|
 		classroom.desks.create!({

@@ -2,7 +2,6 @@ SeatingApp.Views.AddedStudentItem = Backbone.View.extend({
 	template: JST["students/added_student_item"],
 
 	initialize: function(){
-		this.listenTo(this.model, "sync", this.render)
 	},
 
 	render: function(){

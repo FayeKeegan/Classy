@@ -1,4 +1,4 @@
-SeatingApp.Views.SectionNewSubview = Backbone.View.extend({
+SeatingApp.Views.SectionNewSubview = Backbone.CompositeView.extend({
 		template: JST["sections/new_subview"],
 
 		className: "new-section-subview",
