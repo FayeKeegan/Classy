@@ -103,7 +103,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	addStudentIndexItem: function(student){
-		var view = new SeatingApp.Views.StudentIndexItem({ model: student })
+		var view = new SeatingApp.Views.StudentIndexItemDraggable({ model: student })
 		this.addSubview("#students-table", view)
 	}
 })
