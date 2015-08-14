@@ -23,6 +23,7 @@ class Api::SeatingChartsController < ApplicationController
 	def destroy
 		@seating_chart = SeatingChart.find(params[:id])
 		@seating_chart.destroy!
+		render json: @seating_chart
 	end
 
 	def show

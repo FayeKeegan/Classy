@@ -13,7 +13,7 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 	},
 
 	events: {
-		"click .create-seatingChart" : "createSeatingChart",
+		"submit .new-seating-chart" : "createSeatingChart",
 	},
 
 	createSeatingChart: function(e){

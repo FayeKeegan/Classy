@@ -9,6 +9,18 @@ class Api::SeatAssignmentsController < ApplicationController
 		end
 	end
 
+	def show
+		@seat_assignment = SeatAssignment.find(params[:id])
+		render json: @seat_assignment
+	end
+
+
+	def destroy
+		@seat_assignment = SeatAssignment.find(params[:id])
+		@seat_assignment.destroy
+		render json: @seat_assignment
+	end
+
 	def seat_assignment_params
 		params.require(:seat_assignment).permit(:desk_id, :student_id, :seating_chart_id)
 	end

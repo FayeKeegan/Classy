@@ -15,3 +15,4 @@ SeatingApp.Views.StudentIndexItem = Backbone.View.extend({
 		return this;
 	}
 })
+

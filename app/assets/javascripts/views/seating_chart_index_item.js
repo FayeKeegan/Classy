@@ -2,10 +2,10 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 	template: JST["seating_charts/index_item"],
 
 	initialize: function(){
-		this.listenTo(this.model, "sync destroy", this.render)
+		this.listenTo(this.model, "sync remove", this.render)
 	},
 
-	className: "seating-chart-index-item col-xs-2",
+	className: "btn btn-default seating-chart-index-item col-xs-2",
 
 	events:{
 		"click .delete-seatingChart" : "deleteSeatingChart"

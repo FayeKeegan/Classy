@@ -2,8 +2,13 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	template: JST["seating_charts/edit"],
 
 	events: {
+		"click .save-chart-button": "saveChart"
 	},
 
+	saveChart: function(e){
+		e.preventDefault();
+		Backbone.history.navigate("", { trigger: true })
+	},
 
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render)
@@ -24,23 +29,29 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var seatingChart = this.model
     $(".student-icon-draggable").draggable({
     	start: function(event, ui){
-    		$(this).addClass("student-icon-dragging")
-    	},
-    	stop: function(event, ui){
-    		$(this).removeClass("student-icon-dragging")
-    		if ( $(this).hasClass("assigned") ){
-    			$(this).removeClass("assigned")
+    		var studentId = $(this).attr("student-id")
+    		var student = seatingChart.students().get(studentId)
+    		$(this).text(student.get("first_name"))
+    		$(this).addClass("student-icon-dragging").addClass("student-icon-dragged")
+    		if ( $(this).hasClass("student-icon-assigned") ){
+    			$(this).removeClass("student-icon-assigned")
     			var seatAssignmentId = $(this).attr("seat-assignment-id")
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
     			seatAssignment.destroy();
     		}
     	},
+    	stop: function(event, ui){
+    		$(this).removeClass("student-icon-dragging")
+    	},
     	appendTo: "body",
-    	snap: ".desk",
     	stack: ".student-icon-draggable"
     });
     $(".desk").droppable({
+    	out: function(event){
+    		$(event.target).removeClass("success").addClass("info")
+    	},
       drop: function( event, ui ) {
+      	var desk_div = $(event.target)
       	var desk_id = $(event.target).attr("desk-id")
       	var student_id = $(ui.draggable).attr("student-id")
       	var seating_chart_id = seatingChart.id
@@ -49,14 +60,14 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
       		student_id: student_id,
       		desk_id: desk_id
       	})
-      	var student = seatingChart.students().getOrFetch(student_id)
+      	var student = seatingChart.students().get(student_id)
       	seatAssignment.save({},{
       		success: function(){
+      			desk_div.removeClass("info")
+      			desk_div.addClass("success")
       			seatingChart.seatAssignments().add(seatAssignment)
-      			$(event.target).addClass("occupied")
-      			$(event.target).text(student.get("first_name"))
-      			$(ui.draggable).removeClass("unassigned").addClass("assigned")
-      			$(ui.draggable).attr("seat-assignment-id", seatAssignment.id)
+      			ui.draggable.removeClass("unassigned").addClass("student-icon-assigned")
+      			ui.draggable.attr("seat-assignment-id", seatAssignment.id)
       		}
       	})
       }

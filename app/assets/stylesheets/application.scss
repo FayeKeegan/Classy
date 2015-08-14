@@ -21,17 +21,25 @@
  #root {
  	margin: 10px;
  }
+
+
  .delete-seatingChart {
  		position: absolute;
  		bottom: 20px;
  	}
 
- 	.student-icon-draggable {
- 		font-size: 150%;
+ 	.student-icon-dragging {
+ 		border-radius: 5px;
+ 		text-align: center;
+ 	}
+
+ 	.student-icon-draggable{
+ 		width: 50px;
+ 		text-align: center;
  	}
 
  	.student-icon-dragging {
- 		color: purple;
+ 		color: #282828;
  	}
 
  	.desk {
@@ -63,14 +71,12 @@
  	margin: 10px 10px;
  	width: 200px;
  	height: 200px;
- 	background-color: whitesmoke;
 	border-radius: 5px;
  }
 
  .new-seating-chart{
-/* 	color: whitesmoke;*/
- 	border-color: whitesmoke;
-/* 	background-color: transparent;*/
+ 	border-color: #282828;
+ 	color: #282828;
  	margin: 10px 10px;
  	width: 200px;
  	height: 200px;
