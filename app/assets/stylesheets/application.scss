@@ -22,10 +22,8 @@
  	margin: 10px;
  }
 
-
- .delete-seatingChart {
- 		position: absolute;
- 		bottom: 20px;
+ .seating-chart-index-item-button {
+ 		margin: 5px;
  	}
 
  	.student-icon-dragging {
@@ -67,19 +65,29 @@
 		color: white;
  }
 
- .seating-chart-index-item {
- 	margin: 10px 10px;
- 	width: 200px;
- 	height: 200px;
-	border-radius: 5px;
+ #new-seating-chart-text {
+ 	width: 80px;
  }
 
- .new-seating-chart{
- 	border-color: #282828;
- 	color: #282828;
- 	margin: 10px 10px;
- 	width: 200px;
- 	height: 200px;
+ #seating-chart-index-item {
+ 	height: 170px;
+ }
+
+ #new-section-header {
+ 	color: #2a9fd6;
+ }
+
+ #new-seating-charts-index {
+ 	border-color: #2a9fd6;
+ 	height: 170px;
+ 	width: 100%;
  	border-radius: 5px;
+ 	border-style: dashed;
+ }
+
+ #new-seating-chart-index-item{
+ 	background-color: transparent;
+ 	height: 170px;
+ 	width: 170px;
  	border-style: dashed;
  }

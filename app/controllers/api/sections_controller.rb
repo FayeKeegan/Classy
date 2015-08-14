@@ -5,6 +5,12 @@ class Api::SectionsController < ApplicationController
 			render :index
 	end
 
+	def new
+		@section = Section.new
+		render json: @section
+	end
+
+
 	def show
 		@section = Section.find(params[:id])
 		render :show

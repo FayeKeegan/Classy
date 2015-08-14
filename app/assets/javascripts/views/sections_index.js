@@ -14,9 +14,20 @@ SeatingApp.Views.SectionsIndex = Backbone.CompositeView.extend({
 		this.addSubview("#sections-index", view)
 	},
 
+	onRender: function(){
+		this.addSectionNewSubview()
+	},
+
+
+	addSectionNewSubview: function(){
+		var view = new SeatingApp.Views.SectionNewSubview()
+		this.addSubview("#sections-index", view)
+	},
+
 	render: function(){
 		var content = this.template({ sections: this})
 		this.$el.html(content)
+		this.addSectionNewSubview()
 		this.attachSubviews();
 		return this;
 	}

@@ -5,16 +5,23 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 		this.listenTo(this.model, "sync remove", this.render)
 	},
 
-	className: "btn btn-default seating-chart-index-item col-xs-2",
+	className: "seating-chart-index-item col-xs-2",
 
 	events:{
-		"click .delete-seatingChart" : "deleteSeatingChart"
+		"click .delete-seatingChart" : "deleteSeatingChart",
+		"click .show-seatingChart" : "showSeatingChart"
 	},
 
 	deleteSeatingChart: function(e){
 		e.preventDefault();
 		this.model.destroy();
 		Backbone.history.navigate("", { trigger: true })
+	},
+
+	showSeatingChart: function(e){
+		debugger
+		e.preventDefault()
+		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true })
 	},
 
 

@@ -14,7 +14,7 @@ cr3 = Classroom.create!({width: 10, height: 8})
 cr4 = Classroom.create!({width: 10, height: 8})
 
 sec1 = user1.sections.create!({name: "9th Grade Bio", classroom_id: cr1.id})
-sec2 = user1.sections.create!({name: "10th Grade Chemisry", classroom_id: cr2.id})
+sec2 = user1.sections.create!({name: "10th Grade Chemistry", classroom_id: cr2.id})
 sec3 = user2.sections.create!({name: "Algebra", classroom_id: cr3.id})
 sec4 = user2.sections.create!({name: "Pre Calc", classroom_id: cr4.id})
 
