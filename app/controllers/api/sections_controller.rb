@@ -6,13 +6,17 @@ class Api::SectionsController < ApplicationController
 	end
 
 	def new
-		@section = Section.new
-		render json: @section
+		@section = current_user.sections.new
+		render :new
 	end
-
 
 	def show
 		@section = Section.find(params[:id])
 		render :show
 	end
+
+	def section_params
+		params.require(:section).permit(:name, :teacher_id, :classroom_id)
+	end
+
 end

@@ -19,7 +19,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 	},
 
 	showSeatingChart: function(e){
-		debugger
+
 		e.preventDefault()
 		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true })
 	},

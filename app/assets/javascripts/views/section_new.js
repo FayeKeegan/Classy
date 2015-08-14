@@ -12,7 +12,11 @@ SeatingApp.Views.SectionNew = Backbone.View.extend({
 		},
 
 		render: function(){
-			var content = this.template()
+			var content = this.template({
+				section: this.model,
+				classrooms: this.model.classrooms(),
+				students: this.model.students()
+			})
 			this.$el.html(content)
 			return this;
 		}
