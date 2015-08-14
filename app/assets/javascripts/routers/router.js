@@ -2,6 +2,7 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	initialize: function(options){
 		this.$rootEl = options.$rootEl;
 		this.sections = options.sections;
+		this.classrooms = options.classrooms;
 	},
 
 	routes: {

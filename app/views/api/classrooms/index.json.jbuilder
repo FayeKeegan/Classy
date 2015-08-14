@@ -1,4 +1,4 @@
-json.classrooms @classrooms do |classroom|
+json.array! @classrooms do |classroom|
 	json.id classroom.id
 	json.width classroom.width
 	json.height classroom.height

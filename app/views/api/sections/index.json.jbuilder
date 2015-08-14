@@ -5,6 +5,5 @@ json.array! @sections do |section|
 	  json.name seating_chart.name
 	  json.section_id seating_chart.section_id
 	end
-
 end
 
