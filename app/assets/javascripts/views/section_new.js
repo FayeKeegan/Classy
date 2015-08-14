@@ -1,11 +1,44 @@
-SeatingApp.Views.SectionNew = Backbone.View.extend({
+SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 		template: JST["sections/new"],
 
 		className: "new-section",
 
 		events: {
 			"change .select-student" : "addStudentToSection",
-			"click .create-section" : "createSection"
+			"click .create-section" : "createSection",
+			"click .create-student" : "newStudentModal"
+		},
+
+		initialize: function(options) {
+			this.students = options.students
+			this.classrooms = options.classrooms
+			this.listenTo(this.model, "sync", this.render)
+			this.listenTo(this.students, "sync add", this.render)
+			this.listenTo(this.classrooms, "sync", this.render)
+			this.students().each()
+		},
+
+		render: function(){
+			var content = this.template({
+				section: this.model,
+				classrooms: this.classrooms,
+				students: this.students
+			})
+			this.renderStudents()
+			this.$el.html(content)
+			return this;
+		}
+
+		newStudentModal: function(e){
+			// debugger
+			e.preventDefault()
+			var student = new SeatingApp.Models.Student()
+			var newStudentModal = new SeatingApp.Views.StudentsNewModal({
+				model : student,
+				collection: this.students
+			})
+			$('body').append(newStudentModal.$el);
+			newStudentModal.render()
 		},
 
 		createSection: function(e){
@@ -17,7 +50,6 @@ SeatingApp.Views.SectionNew = Backbone.View.extend({
 			})
 			sectionData.student_ids = checkedStudentIds
 			var sectionData = {section: sectionData}
-			debugger
 			var section = new SeatingApp.Models.Section(sectionData)
 			section.save({}, {
 				success: function(){
@@ -26,21 +58,4 @@ SeatingApp.Views.SectionNew = Backbone.View.extend({
 			})
 		},
 
-		initialize: function(options) {
-			this.students = options.students
-			this.classrooms = options.classrooms
-			this.listenTo(this.model, "sync", this.render)
-			this.listenTo(this.students, "sync", this.render)
-			this.listenTo(this.classrooms, "sync", this.render)
-		},
-
-		render: function(){
-			var content = this.template({
-				section: this.model,
-				classrooms: this.classrooms,
-				students: this.students
-			})
-			this.$el.html(content)
-			return this;
-		}
 })
