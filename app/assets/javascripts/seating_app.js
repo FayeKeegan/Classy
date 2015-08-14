@@ -9,7 +9,8 @@ window.SeatingApp = {
     new SeatingApp.Routers.Router({
     	$rootEl: $rootEl,
       sections: new SeatingApp.Collections.Sections(),
-      classrooms: new SeatingApp.Collections.Classrooms()
+      classrooms: new SeatingApp.Collections.Classrooms(),
+      students: new SeatingApp.Collections.Students()
     })
     Backbone.history.start()
   }

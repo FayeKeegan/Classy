@@ -6,8 +6,8 @@ class Api::SeatingChartsController < ApplicationController
 	end
 
 	def new
-		@seating_chart = Section.find(seating_chart_params[:section_id]).seating_charts.new()
-
+		@seating_chart = current_user.seating_charts.new()
+		render json: @seating_chart
 	end
 
 

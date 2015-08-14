@@ -13,9 +13,14 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	},
 
 	sectionNew: function(){
-		var section = new SeatingApp.Models.Section({ model: section })
+		var section = new SeatingApp.Models.Section()
+		this.classrooms.fetch()
+		this.sections.fetch()
 		section.fetch();
-		var view = new SeatingApp.Views.SectionNew({ model: section})
+		var view = new SeatingApp.Views.SectionNew({ model: section,
+			sections: this.sections,
+			classrooms: this.classrooms
+		})
 		this._swapView(view);
 	},
 
