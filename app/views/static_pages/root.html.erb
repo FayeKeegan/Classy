@@ -15,6 +15,10 @@
 
 <div id="root" ></div>
 <script>
-  $(SeatingApp.initialize);
+  $(function(){
+    SeatingApp.CURRENT_USER_ID = <%=current_user.id %>
+    SeatingApp.initialize();
+
+  })
 </script>
 

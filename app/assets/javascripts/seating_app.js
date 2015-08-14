@@ -13,3 +13,5 @@ window.SeatingApp = {
     Backbone.history.start()
   }
 };
+
+
