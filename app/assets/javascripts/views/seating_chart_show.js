@@ -9,14 +9,14 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 
 	highlightDesk: function(e) {
-		var studentId = $(e.currentTarget).find("div").attr("data-id")
+		var studentId = $(e.currentTarget).find("div").attr("student-id")
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("info")
 		square.addClass("active")
 	},
 
 	unHighlightDesk: function(e) {
-		var studentId = $(e.currentTarget).find("div").attr("data-id")
+		var studentId = $(e.currentTarget).find("div").attr("student-id")
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("success")
 		square.addClass("info")
@@ -24,13 +24,13 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 
 	highlightStudent: function(e){
 		var studentId = $(e.currentTarget).attr("student-id")
-		var studentItem = $("div[data-id='" + studentId + "']").parent()
+		var studentItem = $("div[student-id='" + studentId + "']").parent()
 		studentItem.addClass("info")
 	},
 
 	unHighlightStudent: function(e){
 		var studentId = $(e.currentTarget).attr("student-id")
-		var studentItem = $("div[data-id='" + studentId + "']").parent()
+		var studentItem = $("div[student-id='" + studentId + "']").parent()
 		studentItem.removeClass("info")
 	},
 
@@ -53,10 +53,9 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var row = seatAssignment.desk().get('row');
 			var col = seatAssignment.desk().get('column');
 			var student = seatAssignment.student()
-			var name = student.get('first_name')
 			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
 			occupied_square.addClass("info desk").attr("student-id", student.get("id"))
-			var nameDiv = $("<div>").addClass("desk-label").text(name.slice(0, 3) + "..")
+			var nameDiv = $("<div>").addClass("desk-label").text(student.get("first_name"))
 			occupied_square.append(nameDiv)
 		})
 	},
