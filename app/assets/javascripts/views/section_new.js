@@ -10,27 +10,31 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 		},
 
 		initialize: function(options) {
-			this.students = options.students
-			this.classrooms = options.classrooms
-			this.listenTo(this.model, "sync", this.render)
-			this.listenTo(this.students, "sync add", this.render)
-			this.listenTo(this.classrooms, "sync", this.render)
-			this.students().each()
+			this.students = options.students;
+			this.classrooms = options.classrooms;
+			this.listenTo(this.model, "sync", this.render);
+			this.listenTo(this.students, "add", this.addStudent);
+			this.listenTo(this.classrooms, "sync", this.render);
 		},
 
+		addStudent: function(student){
+			var addedStudent = JST["students/students_index_item_selectable"]({
+				student: student
+			});
+			this.$(".selectable-students").append(addedStudent);
+		},
 		render: function(){
 			var content = this.template({
 				section: this.model,
 				classrooms: this.classrooms,
 				students: this.students
 			})
-			this.renderStudents()
 			this.$el.html(content)
+			this.students.each(this.addStudent.bind(this));	
 			return this;
-		}
+		},
 
 		newStudentModal: function(e){
-			// debugger
 			e.preventDefault()
 			var student = new SeatingApp.Models.Student()
 			var newStudentModal = new SeatingApp.Views.StudentsNewModal({
