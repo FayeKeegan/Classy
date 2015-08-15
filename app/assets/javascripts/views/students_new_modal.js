@@ -3,8 +3,8 @@ SeatingApp.Views.StudentsNewModal = Backbone.View.extend({
 
   events: {
     'submit form': 'createStudent',
-    // 'click .m-background': 'remove',
-    // 'click .close': 'removeBtn'
+    'click .m-background': 'remove',
+    'click .close': 'removeBtn'
   },
 
   initialize: function () {
