@@ -14,11 +14,11 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 
 	deleteSeatingChart: function(e){
 		e.preventDefault();
-		this.collection.remove(this.model)
-		this.remove()
 		this.model.destroy({
 			success: function(){
-			}
+				this.remove()
+				this.collection.remove(this.model)
+			}.bind(this)
 		})
 	},
 
