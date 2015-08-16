@@ -15,7 +15,7 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			this.classrooms = options.classrooms;
 			this.listenTo(this.model, "sync", this.render);
 			this.listenTo(this.students, "add", this.addStudent);
-			this.listenTo(this.classrooms, "sync", this.render);
+			this.listenTo(this.classrooms, "sync", this.addClassroom);
 		},
 
 		addStudent: function(student){

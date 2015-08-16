@@ -2,9 +2,12 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   template: JST['classrooms/new_modal'],
 
   events: {
-    'submit form.new-classroom-modal': 'createClassroom',
+    'click .create-classroom': 'createClassroom',
     'click .m-background': 'remove',
-    'click .close': 'removeBtn'
+    'click .close': 'removeBtn',
+    'mouseenter .classroom-square-modal': 'makeSquareActive',
+    'mouseleave .classroom-square-modal': 'makeSquareInactive',
+    'click .classroom-square-modal': 'toggleDesk'
   },
 
   initialize: function () {
@@ -14,6 +17,19 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
 
   setDefaultClassroomSize: function(){
     this.model.set({height: 8, width:10})
+  },
+
+  makeSquareActive: function(e){
+    $(e.currentTarget).addClass("active")
+  },
+
+  toggleDesk: function(e){
+    $(e.currentTarget).toggleClass("info")
+    $(e.currentTarget).toggleClass("hasDesk")
+  },
+
+  makeSquareInactive: function(e){
+    $(e.currentTarget).removeClass("active")
   },
 
   handleKey: function (event) {
@@ -39,12 +55,38 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
     }
   },
 
+  getDeskPositions: function(){
+    var desks = this.$(".hasDesk")
+    var deskPositions = []
+    $.each(desks, function(i, desk){
+        var row_num = $(desk).attr("row-num")
+        var col_num = $(desk).attr("col-num")
+        deskPositions.push([row_num, col_num])
+      })
+    return deskPositions;
+  },
+
   createClassroom: function (event) {
     event.preventDefault();
-    var formData = $(event.currentTarget).serializeJSON();
-    this.model.save(formData, {
+    var classroom = this.model
+    var formData = $(event.delegateTarget).find("form").serializeJSON()
+    var deskPositions = this.getDeskPositions()  
+    this.model.save(formData.classroom, {
       success: function (classroom) {
-        this.collection.add(this.model);
+        this.collection.add(classroom);
+        deskPositions.forEach(function(deskPosition){
+          var d = new SeatingApp.Models.Desk()
+          d.set({
+            row: deskPosition[0],
+            column: deskPosition[1],
+            classroom_id: classroom.id
+          })
+          d.save({}, {
+            success: function(){
+              classroom.desks().add(d)
+            }
+          })
+        }.bind(this))
         this.remove();
       }.bind(this)
     });
@@ -55,6 +97,6 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
     this.$el.html(content);
     this.addGridToPage();
     return this;
-  },
+  }
 
 });

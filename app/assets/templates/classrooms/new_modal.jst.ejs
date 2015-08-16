@@ -1,17 +1,21 @@
 <div class="m-background"></div>
 
 <div class="m-content classroom-modal">
-  <form class="form-horizontal new-classroom-modal">
-    <button class="close">&times;</button>
-    <label for="name"> Name </label>
-    <input class="first-field" type="text" id="name" name="classroom[name]">
-      <br>
-    <input type="submit" class="btn btn-primary btn-sm" value="Create Classroom">
-  </form>
-  <div class="col-xs-8">
-      <table class="table
-                    table
-                    table-bordered" id="classroom-grid" >
-      </table>
+  <div class="form-group" > 
+    <form class="form-horizontal new-classroom-modal">
+      <button class="close">&times;</button>
+      <input class="first-field" type="text" id="name" name="classroom[name]" placeholder="New Classroom Name">
+        <br>
+    </form>
+  </div>
+  <div class='form-group'>
+    <div class="col-xs-8">
+        <table class="table table-bordered" id="classroom-grid" >
+        </table>
+      </div>
+    </div>
+    <br>
+    <div class="form-group">
+      <input type="submit" class="btn btn-primary btn-sm create-classroom" value="Create Classroom">
     </div>
 </div>

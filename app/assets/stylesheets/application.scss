@@ -40,13 +40,17 @@
 }
 
  .classroom-row-modal {
-    height:30px;
-    width:30px;
+    height:15px;
+    width:15px;
  }
 
  .classroom-square-modal {
-    height:30px;
-    width:30px;
+    height:15px;
+    width:15px;
+ }
+
+ .classroom-square-modal.active {
+    background-color: #1b1b1b;
  }
 
 

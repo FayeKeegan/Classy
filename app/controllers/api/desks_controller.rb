@@ -1,0 +1,17 @@
+class Api::DesksController < ApplicationController
+
+	def create
+		@desk = Desk.new(desk_params)
+		if @desk.save
+			render json: @desk
+		else
+			render json: @desk.errors.full_messages
+		end
+		
+	end
+
+	def desk_params
+		params.require(:desk).permit(:row, :column, :classroom_id)
+	end
+
+end
