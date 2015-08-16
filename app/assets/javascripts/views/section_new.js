@@ -6,7 +6,8 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 		events: {
 			"change .select-student" : "addStudentToSection",
 			"click .create-section" : "createSection",
-			"click .create-student" : "newStudentModal"
+			"click .create-student" : "newStudentModal",
+			"click .create-classroom" : "newClassroomModal"
 		},
 
 		initialize: function(options) {
@@ -32,6 +33,10 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			this.$el.html(content)
 			this.students.each(this.addStudent.bind(this));	
 			return this;
+		},
+
+		newClassroomModal: function(e){
+			e.preventDefault();
 		},
 
 		newStudentModal: function(e){

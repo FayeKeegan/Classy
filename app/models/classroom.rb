@@ -1,5 +1,5 @@
 class Classroom < ActiveRecord::Base
-	validates :width, :height, presence: true
+	validates :width, :height, :name, presence: true
 	
 	has_many :desks
 

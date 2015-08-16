@@ -8,10 +8,10 @@ user2 = User.create!({
 	password: "password"
 })
 
-cr1 = Classroom.create!({width: 10, height: 8})
-cr2 = Classroom.create!({width: 10, height: 8})
-cr3 = Classroom.create!({width: 10, height: 8})
-cr4 = Classroom.create!({width: 10, height: 8})
+cr1 = Classroom.create!({width: 10, height: 8, name: "Room 101"})
+cr2 = Classroom.create!({width: 10, height: 8, name: "Room 102"})
+cr3 = Classroom.create!({width: 10, height: 8, name: "Room 103"})
+cr4 = Classroom.create!({width: 10, height: 8, name: "Room 104"})
 
 sec1 = user1.sections.create!({name: "9th Grade Bio", classroom_id: cr1.id})
 sec2 = user1.sections.create!({name: "10th Grade Chemistry", classroom_id: cr2.id})
