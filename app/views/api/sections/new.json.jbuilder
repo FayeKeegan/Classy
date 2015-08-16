@@ -1,7 +1,7 @@
 json.extract! @section, :id, :name
 
 jsons.classroom do 
-	json.extract! @section.classroom, :id, :height, :width
+	json.extract! @section.classroom, :id, :height, :name, :width
 end
 
 

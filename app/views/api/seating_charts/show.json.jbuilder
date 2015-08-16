@@ -1,7 +1,7 @@
 json.extract! @seating_chart, :id, :name
 
 json.classroom do 
-	json.extract! @seating_chart.section.classroom, :id, :width, :height
+	json.extract! @seating_chart.section.classroom, :id, :name, :width, :height
 end
 
 json.seatAssignments @seating_chart.seat_assignments do |seat_assignment|
