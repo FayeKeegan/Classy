@@ -14,7 +14,7 @@
         <div class="col-lg-2">
           <select class="form-control" id="select-classroom" name="section[classroom_id]">
           <% classrooms.each(function(classroom) { %>
-            <option> <%= classroom.escape("id") %> </option>
+            <option> <%= classroom.escape("name") %> </option>
           <% }) %>
           </select>
         </div>
