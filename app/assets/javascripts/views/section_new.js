@@ -15,7 +15,16 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			this.classrooms = options.classrooms;
 			this.listenTo(this.model, "sync", this.render);
 			this.listenTo(this.students, "add", this.addStudent);
-			this.listenTo(this.classrooms, "sync add", this.render);
+			this.listenTo(this.classrooms, "add", this.addClassroom);
+		},
+
+		addClassroom: function(classroom, options){
+			$("#selectable-classrooms").each(function(classroomOption) { $(classroomOption).attr("selected", false) } )
+			var addedClassroom = $("<option>")
+				.attr("value", classroom.id)
+				.text(classroom.get("name"))
+				.attr("selected", true)
+			this.$("#selectable-classrooms").append(addedClassroom);
 		},
 
 		addStudent: function(student){
@@ -31,7 +40,8 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 				students: this.students
 			})
 			this.$el.html(content)
-			this.students.each(this.addStudent.bind(this));	
+			this.students.each(this.addStudent.bind(this));
+			this.classrooms.each(this.addClassroom.bind(this));
 			return this;
 		},
 

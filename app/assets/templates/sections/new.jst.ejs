@@ -12,10 +12,7 @@
       <div class="form-group">
         <label for="select" class="col-lg-2 control-label">Pick From Your Classrooms</label>
         <div class="col-lg-2">
-          <select class="form-control" id="selectable-classroom" name="section[classroom_id]">
-          <% classrooms.each(function(classroom) { %>
-            <option value="<%= classroom.id %>"> <%= classroom.escape("name") %> </option>
-          <% }) %>
+          <select class="form-control" id="selectable-classrooms" name="section[classroom_id]">
           </select>
         </div>
         <div class="form-group">

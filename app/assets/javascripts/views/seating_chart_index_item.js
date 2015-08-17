@@ -9,7 +9,12 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 
 	events:{
 		"click .delete-seatingChart" : "deleteSeatingChart",
-		"click .show-seatingChart" : "showSeatingChart"
+		"click .show-seatingChart" : "showSeatingChart",
+		"click .edit-seatingChart" : "editSeatingChart"
+	},
+
+	editSeatingChart: function(){
+		e.preventDefault();
 	},
 
 	deleteSeatingChart: function(e){

@@ -1,16 +1,29 @@
-<h1> Welcome to Classy! </h1>
-<h2> Log in </h2>
+<div class='jumbotron'> 
+	<h1 class='logo'> Classy </h1>
+	<p> An easier way to create, store and view classroom seating charts </p>
+</div>
 
-<form action="<%=session_url%>" method = "POST">
-	<input type = "hidden" name = "authenticity_token" value="<%=form_authenticity_token%>" >
-
-	<label id = "username"> Username 	</label>
-	<input type = "text" name = "user[username]" id = "username" value="<%=@user.username%>">
-	<br>
-	<label id = "password"> Password </label>
-	<input type = "password" name = "user[password]" id = "password">
-	<br>
-	<input type = "submit" name = "Log in" >
-</form>
-
-<%= link_to "I'm a New User", new_user_url %>
+<div class='jumbotron' >
+	<h2> Log in </h2>
+	<div class="container" >
+		<div class="row">
+		<form class="form-horizontal col col-lg-9" action="<%=session_url%>" method = "POST">
+			<div class="form-group">
+				<input type = "hidden" name = "authenticity_token" value="<%=form_authenticity_token%>" >
+				<label id = "username"> Username 	</label>
+				<input type = "text" name = "user[username]" id = "username" value="<%=@user.username%>">
+				<br>
+				<label id = "password"> Password </label>
+				<input type = "password" name = "user[password]" id = "password">
+				<br>
+				<input type = "submit" name = "Log in" >
+			</div>
+		</form>
+	</div>
+		<div class="row">
+			<div class='col col-lg-9'>
+			<%= link_to "I'm a New User", new_user_url %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -48,6 +48,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     });
     $(".desk").droppable({
     	out: function(event){
+    		debugger
     		$(event.target).removeClass("success").addClass("info")
     	},
       drop: function( event, ui ) {
