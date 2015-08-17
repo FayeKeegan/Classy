@@ -44,10 +44,9 @@
   height: 100px;
 }
 
-.splash-grid-cell {
-
-}
-
+ #seating-chart-index-item {
+ 	height: 170px;
+ }
 
  .classroom-row-modal {
     height:15px;
@@ -65,63 +64,60 @@
 
 
  #root {
- 	margin: 10px;
+  margin: 10px;
  }
 
  .added-student-item {
- 	margin: 5px;
+  margin: 5px;
  }
  
  .seating-chart-index-item-button {
- 		margin: 5px;
- 	}
+    margin: 5px;
+  }
 
- 	.student-icon-dragging {
- 		border-radius: 5px;
- 		text-align: center;
- 	}
+  .student-icon-dragging {
+    border-radius: 5px;
+    text-align: center;
+  }
 
- 	.student-icon-draggable{
- 		width: 50px;
- 		text-align: center;
- 	}
+  .student-icon-draggable{
+    width: 50px;
+    text-align: center;
+  }
 
- 	.student-icon-dragging {
- 		color: #282828;
- 	}
+  .student-icon-dragging {
+    color: #282828;
+  }
 
- 	.desk {
- 		border-radius: 5px;
- 	}
+  .desk {
+    border-radius: 5px;
+  }
 
  .classroom-row {
-	 	height:70px;
-	 	width:70px;
+    height:70px;
+    width:70px;
  }
 
  .classroom-square {
-		height:70px;
-	 	width:70px;
+    height:70px;
+    width:70px;
  }
 
  .student-selected {
- 		background-color: blue;
+    background-color: blue;
  }
 
  .occupied {
-		background-color: black;
-		border-color: gray;
-		border-radius: 5px;
-		color: white;
+    background-color: black;
+    border-color: gray;
+    border-radius: 5px;
+    color: white;
  }
 
  #new-seating-chart-text {
- 	width: 80px;
+  width: 80px;
  }
 
- #seating-chart-index-item {
- 	height: 170px;
- }
 
  #new-section-header {
  	color: #2a9fd6;

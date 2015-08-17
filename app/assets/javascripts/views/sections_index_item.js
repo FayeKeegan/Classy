@@ -7,7 +7,7 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		this.model.seatingCharts().each(this.addSeatingChartIndexItem.bind(this))
 		this.listenTo(this.model.seatingCharts(), "add", this.addSeatingChartIndexItem.bind(this))
 		this.listenTo(this.model.seatingCharts(), "add", this.addChartNewSubview.bind(this))
-		this.listenTo(this.model.seatingCharts(), "remove", this.render)
+		this.listenTo(this.model.seatingCharts(), "remove", this.removeSeatingChartIndexItem)
 		this.listenTo(this.model, "sync", this.render)
 		this.addChartNewSubview();
 	},
@@ -19,6 +19,10 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		"mouseenter #new-seating-chart-index-item" : "seatingChartHighlight",
 		"mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight"
 
+	},
+
+	removeSeatingChartIndexItem: function(seatingChart){
+		this.removeModelSubview("#seating-charts-index", seatingChart);
 	},
 
 	seatingChartHighlight: function (e){
@@ -53,7 +57,8 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 	addSeatingChartIndexItem: function(seatingChart){
 		var view = new SeatingApp.Views.SeatingChartIndexItem({
 			model: seatingChart,
-			collection: this.model.seatingCharts()
+			collection: this.model.seatingCharts(),
+			section: this.model
 		})
 		this.addSubview("#seating-charts-index", view)
 	},
