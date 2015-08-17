@@ -15,7 +15,7 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			this.classrooms = options.classrooms;
 			this.listenTo(this.model, "sync", this.render);
 			this.listenTo(this.students, "add", this.addStudent);
-			this.listenTo(this.classrooms, "sync", this.addClassroom);
+			this.listenTo(this.classrooms, "sync", this.render);
 		},
 
 		addStudent: function(student){
@@ -61,10 +61,12 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			e.preventDefault();
 			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section
 			var checkedStudents = $(".select-student:checked")
+			debugger
 			var checkedStudentIds = $.map(checkedStudents, function(student){
 				return $(student).attr("student-id")
 			})
 			sectionData.student_ids = checkedStudentIds
+			debugger
 			var sectionData = {section: sectionData}
 			var section = new SeatingApp.Models.Section(sectionData)
 			section.save({}, {

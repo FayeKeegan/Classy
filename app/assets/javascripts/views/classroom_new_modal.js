@@ -70,7 +70,7 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
     event.preventDefault();
     var classroom = this.model
     var formData = $(event.delegateTarget).find("form").serializeJSON()
-    var deskPositions = this.getDeskPositions()  
+    var deskPositions = this.getDeskPositions() 
     this.model.save(formData.classroom, {
       success: function (classroom) {
         this.collection.add(classroom);
