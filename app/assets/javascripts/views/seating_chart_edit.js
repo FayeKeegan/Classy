@@ -47,10 +47,15 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	stack: ".student-icon-draggable"
     });
     $(".desk").droppable({
-    	out: function(event){
-    		$(event.target).removeClass("success").addClass("info")
+    	out: function(event, ui){
+ 				if ($(event.target).children().length == 1
+ 					&& (($.inArray(ui.draggable[0], $(event.target).children()) !== -1 ))
+ 					){
+    			$(event.target).removeClass("success").addClass("info")
+ 				}
     	},
       drop: function( event, ui ) {
+      	var that = this;
       	var desk_div = $(event.target)
       	var desk_id = $(event.target).attr("desk-id")
       	var student_id = $(ui.draggable).attr("student-id")
@@ -63,6 +68,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
       	var student = seatingChart.students().get(student_id)
       	seatAssignment.save({},{
       		success: function(){
+      			var student = ui.draggable
+      			student.appendTo($(that))
+      			$(student).css({top: 0, left: 0})
       			desk_div.removeClass("info")
       			desk_div.addClass("success")
       			seatingChart.seatAssignments().add(seatAssignment)

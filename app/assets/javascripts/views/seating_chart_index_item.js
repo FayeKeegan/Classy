@@ -1,7 +1,8 @@
-SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
+SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	template: JST["seating_charts/index_item"],
 
 	initialize: function(){
+		this.addClassroomPreview()
 		this.listenTo(this.model, "sync remove", this.render)
 	},
 
@@ -28,13 +29,20 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.View.extend({
 	},
 
 	showSeatingChart: function(e){
-		e.preventDefault()
-		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true })
+		e.preventDefault();
+		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true });
 	},
 
+	addClassroomPreview: function(){
+		var view = new SeatingApp.Views.ClassroomShowSmall({
+			model: this.model
+		})
+		this.addSubview("#classroom-preview", view);
+	},
 
 	render: function(){
 		var content = this.template({ seatingChart: this.model })
+		this.attachSubviews();
 		this.$el.html(content);
 		return this;
 	}
