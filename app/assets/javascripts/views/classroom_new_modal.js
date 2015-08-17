@@ -88,6 +88,9 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
           })
         }.bind(this))
         this.remove();
+        debugger
+        $("#selectable-classroom").find("[value="+ classroom.id + "]").attr("selected", true)
+
       }.bind(this)
     });
   },
