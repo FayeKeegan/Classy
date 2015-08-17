@@ -5,7 +5,23 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		"mouseenter .student-index-item": "highlightDesk",
 		"mouseleave .student-index-item": "unHighlightDesk",
 		"mouseenter .classroom-square" : "highlightStudent",
-		"mouseleave .classroom-square" : "unHighlightStudent"
+		"mouseleave .classroom-square" : "unHighlightStudent",
+		"click .delete-chart-button" : "deleteSeatingChart",
+		"click .edit-chart-button" : "editSeatingChart"
+	},
+
+	editSeatingChart: function(e){
+		e.preventDefault();
+		Backbone.history.navigate("seating_charts/" + this.model.id + "/edit", { trigger: true } )
+	},
+
+	deleteSeatingChart: function(e){
+		e.preventDefault();
+		this.model.destroy({
+			success: function(){
+				Backbone.history.navigate("", { trigger: true })
+			}.bind(this)
+		})
 	},
 
 	highlightDesk: function(e) {

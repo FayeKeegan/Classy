@@ -21,8 +21,29 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();
+		this.placeAssignedStudents();
 		this.onRender();
+		debugger
 		return this;
+	},
+
+	placeAssignedStudents: function(){
+		this.model.seatAssignments().each(function(seatAssignment){
+			var deskId = seatAssignment.get("desk_id")
+			var studentId = seatAssignment.get("student_id")
+			var student = this.model.students().get(studentId)
+			var draggableStudent = $("[student-id=" + studentId + "].student-icon-draggable")[0]
+			var droppableDesk = $("[desk-id=" + deskId + "].desk")
+
+			droppableDesk.append(draggableStudent);
+			$(droppableDesk).removeClass("info").addClass("success");
+			$(draggableStudent)
+				.css({ top: 0, left: 0})
+				.text(student.get("first_name"))
+				.addClass("student-icon-assigned")
+				.attr("seat-assignment-id", seatAssignment.id)
+				.addClass("student-icon-dragged")
+		}.bind(this))
 	},
 
 	onRender: function () {

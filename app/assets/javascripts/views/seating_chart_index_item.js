@@ -14,8 +14,9 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 		"click .edit-seatingChart" : "editSeatingChart"
 	},
 
-	editSeatingChart: function(){
+	editSeatingChart: function(e){
 		e.preventDefault();
+		Backbone.history.navigate("seating_charts/" + this.model.id + "/edit", { trigger: true } )
 	},
 
 	deleteSeatingChart: function(e){
