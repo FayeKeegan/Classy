@@ -2,7 +2,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	template: JST["seating_charts/edit"],
 
 	events: {
-		"click .save-chart-button": "saveChart"
+		"click .save-chart-button": "saveChart",
+		"click .delete-chart-button" : "deleteSeatingChart",
+		"click .edit-chart-button" : "editSeatingChart"
 	},
 
 	saveChart: function(e){
@@ -15,6 +17,20 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.model.students().each(this.addStudentIndexItem.bind(this))
 		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this))
 	},
+
+	editSeatingChart: function(e){
+		e.preventDefault();
+		Backbone.history.navigate("seating_charts/" + this.model.id + "/edit", { trigger: true } )
+	},
+
+	deleteSeatingChart: function(e){
+		e.preventDefault();
+		this.model.destroy({
+			success: function(){
+				Backbone.history.navigate("", { trigger: true })
+			}.bind(this)
+		})
+	},
 	
 	render: function(){
 		var content = this.template({ seatingChart: this.model });
@@ -23,7 +39,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.addGridToPage();
 		this.placeAssignedStudents();
 		this.onRender();
-		debugger
 		return this;
 	},
 

@@ -14,6 +14,19 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 
 	events: {
 		"submit .new-seating-chart" : "createSeatingChart",
+		"mouseenter #seating-chart-index-item" : "seatingChartHighlight",
+		"mouseleave #seating-chart-index-item" : "seatingChartUnhighlight",
+		"mouseenter #new-seating-chart-index-item" : "seatingChartHighlight",
+		"mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight"
+
+	},
+
+	seatingChartHighlight: function (e){
+		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info")
+	},
+
+	seatingChartUnhighlight: function (e){
+		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary")
 	},
 
 	createSeatingChart: function(e){
