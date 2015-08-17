@@ -1,22 +1,94 @@
-<h1>Welcome to Classy! </h1>
-<h2> Sign Up </h1>
-<form action="/users" method="POST">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+<div class='jumbotron'> 
+  <h1 class='logo col col-lg-offset-2'> Welcome! </h1>
+  <p class='col col-lg-offset-2'>
+    Classy can help. Put down the marker. Put down the grid paper. Leave the doodling to your kids.
+  </p>
+</div>
 
-  <label for="user_username">Username</label>
-  <input
-    type="text"
-    name="user[username]"
-    id="user_username"
-    value="<%= @user.username %>">
-  <br>
+<div class='container'>
+  <table class="table table-bordered splash-grid">
+    <% 5.times do |row_num| %>
+      <tr class="splash-grid-row">
+        <% 10.times do |col_num| %>
+          <td class='splash-grid-cell'
+              row-num="<%= row_num %>"
+              col-num="<%= col_num %>"> 
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<br><br>
 
-  <label for="user_password">Password</label>
-  <input type="password" name="user[password]" id="user_password">
-  <br>
-
-  <input type="submit" value="Get Started with Classy!">
+<div class='jumbotron'>
+  <h3 class='col col-lg-offset-2'> Log In </h3>
+  <form class="form-horizontal" action="/users" method="POST">
+  <fieldset>
+  <input type ="hidden" name ="authenticity_token" value="<%=form_authenticity_token%>" >
+    <div class="form-group">
+      <label for="username-input" class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-2">
+        <input type="text" name="user[username]" id="username-input" value="<%=@user.username%>">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password-input" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-2">
+        <input type = "password" name="user[password]" id="password-input">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <input type="submit" name="Log in" class='btn btn-default' >
+      </div>
+    </div>
+  </fieldset>
 </form>
+</div>
+
+<div class='container'>
+  <table class="table table-bordered splash-grid">
+    <% 5.times do |row_num| %>
+      <tr class="splash-grid-row">
+        <% 10.times do |col_num| %>
+          <td class='splash-grid-2-cell'
+              row-num="<%= row_num %>"
+              col-num="<%= col_num %>"> 
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+  <script>
+  $(function(){
+    setInterval(function(){
+      var randRow = Math.floor(Math.random() * 5)
+      var randCol = Math.floor(Math.random() * 10)
+      var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-cell")
+      selectedSquare.toggleClass("success")
+    }, 500)
+
+    setInterval(function(){
+      var randRow = Math.floor(Math.random() * 5)
+      var randCol = Math.floor(Math.random() * 10)
+      var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-2-cell")
+      selectedSquare.toggleClass("success")
+    }, 500)
+
+    $(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
+      $(this).addClass("active")
+    }).mouseleave(function(){
+      $(this).removeClass("active")
+    });
+
+    $(".guest-login").click(function(){
+      $("#username-input").attr("value", "MrSmith")
+      $("#password-input").attr("value", "password");
+      $("form").submit();
+    })
+  })
+</script>
+</div>
