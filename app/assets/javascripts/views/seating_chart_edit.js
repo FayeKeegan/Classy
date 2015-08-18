@@ -83,7 +83,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     			$(this).removeClass("student-icon-assigned")
     			var seatAssignmentId = $(this).attr("seat-assignment-id")
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
-    			// $(this).draggable("option", "revert", true)
     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
     			seatAssignment.destroy({
     				success: function(){
@@ -94,8 +93,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	},
     	stop: function(event, ui){
     		$(this).removeClass("student-icon-dragging")
-    	},
-    	stack: ".student-icon-draggable"
+    	}
     });
     $(".desk").droppable({
     	out: function(event, ui){   
@@ -109,19 +107,21 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	},
 
       drop: function( event, ui ) {
-      	if ($(this).children().attr("assigned-desk-id") === $(this).attr("desk-id")) {
-    			$(this).addClass("danger")
+      	if ($(this).children().attr("assigned-desk-id") &&
+      		$(this).children().attr("assigned-desk-id") !== $(this).attr("desk-id")){
+    				$(this).addClass("danger")
     		} else {
 	      	var that = this;
 	      	var desk_div = $(event.target)
-		      	var desk_id = $(event.target).attr("desk-id")
-		      	var student_id = $(ui.draggable).attr("student-id")
-		      	var seating_chart_id = seatingChart.id
-		      	var seatAssignment = new SeatingApp.Models.SeatAssignment({
-		      		seating_chart_id: seating_chart_id,
-		      		student_id: student_id,
-		      		desk_id: desk_id
-		      	})
+	      	desk_div.removeClass("danger")
+	      	var desk_id = $(event.target).attr("desk-id")
+	      	var student_id = $(ui.draggable).attr("student-id")
+	      	var seating_chart_id = seatingChart.id
+	      	var seatAssignment = new SeatingApp.Models.SeatAssignment({
+	      		seating_chart_id: seating_chart_id,
+	      		student_id: student_id,
+	      		desk_id: desk_id
+	      	})
 		      	var student = seatingChart.students().get(student_id)
 		      	seatAssignment.save({},{
 		      		success: function(){
