@@ -24,6 +24,7 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   },
 
   toggleDesk: function(e){
+    this.$("tr").removeClass("danger")
     $(e.currentTarget).toggleClass("info")
     $(e.currentTarget).toggleClass("hasDesk")
   },
@@ -69,29 +70,40 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   createClassroom: function (event) {
     event.preventDefault();
     var classroom = this.model
+    debugger
     var formData = $(event.delegateTarget).find("form").serializeJSON()
     var deskPositions = this.getDeskPositions() 
-    this.model.save(formData.classroom, {
-      success: function (classroom) {
-        this.collection.add(classroom);
-        deskPositions.forEach(function(deskPosition){
-          var d = new SeatingApp.Models.Desk()
-          d.set({
-            row: deskPosition[0],
-            column: deskPosition[1],
-            classroom_id: classroom.id
-          })
-          d.save({}, {
-            success: function(){
-              classroom.desks().add(d)
-            }
-          })
-        }.bind(this))
-        this.remove();
-        $("#selectable-classroom").find("[value="+ classroom.id + "]").attr("selected", true)
+    if(deskPositions.length == 0){
+      this.$("tr").addClass("danger")
+      this.$(".form-group.classroom-grid")
+    } else {
+      this.model.save(formData.classroom, {
+        success: function (classroom) {
+          this.collection.add(classroom);
+          deskPositions.forEach(function(deskPosition){
+            var d = new SeatingApp.Models.Desk()
+            d.set({
+              row: deskPosition[0],
+              column: deskPosition[1],
+              classroom_id: classroom.id
+            })
+            d.save({}, {
+              success: function(){
+                classroom.desks().add(d)
+              }
+            })
+          }.bind(this))
+          this.remove();
+          $("#selectable-classroom").find("[value="+ classroom.id + "]").attr("selected", true)
 
-      }.bind(this)
-    });
+        }.bind(this),
+        error: function(models, response){
+          if (response.responseText.includes("Name can't be blank")){
+            $(".form-group.classroom-name").css({color: "#cc0000"})
+          }
+        }
+      });
+    }
   },
 
   render: function () {
