@@ -7,15 +7,14 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
 		"click .show-math-level-button": "showMathLevel",
-		"click .show-reading-level-button": "showMathLevel"
+		"click .show-reading-level-button": "showReadingLevel"
 	},
 
 	showMathLevel: function(){
-		debugger
 		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
 			debugger
 			var id = $(student_icon).attr("student-id");
-			var math_level = this.model.students().getOrFetch(id).get("math_level");
+			var math_level = this.model.students().get(id).get("math_level");
 			var label = $(student_icon).children().detach();
 			$(student_icon).text(math_level);
 			$(student_icon).append(label);
@@ -25,7 +24,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	showReadingLevel: function(){
 		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
-			var math_level = this.model.students().getOrFetch(id).get("reading_level");
+			var math_level = this.model.students().get(id).get("reading_level");
 			var label = $(student_icon).children().detach();
 			$(student_icon).text(math_level);
 			$(student_icon).append(label);
@@ -76,6 +75,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	initialize: function(){
+		// this.render()
 		this.listenTo(this.model, "sync", this.render)
 		this.model.students().each(this.addStudentIndexItem.bind(this))
 		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this))
