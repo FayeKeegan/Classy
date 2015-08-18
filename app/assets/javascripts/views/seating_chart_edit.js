@@ -9,6 +9,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	shuffleUnassignedStudents: function(e){
+		var seatingChart = this.model
 		var view = this;
 		e.preventDefault()
 		var unassignedStudents = $(".student-icon-draggable:not(.student-icon-assigned)")
@@ -23,9 +24,13 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	      		student_id: studentId,
 	      		desk_id: deskId
 	      	});
-			seatAssignment.save();
-			}
-		this.render();
+			seatAssignment.save({},{
+				success: function(seatAssignment){
+    			seatingChart.seatAssignments().add(seatAssignment)
+    			view.placeAssignedStudent(seatAssignment)
+				}
+			})
+		}
 	},
 
 	saveChart: function(e){
@@ -63,6 +68,28 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		return this;
 	},
 
+	placeAssignedStudent: function(seatAssignment){
+		var deskId = seatAssignment.get("desk_id")
+		var studentId = seatAssignment.get("student_id")
+		var student = this.model.students().get(studentId)
+		var draggableStudent = $("[student-id=" + studentId + "].student-icon-draggable")[0]
+		var droppableDesk = $("[desk-id=" + deskId + "].desk")
+		droppableDesk.append(draggableStudent);
+		$(droppableDesk).removeClass("info").addClass("success");
+		if (draggableStudent.children.length == 0){
+			var nameDiv = $("<div>")
+				.addClass("desk-label")
+				.text(student.get("first_name"))
+			$(draggableStudent).append(nameDiv)
+		}
+		$(draggableStudent)
+			.css({ top: 0, left: 0})
+			.addClass("student-icon-assigned")
+			.attr("seat-assignment-id", seatAssignment.id)
+			.attr("assigned-desk-id", deskId)
+			.addClass("student-icon-dragged")
+	},
+
 	placeAssignedStudents: function(){
 		this.model.seatAssignments().each(function(seatAssignment){
 			var deskId = seatAssignment.get("desk_id")
@@ -70,7 +97,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			var student = this.model.students().get(studentId)
 			var draggableStudent = $("[student-id=" + studentId + "].student-icon-draggable")[0]
 			var droppableDesk = $("[desk-id=" + deskId + "].desk")
-
 			droppableDesk.append(draggableStudent);
 			$(droppableDesk).removeClass("info").addClass("success");
 			var nameDiv = $("<div>")
@@ -106,10 +132,10 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     			$(this).removeClass("student-icon-assigned")
     			var seatAssignmentId = $(this).attr("seat-assignment-id")
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
-    			// $(this).draggable("option", "revert", true)
-    			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
+     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
     			seatAssignment.destroy({
-    				success: function(){
+    				success: function(seatAssignment){
+    					seatingChart.seatAssignments().remove(seatAssignment)
     					desk.removeClass("success").addClass("info")
     				}
     			});
@@ -124,15 +150,13 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	out: function(event, ui){   
     		$(this).removeClass("danger") 		
     	},
-
     	over: function(event, ui){
-    		if ($(this).children().attr("assigned-desk-id") === $(this).attr("desk-id")) {
+    		if ($(this).hasClass("success")) {
     			$(this).addClass("danger")
     		}
     	},
-
       drop: function( event, ui ) {
-      	if ($(this).children().attr("assigned-desk-id") === $(this).attr("desk-id")) {
+      	if (!$(this).hasClass("info")) {
     			$(this).addClass("danger")
     		} else {
 	      	var that = this;
@@ -148,15 +172,15 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		      	var student = seatingChart.students().get(student_id)
 		      	seatAssignment.save({},{
 		      		success: function(){
-		      			var student = ui.draggable
-		      			student.appendTo($(that))
-		      			$(student).css({top: 0, left: 0})
-		      			desk_div.removeClass("info")
-		      			desk_div.addClass("success")
-		      			seatingChart.seatAssignments().add(seatAssignment)
-		      			ui.draggable.removeClass("unassigned").addClass("student-icon-assigned")
-		      			ui.draggable.attr("assigned-desk-id", desk_id)
-		      			ui.draggable.attr("seat-assignment-id", seatAssignment.id)
+		      			var student = ui.draggable;
+		      			$(that).append(student);
+		      			$(student).css({top: 0, left: 0, position: "absolute", padding: "8px 16px"});
+		      			desk_div.removeClass("info");
+		      			desk_div.addClass("success");
+		      			seatingChart.seatAssignments().add(seatAssignment);
+		      			ui.draggable.removeClass("unassigned").addClass("student-icon-assigned");
+		      			ui.draggable.attr("assigned-desk-id", desk_id);
+		      			ui.draggable.attr("seat-assignment-id", seatAssignment.id);
 		      		}
 		      	})
 	      	}

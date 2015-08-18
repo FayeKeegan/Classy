@@ -86,8 +86,10 @@
   .student-icon-draggable{
    /* width: 40px;
     height: 40px;*/
-    padding: 0px;
-    margin: 0px;
+    padding: 8px 16px;
+    top: 0;
+    left: 0;
+    position: absolute;
     text-align: center;
     overflow: hidden;         
     text-overflow: ellipsis;
@@ -119,9 +121,14 @@
     height:60px;
     width:60px;
  }
+ .student-icon-draggable-start{
+  padding: 0px 0px, 0px 0px;
+  position: relative;
+ }
 
  .classroom-square {
     padding: 0px 0px, 0px 0px;
+    position: relative;
     height:60px;
     width:80px;
  }
@@ -129,6 +136,7 @@
  .student-selected {
     background-color: blue;
  }
+
 
  .occupied {
     background-color: black;

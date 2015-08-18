@@ -1,6 +1,8 @@
-<div class='student-draggable-container'>
-	<div  class="student-icon-draggable" student-id="<%=student.get("id")%>"> ◯ </div>
-<div>
+<td class="student-icon-draggable-start">
+	<div class='student-draggable-container'>
+		<div  class="student-icon-draggable" student-id="<%=student.get("id")%>"> ◯ </div>
+	<div>
+</td>
 <td> <%= student.escape("first_name") %> </td>
 <td> <%= student.escape("reading_level") %> </td>
 <td> <%= student.escape("math_level") %> </td>
