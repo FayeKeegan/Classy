@@ -151,7 +151,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     		$(this).removeClass("danger") 		
     	},
     	over: function(event, ui){
-    		if ($(this).hasClass("success")) {
+    		if ($(this).hasClass("success") && 
+    				ui.draggable[0] !== event.target.children[0]
+    				){
     			$(this).addClass("danger")
     		}
     	},
