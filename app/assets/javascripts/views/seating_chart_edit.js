@@ -35,7 +35,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 
 	saveChart: function(e){
 		e.preventDefault();
-		Backbone.history.navigate("", { trigger: true })
+		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true })
 	},
 
 	initialize: function(){

@@ -99,7 +99,18 @@
     border-radius: 5px;
   }
 
+  .desk-label-stationary {
+    position: absolute;
+    text-align: center;
+    width: 50px;
+    overflow: hidden;         
+    text-overflow: ellipsis;
+    margin: 0 auto;
+    padding: 0px;
+  }
+
   .desk-label {
+    text-align: center;
     width: 50px;
     overflow: hidden;         
     text-overflow: ellipsis;
@@ -109,14 +120,8 @@
 
   .student-draggable-container {
     width: 50px;
-    height: 50px;
   }
 
-/*  table {
-    table-layout: fixed;
-  }
-
-*/
  .classroom-row {
     height:60px;
     width:60px;
@@ -136,8 +141,6 @@
  .student-selected {
     background-color: blue;
  }
-
-
  .occupied {
     background-color: black;
     border-color: gray;
