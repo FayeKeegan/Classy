@@ -10,7 +10,7 @@ class Api::StudentsController < ApplicationController
 		if @student.save
 			render json: @student
 		else
-			render json: @student.errors.full_messages
+			render json: @student.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 

@@ -15,7 +15,7 @@ class Api::SectionsController < ApplicationController
 		if @section.save
 			render json: @section
 		else
-			render json: @section.errors.full_messages
+			render json: @section.errors.full_messages, status: :unprocessable_entity
 		end
 		
 	end

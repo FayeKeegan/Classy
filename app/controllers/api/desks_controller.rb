@@ -5,7 +5,7 @@ class Api::DesksController < ApplicationController
 		if @desk.save
 			render json: @desk
 		else
-			render json: @desk.errors.full_messages
+			render json: @desk.errors.full_messages, status: :unprocessable_entity
 		end
 		
 	end

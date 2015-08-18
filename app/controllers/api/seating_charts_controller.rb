@@ -16,7 +16,7 @@ class Api::SeatingChartsController < ApplicationController
 		if @seating_chart.save
 			render json: @seating_chart
 		else
-			render json: @seating_chart.errors.full_messages
+			render json: @seating_chart.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 

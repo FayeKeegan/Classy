@@ -68,20 +68,31 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 		},
 
 		createSection: function(e){
+			this.$(".form-group").removeClass("has-error")
 			e.preventDefault();
+
 			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section
 			var checkedStudents = $(".select-student:checked")
 			var checkedStudentIds = $.map(checkedStudents, function(student){
 				return $(student).attr("student-id")
 			})
-			sectionData.student_ids = checkedStudentIds
-			var sectionData = {section: sectionData}
-			var section = new SeatingApp.Models.Section(sectionData)
-			section.save({}, {
-				success: function(){
-					Backbone.history.navigate("", { trigger: true })
-				}.bind(this)
-			})
+			if (checkedStudents.length === 0){
+				this.$(".form-group.select-students").addClass("has-error")
+			} else {
+				sectionData.student_ids = checkedStudentIds
+				var sectionData = {section: sectionData}
+				var section = new SeatingApp.Models.Section(sectionData)
+				section.save({}, {
+					success: function(){
+						Backbone.history.navigate("", { trigger: true })
+					}.bind(this),
+					error: function(model, response){
+						if (response.responseText.includes("Name can't be blank")){
+							$(".form-group.section-name").addClass("has-error")
+						}
+					}
+				})
+			}
 		},
 
 })

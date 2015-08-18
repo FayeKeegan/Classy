@@ -5,7 +5,7 @@ class Api::SeatAssignmentsController < ApplicationController
 		if @seat_assignment.save
 			render json: @seat_assignment
 		else
-			render json: @seat_assignment.errors.full_messages
+			render json: @seat_assignment.errors.full_messages, status: :unprocessable_entity
 		end
 	end
 

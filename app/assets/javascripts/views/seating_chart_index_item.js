@@ -43,7 +43,6 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	},
 
 	render: function(){
-		debugger
 		var content = this.template({ seatingChart: this.model })
 		this.attachSubviews();
 		this.$el.html(content);
