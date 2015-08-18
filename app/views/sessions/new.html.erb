@@ -19,7 +19,7 @@
 </div>
 <br><br>
 
-<div class='jumbotron'>
+<div name="login-jumbotron" class='jumbotron'>
 	<h3 class='col col-lg-offset-2'> Log In </h3>
 	<form class="form-horizontal" action="/session" method="POST">
   <fieldset>
@@ -83,6 +83,11 @@
 	  	var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-2-cell")
 	  	selectedSquare.toggleClass("info")
   	}, 500)
+
+    $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
+      var span = $("<span>").text("Log in to get started!")
+      $(this).removeClass("info").addClass("success").append(span)
+    })
 
   	$(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
   		$(this).addClass("active")

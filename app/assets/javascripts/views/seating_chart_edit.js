@@ -14,22 +14,35 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		e.preventDefault()
 		var unassignedStudents = $(".student-icon-draggable:not(.student-icon-assigned)")
 		var emptyDesks = $(".desk.info");
-		while (unassignedStudents.length > 0){
-			var deskDiv = emptyDesks.splice(Math.floor(Math.random() * emptyDesks.length), 1)[0]
-			var studentDiv = unassignedStudents.splice(Math.floor(Math.random() * unassignedStudents.length), 1)[0]
-			var deskId = $(deskDiv).attr("desk-id");
-			var studentId = $(studentDiv).attr("student-id");
-			var seatAssignment = new SeatingApp.Models.SeatAssignment({
-	      		seating_chart_id: this.model.id,
-	      		student_id: studentId,
-	      		desk_id: deskId
-	      	});
-			seatAssignment.save({},{
-				success: function(seatAssignment){
-    			seatingChart.seatAssignments().add(seatAssignment)
-    			view.placeAssignedStudent(seatAssignment)
-				}
-			})
+		if (unassignedStudents.length === 0 ){
+			var alert = new SeatingApp.Views.GenericAlert({
+				body: "Oops! All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!"
+			});
+			alert = alert.render().$el;
+			$("#alerts").html(alert);
+		} else if (emptyDesks.length === 0){
+
+		} else if (emptyDesks.length < unassignedStudents){
+
+		} else {
+			$("#alerts").empty()
+			while (unassignedStudents.length > 0){
+				var deskDiv = emptyDesks.splice(Math.floor(Math.random() * emptyDesks.length), 1)[0]
+				var studentDiv = unassignedStudents.splice(Math.floor(Math.random() * unassignedStudents.length), 1)[0]
+				var deskId = $(deskDiv).attr("desk-id");
+				var studentId = $(studentDiv).attr("student-id");
+				var seatAssignment = new SeatingApp.Models.SeatAssignment({
+		      		seating_chart_id: this.model.id,
+		      		student_id: studentId,
+		      		desk_id: deskId
+		      	});
+				seatAssignment.save({},{
+					success: function(seatAssignment){
+	    			seatingChart.seatAssignments().add(seatAssignment)
+	    			view.placeAssignedStudent(seatAssignment)
+					}
+				})
+			}		
 		}
 	},
 
