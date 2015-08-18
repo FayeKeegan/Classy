@@ -7,7 +7,37 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		"mouseenter .classroom-square" : "highlightStudent",
 		"mouseleave .classroom-square" : "unHighlightStudent",
 		"click .delete-chart-button" : "deleteSeatingChart",
-		"click .edit-chart-button" : "editSeatingChart"
+		"click .edit-chart-button" : "editSeatingChart",
+		"click .show-math-level-button": "showMathLevel",
+		"click .show-reading-level-button": "showReadingLevel",
+		"click .remove-level-button": "hideLevels"
+	},
+
+	hideLevels: function(){
+		$(".student-icon-draggable.student-icon-dragged")
+			.removeClass("level1 level2 level3 level4 level5")
+	},
+
+	showMathLevel: function(){
+		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+			var id = $(student_icon).attr("student-id");
+			var math_level = $(student_icon).attr("math-level");
+			var label = $(student_icon).children().detach();
+			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+			$(student_icon).addClass("level" + math_level).text(math_level);
+			$(student_icon).append(label);
+		}.bind(this))
+	},
+
+	showReadingLevel: function(){
+		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+			var id = $(student_icon).attr("student-id");
+			var reading_level = $(student_icon).attr("reading-level");
+			var label = $(student_icon).children().detach();
+			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+			$(student_icon).addClass("level" + reading_level).text(reading_level);
+			$(student_icon).append(label);
+		}.bind(this))
 	},
 
 	editSeatingChart: function(e){
@@ -78,11 +108,13 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var student = seatAssignment.student()
 			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
 
-			occupied_square.removeClass("warning").addClass("info desk").attr("student-id", student.get("id"))
+			occupied_square.addClass("info desk").attr("student-id", student.get("id"))
 			var studentLabel = $("<div>").text(student.get("first_name")).addClass("desk-label")
 			var studentDiv = $("<div>")
 				.addClass("student-icon-draggable")
 				.addClass("student-icon-dragged")
+				.attr("math-level", student.get("math_level"))
+				.attr("reading-level", student.get("reading_level"))
 				.text(" ◯ ")
 			studentDiv.append(studentLabel)
 			occupied_square.append(studentDiv)

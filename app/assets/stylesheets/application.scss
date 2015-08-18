@@ -40,35 +40,34 @@
 }
 
 .student-icon-draggable.level1 {
-    background-color: rgb(255, 136, 0);
-    border-radius:50px;
+    background-color: rgb(10,37,50);
+    border-radius:5px;
     width: 75px;
     height: 58px
 }
-
 .student-icon-draggable.level2 {
-    background-color: white;
-    border-radius:50px;
+    background-color: rgb(42,159,214);
+    border-radius:5px;
     width: 75px;
     height: 58px
 }
 
 .student-icon-draggable.level3 {
-    background-color: white;
-    border-radius:50px;
+    background-color: rgb(38,147,198);
+    border-radius:5px;
     width: 75px;
     height: 58px
 }
 
 .student-icon-draggable.level4 {
-    background-color: white;
-    border-radius:50px;
+    background-color: rgb(91,181,223);
+    border-radius:5px;
     width: 75px;
     height: 58px
 }
 .student-icon-draggable.level5 {
-    background-color: white;
-    border-radius:50px;
+    background-color: rgb(190,226,242);
+    border-radius:5px;
     width: 75px;
     height: 58px
 }
@@ -125,6 +124,8 @@
    /* width: 40px;
     height: 40px;*/
     padding: 8px 16px;
+    width: 75px;
+    height: 58px;
     top: 0;
     left: 0;
     position: absolute;
@@ -140,7 +141,7 @@
   .desk-label-stationary {
     position: absolute;
     text-align: center;
-    width: 50px;
+    width: 45px;
     overflow: hidden;         
     text-overflow: ellipsis;
     margin: 0 auto;
