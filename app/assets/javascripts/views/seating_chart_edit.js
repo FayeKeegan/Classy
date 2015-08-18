@@ -4,7 +4,28 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	events: {
 		"click .save-chart-button": "saveChart",
 		"click .delete-chart-button" : "deleteSeatingChart",
-		"click .edit-chart-button" : "editSeatingChart"
+		"click .edit-chart-button" : "editSeatingChart",
+		"click .shuffle-students-button" : "shuffleUnassignedStudents",
+	},
+
+	shuffleUnassignedStudents: function(e){
+		var view = this;
+		e.preventDefault()
+		var unassignedStudents = $(".student-icon-draggable:not(.student-icon-assigned)")
+		var emptyDesks = $(".desk.info");
+		while (unassignedStudents.length > 0){
+			var deskDiv = emptyDesks.splice(Math.floor(Math.random() * emptyDesks.length), 1)[0]
+			var studentDiv = unassignedStudents.splice(Math.floor(Math.random() * unassignedStudents.length), 1)[0]
+			var deskId = $(deskDiv).attr("desk-id");
+			var studentId = $(studentDiv).attr("student-id");
+			var seatAssignment = new SeatingApp.Models.SeatAssignment({
+	      		seating_chart_id: this.model.id,
+	      		student_id: studentId,
+	      		desk_id: deskId
+	      	});
+			seatAssignment.save();
+			}
+		this.render();
 	},
 
 	saveChart: function(e){
@@ -65,6 +86,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		}.bind(this))
 	},
 
+
+	
 	onRender: function () {
 		var seatingChart = this.model
     $(".student-icon-draggable").draggable({
@@ -83,6 +106,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     			$(this).removeClass("student-icon-assigned")
     			var seatAssignmentId = $(this).attr("seat-assignment-id")
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
+    			// $(this).draggable("option", "revert", true)
     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
     			seatAssignment.destroy({
     				success: function(){
@@ -93,7 +117,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	},
     	stop: function(event, ui){
     		$(this).removeClass("student-icon-dragging")
-    	}
+    	},
+    	stack: ".student-icon-draggable"
     });
     $(".desk").droppable({
     	out: function(event, ui){   
@@ -107,21 +132,19 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     	},
 
       drop: function( event, ui ) {
-      	if ($(this).children().attr("assigned-desk-id") &&
-      		$(this).children().attr("assigned-desk-id") !== $(this).attr("desk-id")){
-    				$(this).addClass("danger")
+      	if ($(this).children().attr("assigned-desk-id") === $(this).attr("desk-id")) {
+    			$(this).addClass("danger")
     		} else {
 	      	var that = this;
 	      	var desk_div = $(event.target)
-	      	desk_div.removeClass("danger")
-	      	var desk_id = $(event.target).attr("desk-id")
-	      	var student_id = $(ui.draggable).attr("student-id")
-	      	var seating_chart_id = seatingChart.id
-	      	var seatAssignment = new SeatingApp.Models.SeatAssignment({
-	      		seating_chart_id: seating_chart_id,
-	      		student_id: student_id,
-	      		desk_id: desk_id
-	      	})
+		      	var desk_id = $(event.target).attr("desk-id")
+		      	var student_id = $(ui.draggable).attr("student-id")
+		      	var seating_chart_id = seatingChart.id
+		      	var seatAssignment = new SeatingApp.Models.SeatAssignment({
+		      		seating_chart_id: seating_chart_id,
+		      		student_id: student_id,
+		      		desk_id: desk_id
+		      	})
 		      	var student = seatingChart.students().get(student_id)
 		      	seatAssignment.save({},{
 		      		success: function(){
