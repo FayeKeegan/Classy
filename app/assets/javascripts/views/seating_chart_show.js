@@ -70,7 +70,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var col = desk.get('column');
 			var desk_id = desk.get("id")
 			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
-			occupied_square.addClass("warning")
+			occupied_square.addClass("active").addClass("desk")
 		})
 		this.model.seatAssignments().each(function(seatAssignment){
 			var row = seatAssignment.desk().get('row');
@@ -83,7 +83,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var studentDiv = $("<div>")
 				.addClass("student-icon-draggable")
 				.addClass("student-icon-dragged")
-				.text(" ")
+				.text(" ◯ ")
 			studentDiv.append(studentLabel)
 			occupied_square.append(studentDiv)
 		})

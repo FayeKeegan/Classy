@@ -6,6 +6,30 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .delete-chart-button" : "deleteSeatingChart",
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
+		"click .show-math-level-button": "showMathLevel",
+		"click .show-reading-level-button": "showMathLevel"
+	},
+
+	showMathLevel: function(){
+		debugger
+		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+			debugger
+			var id = $(student_icon).attr("student-id");
+			var math_level = this.model.students().getOrFetch(id).get("math_level");
+			var label = $(student_icon).children().detach();
+			$(student_icon).text(math_level);
+			$(student_icon).append(label);
+		}.bind(this))
+	},
+
+	showReadingLevel: function(){
+		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+			var id = $(student_icon).attr("student-id");
+			var math_level = this.model.students().getOrFetch(id).get("reading_level");
+			var label = $(student_icon).children().detach();
+			$(student_icon).text(math_level);
+			$(student_icon).append(label);
+		}.bind(this))
 	},
 
 	shuffleUnassignedStudents: function(e){
