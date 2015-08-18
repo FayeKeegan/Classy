@@ -74,6 +74,10 @@
     margin: 5px;
   }
 
+  .student-icon-assigned {
+    color: black;
+  }
+
   .student-icon-dragging {
     border-radius: 5px;
     text-align: center;
@@ -87,10 +91,6 @@
     text-align: center;
     overflow: hidden;         
     text-overflow: ellipsis;
-  }
-
-  .student-icon-dragging {
-    color: #282828;
   }
 
   .desk {
