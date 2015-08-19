@@ -60,12 +60,14 @@
 }
 
 .student-icon-draggable.level4 {
+    color:black;
     background-color: rgb(91,181,223);
     border-radius:5px;
     width: 75px;
     height: 60px
 }
 .student-icon-draggable.level5 {
+    color: black;
     background-color: rgb(190,226,242);
     border-radius:5px;
     width: 75px;
@@ -123,6 +125,7 @@
   .student-icon-draggable{
    /* width: 40px;
     height: 40px;*/
+    color: white;
     padding: 8px 16px;
     width: 75px;
     height: 60px;
