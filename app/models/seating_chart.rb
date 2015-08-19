@@ -4,6 +4,6 @@ class SeatingChart < ActiveRecord::Base
 	
 	belongs_to :section
 	has_many :students, through: :section
-	has_many :seat_assignments
+	has_many :seat_assignments, dependent: :destroy
 
 end

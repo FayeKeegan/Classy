@@ -9,6 +9,16 @@ class Api::DesksController < ApplicationController
 		end
 	end
 
+	def show
+		@desk = Desk.find(params[:id])
+		if @desk
+			render :show
+		else
+			render json: "Desk can't be found"
+		end
+	end
+
+
 	def destroy
 		@desk = Desk.find(params[:id])
 		if @desk.destroy

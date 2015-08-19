@@ -1,18 +1,17 @@
 class Api::ClassroomsController < ApplicationController
 
 	def index
-			@classrooms = current_user.classrooms
+			@classrooms = current_user.classrooms.includes(:desks)
 			render :index
 	end
 
 	def show
-		@classroom = Classroom.includes(:desks).includes(:students).find(params[:id])
+		@classroom = Classroom.includes(:desks).find(params[:id])
 		if @classroom
 			render :show
 		else
 			render json: "Classroom not found", status: 403
 		end
-
 	end
 
 	def create

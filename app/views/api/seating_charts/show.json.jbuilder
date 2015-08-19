@@ -16,7 +16,6 @@ json.seatAssignments @seating_chart.seat_assignments do |seat_assignment|
 	end
 end
 
-
 json.desks @seating_chart.section.classroom.desks do |desk|
 	json.id desk.id
 	json.row desk.row

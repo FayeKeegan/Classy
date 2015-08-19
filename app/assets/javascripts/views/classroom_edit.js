@@ -2,8 +2,8 @@ SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
 	template: JST["classrooms/edit"],
 
 	events: {
-		"mouseenter .student-index-item": "highlightDesk",
-		"mouseleave .student-index-item": "unHighlightDesk",
+		"mouseenter .classroom-square": "highlightDesk",
+		"mouseleave .classroom-square": "unHighlightDesk",
 		"click .classroom-square.desk": "destroyDesk",
 		"click .classroom-square:not(.desk)": "createDesk"
 	},
@@ -12,12 +12,28 @@ SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
 		var $desk = $(e.currentTarget);
 		var desk_id = $desk.attr("desk-id");
 		var desk = new SeatingApp.Models.Desk({ id: desk_id });
-		desk.destroy({
-			success: function(){
-				$desk.removeClass("info desk").removeAttr("desk-id");
-				this.model.desks().remove(desk);
+		desk.fetch({
+			success: function(fetchedDesk){
+				fetchedDesk.destroy({
+					success: function(destroyedDesk){
+						$("#alerts").empty()
+						var alertStrings = [];
+						destroyedDesk.seatAssignments().each(function(seatAssignment){
+							alertStrings.push(seatAssignment.seatingChart().get("name") + ": " + seatAssignment.student().get("first_name") + " no longer has a seat")
+						})
+						alertStrings.forEach(function(alertString){
+							var alert = new SeatingApp.Views.GenericAlert({
+								body: alertString
+							})
+							alert = alert.render().$el;
+							$("#alerts").append(alert);
+						})
+						$desk.removeClass("info desk").removeAttr("desk-id");
+						this.model.desks().remove(desk);
+					}.bind(this)
+				})
 			}.bind(this)
-		})
+		});
 	},
 
 	createDesk: function(e){
@@ -32,15 +48,26 @@ SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
 		})
 		desk.save({},{
 			success: function(desk){
+				$("#alerts").empty()
+				var alert = new SeatingApp.Views.DismissableAlert({
+					body: "New desk created!"
+				})
+				alert = alert.render().$el;
+				$("#alerts").append(alert);
 				$desk.addClass("info desk").attr("desk-id", desk.id);
 				this.model.desks().remove(desk);
 			}.bind(this)
 		})
 	},
 
-	highlightDesk: function(e) {
-
-	},
+	// highlightDesk: function(e) {
+	// 	var $square = $(e.currentTarget)
+	// 	if $square.hasClass("desk"){
+	// 		square.addClass("danger").text("Click to Destroy!")
+	// 	} else {
+	// 		square.addClass("active").text("Click to Create Desk!")
+	// 	}
+	// },
 
 	unHighlightDesk: function(e) {
 

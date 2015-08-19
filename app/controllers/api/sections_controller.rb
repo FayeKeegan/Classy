@@ -21,7 +21,7 @@ class Api::SectionsController < ApplicationController
 	end
 
 	def show
-		@section = Section.find(params[:id])
+		@section = Section.includes(:seating_charts).find(params[:id])
 		render :show
 	end
 
