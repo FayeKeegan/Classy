@@ -2,7 +2,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	template: JST["seating_charts/edit"],
 
 	events: {
-		"click .save-chart-button": "saveChart",
+		"click .body": "clearAlerts", 
 		"click .delete-chart-button" : "deleteSeatingChart",
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
@@ -172,7 +172,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	detachAllStudents: function(){
-		debugger
 		var seatingChart = this.model
 		var grid = this.$("#classroom-grid")[0]
 		var $grid = $(grid)

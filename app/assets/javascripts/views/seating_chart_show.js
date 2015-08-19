@@ -15,7 +15,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 
 	enterEditModal : function(e){
-		var alert = new SeatingApp.Views.DismissableAlert({
+		var alert = new SeatingApp.Views.GenericAlert({
 				body: ".. you can't edit from here! Click edit on the top right to start dragging and dropping"
 			});
 		alert = alert.render().$el;
