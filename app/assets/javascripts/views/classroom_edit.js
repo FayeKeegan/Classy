@@ -4,37 +4,36 @@ SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
 	events: {
 		"mouseenter .student-index-item": "highlightDesk",
 		"mouseleave .student-index-item": "unHighlightDesk",
-		"dblclick .classroom-square.desk": "destroyDesk",
-		"dblclick .classroom-square:not(.desk)": "createDesk"
+		"click .classroom-square.desk": "destroyDesk",
+		"click .classroom-square:not(.desk)": "createDesk"
 	},
 
 	destroyDesk: function(e){
-		debugger
-		var $desk = $(e.currentTarget)
-		var desk_id = $desk.attr("desk-id")
-		var desk = new SeatingApp.Models.Desk({ id: desk_id })
+		var $desk = $(e.currentTarget);
+		var desk_id = $desk.attr("desk-id");
+		var desk = new SeatingApp.Models.Desk({ id: desk_id });
 		desk.destroy({
 			success: function(){
-				$desk.removeClass("info desk").removeAttr("desk-id")
-				this.model.desks().remove(desk)
+				$desk.removeClass("info desk").removeAttr("desk-id");
+				this.model.desks().remove(desk);
 			}.bind(this)
 		})
 	},
 
 	createDesk: function(e){
-		var $desk = $(e.currentTarget)
-		var desk_row = $desk.attr("row-num")
-		var desk_col = $desk.attr("col-num")
-		var classroom_id = this.model.id
+		var $desk = $(e.currentTarget);
+		var desk_row = $desk.attr("row-num");
+		var desk_col = $desk.attr("col-num");
+		var classroom_id = this.model.id;
 		var desk = new SeatingApp.Models.Desk({
 			row: desk_row,
-			col: desk_col,
+			column: desk_col,
 			classroom_id: classroom_id
 		})
 		desk.save({},{
-			success: function(){
-				$desk.removeClass("info desk").removeAttr("desk-id")
-				this.model.desks().remove(desk)
+			success: function(desk){
+				$desk.addClass("info desk").attr("desk-id", desk.id);
+				this.model.desks().remove(desk);
 			}.bind(this)
 		})
 	},
