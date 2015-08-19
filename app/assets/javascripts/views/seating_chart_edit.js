@@ -17,6 +17,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
 			var label = $(student_icon).children().detach();
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+			$(student_icon).text(" ◯ ")
 			$(student_icon).append(label);
 		})
 	},

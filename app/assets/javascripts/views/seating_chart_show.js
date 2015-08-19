@@ -23,10 +23,14 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 
 	hideLevels: function(){
-		$(".student-icon-draggable.student-icon-dragged")
-			.removeClass("level1 level2 level3 level4 level5")
+		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+			var label = $(student_icon).children().detach();
+			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+			$(student_icon).text(" ◯ ")
+			$(student_icon).append(label);
+		})
 	},
-
 	showMathLevel: function(){
 		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
