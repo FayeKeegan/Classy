@@ -1,4 +1,4 @@
-SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
+SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	template: JST["classrooms/edit"],
 
 	events: {

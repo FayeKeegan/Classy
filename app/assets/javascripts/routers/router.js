@@ -9,15 +9,25 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	routes: {
 		"": "sectionsIndex",
 		"classrooms/:id/edit": "classroomEdit",
+		"classrooms/new": "classroomNew",
 		"seating_charts/:id/edit": "seatingChartEdit",
 		'section/new': "sectionNew",
 		"seating_charts/:id": "seatingChartShow"
 	},
 
+	classroomNew:function() {
+		var classroom = new SeatingApp.Models.Classroom()
+		var view = new SeatingApp.Views.ClassroomNew({
+			model: classroom,
+			collection: this.classrooms
+		})
+		this._swapView(view);
+	},
+
 	classroomEdit: function(id){
 		var classroom = new SeatingApp.Models.Classroom({ id: id })
 		classroom.fetch()
-		var view = new SeatingApp.Views.ClassroomEdit({
+		var view = new SeatingApp.Views.ClassroomForm({
 			model: classroom,
 			collection: this.classrooms
 		})
