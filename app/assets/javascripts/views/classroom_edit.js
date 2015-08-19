@@ -60,17 +60,18 @@ SeatingApp.Views.ClassroomEdit= Backbone.CompositeView.extend({
 		})
 	},
 
-	// highlightDesk: function(e) {
-	// 	var $square = $(e.currentTarget)
-	// 	if $square.hasClass("desk"){
-	// 		square.addClass("danger").text("Click to Destroy!")
-	// 	} else {
-	// 		square.addClass("active").text("Click to Create Desk!")
-	// 	}
-	// },
+	highlightDesk: function(e) {
+		var square = $(e.currentTarget);
+		if ($(square).hasClass("desk")){
+			$(square).addClass("danger").text("Destroy");
+		} else {
+			$(square).addClass("success").text("Create");
+		}
+	},
 
 	unHighlightDesk: function(e) {
-
+		var square = $(e.currentTarget)
+		$(square).removeClass("success danger").text("")
 	},
 
 	initialize: function(){
