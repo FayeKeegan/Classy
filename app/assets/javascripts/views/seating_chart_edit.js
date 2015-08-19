@@ -8,7 +8,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
 		"click .show-math-level-button": "showMathLevel",
 		"click .show-reading-level-button": "showReadingLevel",
-		"click .remove-level-button": "hideLevels"
+		"click .remove-level-button": "hideLevels",
+		"click .start-over-button": "detachAllStudents"
 	},
 
 	hideLevels: function(){
@@ -50,14 +51,23 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var emptyDesks = $(".desk.active");
 		if (unassignedStudents.length === 0 ){
 			var alert = new SeatingApp.Views.GenericAlert({
-				body: "Oops! All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!"
+				body: "All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!"
 			});
 			alert = alert.render().$el;
 			$("#alerts").html(alert);
 		} else if (emptyDesks.length === 0){
 
-		} else if (emptyDesks.length < unassignedStudents){
-
+			var alert = new SeatingApp.Views.GenericAlert({
+				body: "There aren't any empty desks! Shuffle puts unassigned students in empty desks. Drag a few students off of their desks to make room!"
+			});
+			alert = alert.render().$el;
+			$("#alerts").html(alert);
+		} else if (emptyDesks.length < unassignedStudents.length){
+			var alert = new SeatingApp.Views.GenericAlert({
+				body: "There are fewer empty desks than students! Not all students have seats. Eek!"
+			});
+			alert = alert.render().$el;
+			$("#alerts").html(alert);
 		} else {
 			$("#alerts").empty()
 			while (unassignedStudents.length > 0){
@@ -161,7 +171,38 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	detachAllStudents: function(){
+		// debugger
+		var seatingChart = this.model
+		var grid = this.$("#classroom-grid")[0]
+		var $grid = $(grid)
+		$(".student-icon-draggable").each(function(i, student_icon){
+			// debugger
+			$student_icon = $(student_icon);
+			$student_icon.detach()
 
+			if ($student_icon.children.length < 1){
+    			var nameDiv = $("<div>")
+						.addClass("desk-label")
+						.text(student.get("first_name"))
+					$student_icon.append(nameDiv)
+    		}
+    	if ( $student_icon.hasClass("student-icon-assigned") ){
+    			$student_icon.removeClass("student-icon-assigned")
+    			var seatAssignmentId = $student_icon.attr("seat-assignment-id")
+    			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
+     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
+    			seatAssignment.destroy({
+    				success: function(seatAssignment){
+    					seatingChart.seatAssignments().remove(seatAssignment)
+    					desk.removeClass("info").addClass("active")
+    				}
+    			});
+    		}
+			$($grid).append($student_icon)
+			var randHeight = Math.floor(Math.random() * $grid.height())
+			var randWidth = Math.floor(Math.random() * $grid.width())
+			$student_icon.css({ top: randHeight, left: randWidth})
+		})
 	},
 	
 	onRender: function () {

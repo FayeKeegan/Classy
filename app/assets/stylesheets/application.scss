@@ -43,33 +43,33 @@
     background-color: rgb(10,37,50);
     border-radius:5px;
     width: 75px;
-    height: 58px
+    height: 60px
 }
 .student-icon-draggable.level2 {
     background-color: rgb(42,159,214);
     border-radius:5px;
     width: 75px;
-    height: 58px
+    height: 60px;
 }
 
 .student-icon-draggable.level3 {
     background-color: rgb(38,147,198);
     border-radius:5px;
     width: 75px;
-    height: 58px
+    height: 60px
 }
 
 .student-icon-draggable.level4 {
     background-color: rgb(91,181,223);
     border-radius:5px;
     width: 75px;
-    height: 58px
+    height: 60px
 }
 .student-icon-draggable.level5 {
     background-color: rgb(190,226,242);
     border-radius:5px;
     width: 75px;
-    height: 58px
+    height: 60px
 }
 
 .splash-grid {
@@ -125,7 +125,7 @@
     height: 40px;*/
     padding: 8px 16px;
     width: 75px;
-    height: 58px;
+    height: 60px;
     top: 0;
     left: 0;
     position: absolute;
@@ -135,7 +135,7 @@
   }
 
   .desk {
-    border-radius: 5px;
+    border-radius: 8px;
   }
 
   .desk-label-stationary {
@@ -171,10 +171,10 @@
  }
 
  .classroom-square {
-    padding: 0px 0px, 0px 0px;
+    padding: 2px;
     position: relative;
     height:60px;
-    width:80px;
+    width:75px;
  }
 
  .student-selected {

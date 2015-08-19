@@ -10,7 +10,16 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .show-math-level-button": "showMathLevel",
 		"click .show-reading-level-button": "showReadingLevel",
-		"click .remove-level-button": "hideLevels"
+		"click .remove-level-button": "hideLevels",
+		"click #classroom-grid" : "enterEditModal"
+	},
+
+	enterEditModal : function(e){
+		var alert = new SeatingApp.Views.DismissableAlert({
+				body: ".. you can't edit from here! Click edit on the top right to start dragging and dropping"
+			});
+		alert = alert.render().$el;
+		this.$("#alerts").html(alert)
 	},
 
 	hideLevels: function(){
