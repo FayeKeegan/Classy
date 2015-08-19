@@ -1,22 +1,23 @@
 
-<div class="panel panel-primary" id="seating-chart-index-item" >
-	<div class='panel-heading'
-		<h4 class='panel-title'>
-				<%= seatingChart.escape("name") %>
-		</h4>
-	</div
-	<div class='panel-body seating-chart-index-item'>
-		<div class="container">
-			<div class="row">
-				<h5>
-					<%= seatingChart.classroom().escape("name") %>
-				</h5>
+<div class="panel panel-primary col col-lg-12" id="seating-chart-index-item" >
+	<div class='panel-heading row'>
+		<div class='col col-xs-12'>
+			<h4> <%= seatingChart.escape("name") %> </h4>
+		</div>
+	</div>
+	<div class="row">
+			<div class='col col-xs-4'>
+				<input type='submit' class="btn btn-xs btn-primary show-seatingChart seating-chart-index-button" value="View">
 			</div>
-			<div class="row">
-				<br><br>
-				<button class="btn btn-xs btn-primary show-seatingChart seating-chart-index-item-button"> View </a>
-				<button class="btn btn-xs btn-info edit-seatingChart seating-chart-index-item-button"> Edit </a>
-				<button class="btn btn-xs btn-danger delete-seatingChart seating-chart-index-item-button"> Delete </button>
+			<div class='col col-xs-4'>
+				<input class="btn btn-xs btn-info edit-seatingChart seating-chart-index-button" value="Edit">
+			</div >
+			<div class='col col-xs-24'>
+				<input class="btn btn-xs btn-danger delete-seatingChart seating-chart-index-button" value="Delete">
 			</div>
+	</div>
+	<div class="row">
+		<div class='classroom-preview col col-lg-12'>
+		</div>
 	</div>
 </div>

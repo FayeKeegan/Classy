@@ -104,10 +104,6 @@
  .added-student-item {
   margin: 5px;
  }
- 
- .seating-chart-index-item-button {
-    margin: 5px;
-  }
 
   .student-icon-assigned {
     color: black;
@@ -185,27 +181,17 @@
     border-radius: 5px;
     color: white;
  }
+ 
+ .seating-chart-index-item-button {
+    margin: 10px;
+  }
 
- #new-seating-chart-text {
-  width: 80px;
+.classroom-grid-small {
+    margin: 10px auto;
  }
 
 
- #new-section-header {
- 	color: #2a9fd6;
- }
-
- #new-seating-charts-index {
- 	border-color: #2a9fd6;
- 	height: 170px;
- 	width: 100%;
- 	border-radius: 5px;
- 	border-style: dashed;
- }
-
- #new-seating-chart-index-item{
- 	background-color: transparent;
- 	height: 170px;
- 	width: 170px;
- 	border-style: dashed;
+ .seating-chart-index-button{
+    width: 50px;
+    margin: 5px;
  }

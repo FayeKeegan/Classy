@@ -7,7 +7,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 		this.listenTo(this.model, "sync remove", this.render)
 	},
 
-	className: "seating-chart-index-item col-xs-2",
+	className: "seating-chart-index-item col-lg-3",
 
 	events:{
 		"click .delete-seatingChart" : "deleteSeatingChart",
@@ -36,10 +36,10 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	},
 
 	addClassroomPreview: function(){
-		// var view = new SeatingApp.Views.ClassroomShowSmall({
-		// 	model: this.section
-		// })
-		// this.addSubview("#classroom-preview", view);
+		var view = new SeatingApp.Views.ClassroomShowSmall({
+			model: this.section
+		})
+		this.addSubview(".classroom-preview", view);
 	},
 
 	render: function(){
