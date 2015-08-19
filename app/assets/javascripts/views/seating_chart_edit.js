@@ -172,13 +172,13 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	detachAllStudents: function(){
+		debugger
 		var seatingChart = this.model
 		var grid = this.$("#classroom-grid")[0]
 		var $grid = $(grid)
 		$(".student-icon-draggable").each(function(i, student_icon){
 			$student_icon = $(student_icon);
 			$student_icon.detach()
-			var studentName = student.get("first_name")
 			if ($student_icon.children.length < 1){
     			var nameDiv = $("<div>")
 						.addClass("desk-label")
@@ -220,7 +220,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     		}
     		$(this).addClass("student-icon-dragging").addClass("student-icon-dragged");
     		if ( $(this).hasClass("student-icon-assigned") ){
-    			// var studentName = studentName
     			$(this).removeClass("student-icon-assigned");
     			var seatAssignmentId = $(this).attr("seat-assignment-id");
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId);
