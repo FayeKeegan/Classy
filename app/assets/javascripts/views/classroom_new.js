@@ -24,6 +24,9 @@ SeatingApp.Views.ClassroomNew = Backbone.View.extend({
       success: function(classroom){
         this.collection.add(classroom);
         Backbone.history.navigate("classrooms/" + classroom.id + "/edit", { trigger: true })
+      }.bind(this),
+      error: function(classroom){
+        $(".form-group").addClass("has-error")
       }.bind(this)
     })
   }

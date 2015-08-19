@@ -1,12 +1,25 @@
 SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
-	template: JST["classrooms/edit"],
+	template: JST["classrooms/form"],
 
 	events: {
 		"mouseenter .classroom-square": "highlightDesk",
 		"mouseleave .classroom-square": "unHighlightDesk",
 		"click .classroom-square.desk": "destroyDesk",
-		"click .classroom-square:not(.desk)": "createDesk"
+		"click .classroom-square:not(.desk)": "createDesk",
+		"click .return-to-index-button": "returnToIndex",
+		"click .create-section-button": "createSection",
+		"click .delete-classroom-button": "destroyClassroomModal"
 	},
+
+	destroyClassroomModal: function(e){
+		e.preventDefault();
+		var destroyModal = new SeatingApp.Views.ClassroomDestroyModal({
+			model: this.model
+		})
+		$('body').append(destroyModal.$el);
+		destroyModal.render();
+	},
+
 
 	destroyDesk: function(e){
 		var $desk = $(e.currentTarget);
@@ -63,9 +76,9 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	highlightDesk: function(e) {
 		var square = $(e.currentTarget);
 		if ($(square).hasClass("desk")){
-			$(square).addClass("danger").text("Destroy");
+			$(square).addClass("danger").text("Destroy Desk").css({"text-align": "center"});
 		} else {
-			$(square).addClass("success").text("Create");
+			$(square).addClass("success").text("Add Desk").css({"text-align": "center"});
 		}
 	},
 

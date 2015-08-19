@@ -1,5 +1,5 @@
-SeatingApp.Views.SeatingChartEditModal = Backbone.View.extend({
-  template: JST['seating_charts/edit_modal'],
+SeatingApp.Views.ClassroomsEditModal = Backbone.View.extend({
+  template: JST['classrooms/destroy_modal'],
 
   events: {
     'click .m-background': 'remove',

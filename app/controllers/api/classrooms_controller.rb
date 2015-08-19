@@ -13,6 +13,11 @@ class Api::ClassroomsController < ApplicationController
 			render json: "Classroom not found", status: 403
 		end
 	end
+	def destroy
+		@classroom = Classroom.find(params[:id])
+		@classroom.destroy!
+		render json: @classroom
+	end
 
 	def create
 		@classroom = Classroom.new(classroom_params)
