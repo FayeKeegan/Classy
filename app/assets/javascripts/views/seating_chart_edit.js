@@ -2,7 +2,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	template: JST["seating_charts/edit"],
 
 	events: {
-		"click .body": "clearAlerts", 
+		"click .save-chart-button": "saveChart",
 		"click .delete-chart-button" : "deleteSeatingChart",
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
