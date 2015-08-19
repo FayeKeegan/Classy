@@ -65,7 +65,11 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 
 	addChartNewSubview: function(){
 		var seatingChart = new SeatingApp.Models.SeatingChart()
-		this.chartNewSubview = new SeatingApp.Views.SeatingChartNewSmall({ model: seatingChart });
+		this.chartNewSubview = new SeatingApp.Views.SeatingChartNewSmall({
+			model: seatingChart,
+			section: this.model,
+			collection: this.model.seatingCharts()
+		});
 		this.addSubview("#seating-charts-index", this.chartNewSubview)
 	}
 })

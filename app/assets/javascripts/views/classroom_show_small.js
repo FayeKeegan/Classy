@@ -18,7 +18,7 @@ SeatingApp.Views.ClassroomShowSmall = Backbone.View.extend({
 			var col = desk.get('column');
 			var desk_id = desk.get("id")
 			var occupied_square = this.$("td[row-num='" + row + "'][col-num='" + col +  "']")
-			occupied_square.addClass("info")
+			occupied_square.addClass("info").addClass("desk-small")
 		}.bind(this))
 	},
 

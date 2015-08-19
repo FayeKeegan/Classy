@@ -5,6 +5,16 @@ class Api::ClassroomsController < ApplicationController
 			render :index
 	end
 
+	def show
+		@classroom = Classroom.find(params[:id])
+		if @classroom
+			render :show
+		else
+			render json: "Classroom not found", status: 403
+		end
+
+	end
+
 	def create
 		@classroom = Classroom.new(classroom_params)
 		if @classroom.save

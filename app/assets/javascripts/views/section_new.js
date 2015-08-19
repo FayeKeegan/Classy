@@ -88,7 +88,6 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 					}.bind(this),
 					error: function(model, response){
 						if (response.responseText.includes("Name can't be blank")){
-							debugger
 							$(".form-group.classroom-name").css({color: "#cc0000"})
 							$(".form-group.section-name").addClass("has-error")
 						}

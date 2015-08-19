@@ -12,7 +12,18 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	events:{
 		"click .delete-seatingChart" : "deleteSeatingChart",
 		"click .show-seatingChart" : "showSeatingChart",
-		"click .edit-seatingChart" : "editSeatingChart"
+		"click .edit-seatingChart" : "editSeatingChart",
+		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
+		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"
+	},
+
+	unhighlightDesk: function(e){
+		$(e.currentTarget).removeClass("success").addClass("info")
+	},
+
+
+	highlightDesk: function(e){
+		$(e.currentTarget).removeClass("info").addClass("success")
 	},
 
 	editSeatingChart: function(e){

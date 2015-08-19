@@ -190,6 +190,22 @@
     margin: 10px auto;
  }
 
+ .create-seating-chart-button{
+    width: 50px;
+    margin: 5px;
+ }
+
+ .panel-heading.new-seating-chart-panel-header {
+  background-color: #181818;
+  border: none;
+ }
+
+ .panel.new-seating-chart-panel {
+    border-style: dashed;
+    border-color: #222222;
+    border-width: thin;
+    background-color: transparent;
+ }
 
  .seating-chart-index-button{
     width: 50px;
