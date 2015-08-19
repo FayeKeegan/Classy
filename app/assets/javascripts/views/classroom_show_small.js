@@ -13,14 +13,13 @@ SeatingApp.Views.ClassroomShowSmall = Backbone.View.extend({
   },
 
 	addDesksToGrid: function(){
-		debugger
 		this.model.desks().each(function(desk){
 			var row = desk.get('row');
 			var col = desk.get('column');
 			var desk_id = desk.get("id")
 			var occupied_square = this.$("td[row-num='" + row + "'][col-num='" + col +  "']")
 			occupied_square.addClass("info")
-		})
+		}.bind(this))
 	},
 
 	addGridToPage: function(){
