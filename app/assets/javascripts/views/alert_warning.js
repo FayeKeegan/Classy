@@ -1,5 +1,5 @@
 SeatingApp.Views.WarningAlert = Backbone.View.extend({
-  template: JST['alerts/warning_alert'],
+  template: JST['alerts/warning'],
 
   initialize: function(options){
     this.body = options.body;

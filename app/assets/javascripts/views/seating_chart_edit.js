@@ -172,7 +172,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	detachAllStudents: function(){
-		// debugger
 		var seatingChart = this.model
 		var grid = this.$("#classroom-grid")[0]
 		var $grid = $(grid)
@@ -193,9 +192,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
      			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
     			seatAssignment.destroy({
     				success: function(seatAssignment){
-    					// seatingChart.seatAssignments().remove(seatAssignment)
-    					// desk.removeClass("info").addClass("active")
-    					// debugger
+    					seatingChart.seatAssignments().remove(seatAssignment)
+    					desk.removeClass("info").addClass("active")
     				}
     			});
     		}
@@ -210,31 +208,39 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var seatingChart = this.model
     $(".student-icon-draggable").draggable({
     	start: function(event, ui){
-    		var $draggable= $(this)
-    		var studentId = $(this).attr("student-id")
-    		var student = seatingChart.students().get(studentId)
+    		var $draggable= $(this);
+    		var studentId = $(this).attr("student-id");
+    		var student = seatingChart.students().get(studentId);
+    		var studentName = student.get("first_name");
     		if (this.children.length < 1){
     			var nameDiv = $("<div>")
 						.addClass("desk-label")
-						.text(student.get("first_name"))
+						.text(student.get("first_name"));
 					$(this).append(nameDiv)
     		}
-    		$(this).addClass("student-icon-dragging").addClass("student-icon-dragged")
+    		$(this).addClass("student-icon-dragging").addClass("student-icon-dragged");
     		if ( $(this).hasClass("student-icon-assigned") ){
-    			$(this).removeClass("student-icon-assigned")
-    			var seatAssignmentId = $(this).attr("seat-assignment-id")
-    			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
-     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
+    			// var studentName = studentName
+    			$(this).removeClass("student-icon-assigned");
+    			var seatAssignmentId = $(this).attr("seat-assignment-id");
+    			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId);
+     			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]");
     			seatAssignment.destroy({
     				success: function(seatAssignment){
-    					seatingChart.seatAssignments().remove(seatAssignment)
-    					desk.removeClass("info").addClass("active")
+    					var name = desk.text().slice(3)
+    					var alert = new SeatingApp.Views.WarningAlert({
+									body: name + " has been un-seated!"
+								});
+							alert = alert.render().$el;
+							$("#alerts").html(alert);
+    					seatingChart.seatAssignments().remove(seatAssignment);
+    					desk.removeClass("info").addClass("active");
     				}
     			});
     		}
     	},
     	stop: function(event, ui){
-    		$(this).removeClass("student-icon-dragging")
+    		$(this).removeClass("student-icon-dragging");
     	},
     	stack: ".student-icon-draggable"
     });

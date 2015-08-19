@@ -1,5 +1,5 @@
 SeatingApp.Views.GenericAlert = Backbone.View.extend({
-  template: JST['alerts/generic_alert'],
+  template: JST['alerts/generic'],
 
   initialize: function(options){
     this.body = options.body;
