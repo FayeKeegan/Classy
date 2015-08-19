@@ -177,10 +177,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var grid = this.$("#classroom-grid")[0]
 		var $grid = $(grid)
 		$(".student-icon-draggable").each(function(i, student_icon){
-			// debugger
 			$student_icon = $(student_icon);
 			$student_icon.detach()
-
+			var studentName = student.get("first_name")
 			if ($student_icon.children.length < 1){
     			var nameDiv = $("<div>")
 						.addClass("desk-label")
@@ -194,8 +193,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
      			var desk = $("[desk-id=" + $(this).attr("assigned-desk-id") + "]")
     			seatAssignment.destroy({
     				success: function(seatAssignment){
-    					seatingChart.seatAssignments().remove(seatAssignment)
-    					desk.removeClass("info").addClass("active")
+    					// seatingChart.seatAssignments().remove(seatAssignment)
+    					// desk.removeClass("info").addClass("active")
+    					// debugger
     				}
     			});
     		}
@@ -264,8 +264,14 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		      		desk_id: desk_id
 		      	})
 		      	var student = seatingChart.students().get(student_id)
+		      	var name = student.get("first_name")
 		      	seatAssignment.save({},{
 		      		success: function(){
+		      			var alert = new SeatingApp.Views.DismissableAlert({
+									body: name + " has been seated!"
+								});
+								alert = alert.render().$el;
+								$("#alerts").html(alert);
 		      			var student = ui.draggable;
 		      			$(that).append(student);
 		      			$(student).css({top: 0, left: 0, position: "absolute", padding: "8px 16px"});
@@ -275,7 +281,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		      			ui.draggable.removeClass("unassigned").addClass("student-icon-assigned");
 		      			ui.draggable.attr("assigned-desk-id", desk_id);
 		      			ui.draggable.attr("seat-assignment-id", seatAssignment.id);
-		      		}
+		      		}.bind(this)
 		      	})
 	      	}
     		}
@@ -286,9 +292,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.model.desks().each(function(desk){
 			var row = desk.get('row');
 			var col = desk.get('column');
-			var desk_id = desk.get("id")
-			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']")
-			occupied_square.addClass("active desk").attr("desk-id", desk_id)
+			var desk_id = desk.get("id");
+			var occupied_square = $("td[row-num='" + row + "'][col-num='" + col +  "']");
+			occupied_square.addClass("active desk").attr("desk-id", desk_id);
 		})
 	},
 
