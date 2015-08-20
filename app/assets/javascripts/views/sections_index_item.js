@@ -4,6 +4,7 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, "sync", this.render);
+		this.listenTo(this.model.desks().seatingCharts, "change", this.render)
 		this.model.seatingCharts().each(this.addSeatingChartIndexItem.bind(this));
 		this.listenTo(this.model.seatingCharts(), "add", this.addSeatingChartIndexItem.bind(this));
 		this.listenTo(this.model.seatingCharts(), "add", this.addChartNewSubview.bind(this));

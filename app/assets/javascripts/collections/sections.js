@@ -3,6 +3,10 @@ SeatingApp.Collections.Sections = Backbone.Collection.extend({
 
 	model: SeatingApp.Models.Section,
 
+	// comparator: function(section){
+	// 	return -Date.parse(section.get("updated_at"));
+	// },
+
 	getOrFetch: function(id){
 		var section = this.get(id)
 		if (!section){

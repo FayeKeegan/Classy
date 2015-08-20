@@ -35,10 +35,10 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	},
 
 	sectionNew: function(){
-		var section = new SeatingApp.Models.Section()
 		this.classrooms.fetch()
 		this.students.fetch()
 		section.fetch();
+		var section = new SeatingApp.Models.Section()
 		var view = new SeatingApp.Views.SectionNew({ model: section,
 			students: this.students,
 			classrooms: this.classrooms

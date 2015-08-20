@@ -1,5 +1,5 @@
 json.array! @sections do |section|
-	json.extract! section, :name, :id, :teacher_id
+	json.extract! section, :name, :id, :teacher_id, :updated_at, :created_at
 	json.seatingCharts section.seating_charts do |seating_chart|
 	  json.id seating_chart.id
 	  json.name seating_chart.name

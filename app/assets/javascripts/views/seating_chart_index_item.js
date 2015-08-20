@@ -13,7 +13,6 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 		"click .delete-seatingChart" : "deleteSeatingChart",
 		"click .show-seatingChart" : "showSeatingChart",
 		"click .edit-seatingChart" : "editSeatingChart",
-		"click .panel": "showSeatingChart",
 		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
 		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"
 	},
