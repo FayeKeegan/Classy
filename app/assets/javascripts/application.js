@@ -13,10 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require bootstrap
 //= require backbone
 //= require jquery-ui
 //= require seating_app
-//= require bootstrap
 //= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models

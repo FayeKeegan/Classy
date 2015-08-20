@@ -14,10 +14,15 @@ SeatingApp.Views.StudentsIndexRoot = Backbone.CompositeView.extend({
 		this.addSubview("#students-root-table-body", studentIndexItem);
 	},
 
+	onRender: function(){
+		$("#students-root-table").tablesorter();
+	},
+
 	render: function(){
 		var content = this.template({ students: this.collection });
 		this.$el.html(content);
 		this.attachSubviews();
+		this.onRender();
 		return this;
 	}
 })

@@ -16,7 +16,9 @@
  */
 
  @import 'bootstrap-sprockets';
+ @import "bootswatch/cyborg/variables";
  @import 'bootstrap';
+ @import "bootswatch/cyborg/bootswatch";
 
 .m-background {
   background: rgba(92, 88, 88, 0.6);
