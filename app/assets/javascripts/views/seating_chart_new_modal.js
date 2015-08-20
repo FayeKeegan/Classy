@@ -23,7 +23,6 @@ SeatingApp.Views.SeatingChartNewModal = Backbone.View.extend({
   },
 
   createSeatingChart: function (event) {
-    debugger
     event.preventDefault();
     this.remove()
     var formData = $(event.currentTarget).serializeJSON().seatingChart;

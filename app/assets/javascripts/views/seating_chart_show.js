@@ -103,7 +103,6 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 	
 	render: function(){
-		debugger
 		var content = this.template({
 			seatingChart: this.model,
 			classroom: this.model.classroom(),

@@ -119,7 +119,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	render: function(){
 		var content = this.template({
 			seatingChart: this.model,
-			classroom: this.model.classroom()
+			classroom: this.model.classroom(),
+			section: this.model.section()
 		});
 		this.$el.html(content);
 		this.attachSubviews();
