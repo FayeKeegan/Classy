@@ -13,7 +13,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	hideLevels: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+		$(".student-icon-draggable").each(function(i, student_icon){
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
 			var label = $(student_icon).children().detach();
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
@@ -23,7 +23,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	showMathLevel: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+		$(".student-icon-draggable").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
 			var math_level = this.model.students().get(id).get("math_level");
 			var label = $(student_icon).children().detach();

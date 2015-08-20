@@ -28,6 +28,31 @@
   z-index: 1;
 }
 
+.student-icon-draggable.highlighted-student-icon.level1 {
+  background-color: #9933cc;
+  border-radius: 5px;
+}
+.student-icon-draggable.highlighted-student-icon.level2 {
+  background-color: #9933cc;
+  border-radius: 5px;
+}
+.student-icon-draggable.highlighted-student-icon.level3 {
+  background-color: #9933cc;
+  border-radius: 5px;
+}
+.student-icon-draggable.highlighted-student-icon.level4 {
+  background-color: #9933cc;
+  border-radius: 5px;
+}
+.student-icon-draggable.highlighted-student-icon.level5 {
+  background-color: #9933cc;
+  border-radius: 5px;
+}
+
+div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
+  height: 100%;
+  overflow: hidden;
+}
 .seating-chart-index-item-panel-header:hover, .classroom-index-item-panel-header:hover{
   text-decoration: none;
 }

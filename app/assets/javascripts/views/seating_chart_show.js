@@ -72,6 +72,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("info")
 		square.addClass("active")
+		square.children().addClass("highlighted-student-icon")
 	},
 
 	unHighlightDesk: function(e) {
@@ -79,6 +80,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		var square = this.$("td[student-id='" + studentId + "']")
 		square.removeClass("success")
 		square.addClass("info")
+		square.children().removeClass("highlighted-student-icon")
 	},
 
 	highlightStudent: function(e){
@@ -91,6 +93,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		var studentId = $(e.currentTarget).attr("student-id")
 		var studentItem = $("div[student-id='" + studentId + "']").parent()
 		studentItem.removeClass("info")
+		square.children()
 	},
 
 	initialize: function(){
@@ -100,7 +103,12 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	},
 	
 	render: function(){
-		var content = this.template({ seatingChart: this.model });
+		debugger
+		var content = this.template({
+			seatingChart: this.model,
+			classroom: this.model.classroom(),
+			section: this.model.section()
+		});
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();

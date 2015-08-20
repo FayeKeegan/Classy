@@ -4,6 +4,10 @@ json.classroom do
 	json.extract! @seating_chart.section.classroom, :id, :name, :width, :height
 end
 
+json.section do 
+	json.extract! @seating_chart.section, :id, :name
+end
+
 json.seatAssignments @seating_chart.seat_assignments do |seat_assignment|
 	json.id seat_assignment.id
 	json.desk_id seat_assignment.desk_id
