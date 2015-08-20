@@ -3,8 +3,11 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 	className: "row",
 
 	initialize: function(){
-		this.listenTo(this.collection, "add", this.render);
-		this.addClassroomNewSubview();
+		this.listenTo(this.collection, "sync", this.render)
+		this.collection.each(this.addClassroomIndexItem.bind(this));
+		this.listenTo(this.collection, "add", this.addClassroomIndexItem)
+		// this.listenTo(this.collection, "add", this.addClassroomSubview);
+		// this.addClassroomNewSubview();
 	},
 
 	events: {
@@ -22,10 +25,15 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary");
 	},
 
+	addClassroomIndexItem: function(classroom){
+		var view = new SeatingApp.Views.ClassroomIndexItem({ model: classroom });
+		this.addSubview("#classrooms-index", view);
+	},
+
 	render: function(){
 		var content = this.template();
 		this.$el.html(content);
-		this.attachSubviews;
+		this.attachSubviews();
 		return this;
 	},
 

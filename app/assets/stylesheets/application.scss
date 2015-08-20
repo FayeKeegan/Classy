@@ -28,7 +28,7 @@
   z-index: 1;
 }
 
-.seating-chart-index-item-panel-header:hover{
+.seating-chart-index-item-panel-header:hover, .classroom-index-item-panel-header{
   text-decoration: none;
 }
 
@@ -207,6 +207,11 @@
  .seating-chart-index-item-button {
     margin: 10px;
   }
+
+ .classroom-index-item-button {
+   margin: 10px;
+   width: 50px;
+ }
 
 .classroom-grid-small {
     margin: 10px auto;

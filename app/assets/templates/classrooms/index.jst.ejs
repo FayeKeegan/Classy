@@ -1,18 +1,8 @@
-<h4> Classrooms </h4>
-<% classrooms.each(function(classroom){ %>
-	<div class="panel panel-primary col col-lg-12" class="classroom-index-item" >
-		<div class='panel-heading row'>
-			<div class='col col-xs-12'>
-				<a class='classroom-index-item-panel-header' href="#classroom/<%= classroom.id %>"> <h4> <%= classroom.escape("name") %> </h4> </a>
-			</div>
-		</div>
-		<div class="row">
-				<div class='col col-xs-12'>
-				</div>
-		</div>
-		<div class="row">
-			<div class='classroom-preview col col-lg-12'>
-			</div>
-		</div>
+<div class="container">
+<h3> Classrooms </h3>
+<div class="row" id="classrooms-index">
+	<div class='col-xs-8'> 
 	</div>
-<% }) %>
+</div>
+</div>
+

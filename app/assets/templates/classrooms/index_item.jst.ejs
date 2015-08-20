@@ -1,3 +1,23 @@
-<table class='small-classroom-grid'>
 
-</table>
+<div class="panel panel-success col col-lg-12" id="classroom-index-item" >
+	<div class='panel-heading row'>
+		<div class='col col-xs-12'>
+			<a class='classroom-index-item-panel-header' href="#classrooms/<%= classroom.id %>/edit"> <h4> <%= classroom.escape("name") %> </h4> </a>
+		</div>
+	</div>
+	<div class="row">
+		<div class='col col-xs-4'>
+			<input class="btn btn-xs btn-warning edit-classroom classroom-index-item-button" value="Edit">
+		</div>
+		<div class='col col-xs-4'>
+			
+		</div>
+		<div class='col col-xs-4'>
+			<input class="btn btn-xs btn-danger delete-classroom classroom-index-item-button" value="Delete">
+		</div>
+	</div>
+	<div class="row">
+		<div class='classroom-preview col col-lg-12'>
+		</div>
+	</div>
+</div>

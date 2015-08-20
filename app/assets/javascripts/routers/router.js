@@ -8,11 +8,20 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		"": "sectionsIndex",
+		"classrooms": "classroomsIndex",
 		"classrooms/:id/edit": "classroomEdit",
 		"classrooms/new": "classroomNew",
 		"seating_charts/:id/edit": "seatingChartEdit",
 		'section/new': "sectionNew",
 		"seating_charts/:id": "seatingChartShow"
+	},
+
+	classroomsIndex: function(){
+		this.classrooms.fetch()
+		var view = new SeatingApp.Views.ClassroomsIndex({
+			collection: this.classrooms
+		})
+		this._swapView(view)
 	},
 
 	classroomNew:function() {
@@ -37,7 +46,6 @@ SeatingApp.Routers.Router = Backbone.Router.extend({
 	sectionNew: function(){
 		this.classrooms.fetch()
 		this.students.fetch()
-		section.fetch();
 		var section = new SeatingApp.Models.Section()
 		var view = new SeatingApp.Views.SectionNew({ model: section,
 			students: this.students,
