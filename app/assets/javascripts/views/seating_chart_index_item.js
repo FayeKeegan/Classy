@@ -2,7 +2,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	template: JST["seating_charts/index_item"],
 
 	initialize: function(options){
-		this.section = options.section
+		this.classroom = options.classroom
 		this.addClassroomPreview()
 		this.listenTo(this.model, "sync remove", this.render)
 	},
@@ -47,9 +47,8 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	},
 
 	addClassroomPreview: function(){
-		// debugger
 		var view = new SeatingApp.Views.ClassroomShowSmall({
-			model: this.section
+			model: this.classroom
 		})
 		this.addSubview(".classroom-preview", view);
 	},

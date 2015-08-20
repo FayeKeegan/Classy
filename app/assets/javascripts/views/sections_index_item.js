@@ -62,7 +62,7 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		var view = new SeatingApp.Views.SeatingChartIndexItem({
 			model: seatingChart,
 			collection: this.model.seatingCharts(),
-			section: this.model
+			classroom: this.model.classroom()
 		})
 		this.addSubview("#seating-charts-index", view);
 	},
@@ -72,7 +72,8 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		this.chartNewSubview = new SeatingApp.Views.SeatingChartNewSmall({
 			model: seatingChart,
 			section: this.model,
-			collection: this.model.seatingCharts()
+			collection: this.model.seatingCharts(),
+			classroom: this.model.classroom()
 		});
 		this.addSubview("#seating-charts-index", this.chartNewSubview);
 	}

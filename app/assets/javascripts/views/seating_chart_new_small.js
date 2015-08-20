@@ -15,6 +15,7 @@ SeatingApp.Views.SeatingChartNewSmall = Backbone.CompositeView.extend({
 
 	initialize: function(options){
 		this.section = options.section;
+		this.classroom = options.classroom
 		this.addClassroomPreview();
 	},
 
@@ -56,7 +57,7 @@ SeatingApp.Views.SeatingChartNewSmall = Backbone.CompositeView.extend({
 
 	addClassroomPreview: function(){
 		var view = new SeatingApp.Views.ClassroomShowSmall({
-			model: this.section
+			model: this.classroom
 		})
 		this.addSubview(".classroom-preview", view);
 	},
