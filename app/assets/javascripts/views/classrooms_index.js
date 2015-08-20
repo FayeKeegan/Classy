@@ -6,15 +6,6 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "sync", this.render)
 		this.collection.each(this.addClassroomIndexItem.bind(this));
 		this.listenTo(this.collection, "add", this.addClassroomIndexItem)
-		// this.listenTo(this.collection, "add", this.addClassroomSubview);
-		// this.addClassroomNewSubview();
-	},
-
-	events: {
-		// "mouseenter #seating-chart-index-item" : "seatingChartHighlight",
-		// "mouseleave #seating-chart-index-item" : "seatingChartUnhighlight",
-		// "mouseenter #new-seating-chart-index-item" : "seatingChartHighlight",
-		// "mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight"
 	},
 
 	classroomHighlight: function (e){
