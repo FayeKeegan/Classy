@@ -6,7 +6,7 @@ class Api::ClassroomsController < ApplicationController
 	end
 
 	def show
-		@classroom = Classroom.includes(:desks).find(params[:id])
+		@classroom = Classroom.includes(:seating_charts, desks: [:students, seat_assignments: [:seating_chart] ]).find(params[:id])
 		if @classroom
 			render :show
 		else

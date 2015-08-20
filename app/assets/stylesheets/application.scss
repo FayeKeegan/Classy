@@ -28,6 +28,19 @@
   z-index: 1;
 }
 
+.student-icon-draggable-start {
+  /*background-color: #9933CC;*/
+}
+
+.student-icon-draggable.ui-draggable-handle:not(.student-icon-dragged){
+  color: #9933CC;
+  font-weight: bold;
+}
+
+.form-group.new-seating-chart-form-group{
+  margin: 0;
+}
+
 .m-content {
   z-index: 2;
   position: absolute;

@@ -97,7 +97,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	initialize: function(){
-		// this.render()
 		this.listenTo(this.model, "sync", this.render)
 		this.model.students().each(this.addStudentIndexItem.bind(this))
 		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this))
@@ -118,7 +117,10 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 	
 	render: function(){
-		var content = this.template({ seatingChart: this.model });
+		var content = this.template({
+			seatingChart: this.model,
+			classroom: this.model.classroom()
+		});
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();
@@ -204,6 +206,11 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 	
 	onRender: function () {
+		var alert = new SeatingApp.Views.WarningAlert({
+			body: "Drag and drop students onto desks by picking up their circles!"
+		});
+		alert = alert.render().$el.addClass("info");
+		$("#alerts").html(alert);
 		var seatingChart = this.model
     $(".student-icon-draggable").draggable({
     	start: function(event, ui){

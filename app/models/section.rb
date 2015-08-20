@@ -9,7 +9,7 @@ class Section < ActiveRecord::Base
 		class_name: "User",
 		primary_key: :id
 	)
-	has_many :seating_charts
-	has_many :sectionings
+	has_many :seating_charts, dependent: :destroy
+	has_many :sectionings, dependent: :destroy
 	has_many :students, through: :sectionings
 end

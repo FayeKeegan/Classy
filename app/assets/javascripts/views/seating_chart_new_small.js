@@ -4,7 +4,7 @@ SeatingApp.Views.SeatingChartNewSmall = Backbone.CompositeView.extend({
 	events: {
 		"mouseenter .panel" : "higlightPanel",
 		"mouseleave .panel" : "unhiglightPanel",
-		"click .panel" : "newSeatingChartForm",
+		"click .panel" : "newSeatingChartModal",
 		"click .create-seating-chart-button": "newSeatingChartModal",
 		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
 		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"

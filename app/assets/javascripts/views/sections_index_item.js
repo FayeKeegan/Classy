@@ -3,12 +3,12 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 	className: "row",
 
 	initialize: function(){
-		this.listenTo(this.model, "sync", this.render)
-		this.model.seatingCharts().each(this.addSeatingChartIndexItem.bind(this))
-		this.listenTo(this.model.seatingCharts(), "add", this.addSeatingChartIndexItem.bind(this))
-		this.listenTo(this.model.seatingCharts(), "add", this.addChartNewSubview.bind(this))
-		this.listenTo(this.model.seatingCharts(), "remove", this.removeSeatingChartIndexItem)
-		this.listenTo(this.model, "sync", this.render)
+		this.listenTo(this.model, "sync", this.render);
+		this.model.seatingCharts().each(this.addSeatingChartIndexItem.bind(this));
+		this.listenTo(this.model.seatingCharts(), "add", this.addSeatingChartIndexItem.bind(this));
+		this.listenTo(this.model.seatingCharts(), "add", this.addChartNewSubview.bind(this));
+		this.listenTo(this.model.seatingCharts(), "remove", this.removeSeatingChartIndexItem);
+		this.listenTo(this.model, "sync", this.render);
 		this.addChartNewSubview();
 	},
 
@@ -26,30 +26,33 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 	},
 
 	seatingChartHighlight: function (e){
-		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info")
+		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info");
 	},
 
 	seatingChartUnhighlight: function (e){
-		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary")
+		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary");
 	},
 
 	createSeatingChart: function(e){
 		e.preventDefault();
 		var view = this;
-		var seatingChartData = $(e.delegateTarget).find(".new-seating-chart-form").serializeJSON()
-		var seatingChart = new SeatingApp.Models.SeatingChart(seatingChartData)
-		seatingChart.set({ section_id: this.model.id })
+		var seatingChartData = $(e.delegateTarget).find(".new-seating-chart-form").serializeJSON();
+		var seatingChart = new SeatingApp.Models.SeatingChart(seatingChartData);
+		seatingChart.set({ section_id: this.model.id });
 		seatingChart.save({},{
 			success: function(){
 				view.model.seatingCharts().add(seatingChart);
-				Backbone.history.navigate("seating_charts/"+ seatingChart.id + "/edit", { trigger: true })
+				Backbone.history.navigate("/seating_charts/"+ seatingChart.id + "/edit", { trigger: true })
 			}
 		})
 	},
 
 	render: function(){
-		var content = this.template(({section: this.model }))
-		this.$el.html(content)
+		var content = this.template(({
+			section: this.model,
+			classroom: this.model.classroom()
+		}));
+		this.$el.html(content);
 		this.attachSubviews();
 		return this
 	},
@@ -60,16 +63,16 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 			collection: this.model.seatingCharts(),
 			section: this.model
 		})
-		this.addSubview("#seating-charts-index", view)
+		this.addSubview("#seating-charts-index", view);
 	},
 
 	addChartNewSubview: function(){
-		var seatingChart = new SeatingApp.Models.SeatingChart()
+		var seatingChart = new SeatingApp.Models.SeatingChart();
 		this.chartNewSubview = new SeatingApp.Views.SeatingChartNewSmall({
 			model: seatingChart,
 			section: this.model,
 			collection: this.model.seatingCharts()
 		});
-		this.addSubview("#seating-charts-index", this.chartNewSubview)
+		this.addSubview("#seating-charts-index", this.chartNewSubview);
 	}
 })

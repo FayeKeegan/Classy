@@ -4,7 +4,8 @@ class Classroom < ActiveRecord::Base
 	
 	has_many :desks, dependent: :destroy
 	has_many :seat_assignments, through: :desks
-	has_many :sections
+	has_many :sections, dependent: :destroy
+	has_many :seating_charts, through: :sections
 	belongs_to :user
 
 end

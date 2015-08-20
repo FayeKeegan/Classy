@@ -21,15 +21,13 @@ class Api::SeatingChartsController < ApplicationController
 	end
 
 	def destroy
-		@seating_chart = SeatingChart
-			.includes(:seat_assignments, section: [:students, classroom: [:desks]])
-			.find(params[:id])
+		@seating_chart = SeatingChart.find(params[:id])
 		@seating_chart.destroy!
 		render json: @seating_chart
 	end
 
 	def show
-		@seating_chart = SeatingChart.find(params[:id])
+		@seating_chart = SeatingChart.includes(:seat_assignments, section: [:students, classroom: [:desks]]).find(params[:id])
 		render :show
 	end
 

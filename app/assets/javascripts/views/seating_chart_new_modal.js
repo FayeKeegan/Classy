@@ -24,11 +24,11 @@ SeatingApp.Views.SeatingChartNewModal = Backbone.View.extend({
 
   createSeatingChart: function (event) {
     event.preventDefault();
+    this.remove()
     var formData = $(event.currentTarget).serializeJSON().seatingChart;
     this.model.save(formData, {
       success: function (seatingChart) {
         this.collection.add(seatingChart);
-        this.remove();
         Backbone.history.navigate("seating_charts/" + seatingChart.id + "/edit", { trigger: true })
       }.bind(this)
     });

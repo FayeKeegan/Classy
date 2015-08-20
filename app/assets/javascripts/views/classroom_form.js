@@ -6,12 +6,30 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 		"mouseleave .classroom-square": "unHighlightDesk",
 		"click .classroom-square.desk": "destroyDesk",
 		"click .classroom-square:not(.desk)": "createDesk",
-		"click .return-to-index-button": "returnToIndex",
 		"click .create-section-button": "createSection",
-		"click .delete-classroom-button": "destroyClassroomModal"
+		"click .delete-classroom-button": "destroyClassroomModal",
+		"click .save-classroom-button": "saveClassroom"
 	},
 
 	destroyClassroomModal: function(e){
+		e.preventDefault();
+		var destroyModal = new SeatingApp.Views.ClassroomDestroyModal({
+			model: this.model
+		})
+		$('body').append(destroyModal.$el);
+		destroyModal.render();
+	},
+
+	saveClassroom: function(e){
+		e.preventDefault();
+		if (this.model.sections().length > 0){
+			Backbone.history.navigate("", { trigger: true })
+		} else {
+			this.createClassroomModal()
+		}
+	},
+
+	createClassroomModal: function(e){
 		e.preventDefault();
 		var destroyModal = new SeatingApp.Views.ClassroomDestroyModal({
 			model: this.model
@@ -96,6 +114,11 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();
+		var alert = new SeatingApp.Views.DismissableAlert({
+					body: "Edit <strong>" + this.model.escape("name") +"</strong> by clicking in the grid! ... but be careful. Destroying desks will cause students assigned to those seats to no longer have a seat!"
+				})
+				alert = alert.render().$el;
+				$("#alerts").append(alert);
 		return this;
 	},
 
