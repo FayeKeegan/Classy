@@ -1,0 +1,21 @@
+<div class="m-background"> </div>
+
+<div class="m-content classroom-destroy-modal">
+  <div class="alert alert-dismissible alert-warning">
+    <h5> You just created <%=classroom.escape("name")%>! But it seems like you aren't teaching any sections in there...  </h5>
+    <p>
+      That's fine.. Just a little weird.
+      <br>
+      Why go through the trouble of creating a classroom if you aren't even teaching a class in there..
+      <br>
+
+      Would you like to create a new section that you plan on teaching in <%= classroom.escape("name") %>?
+    </p>
+  </div>
+    <a href="" class="btn btn-danger confirm-no-section">
+      Nope. I don't want to create a new section. Take me back to the index.
+    </a>
+    <a href="#/section/new" class="btn btn-info yes-create-section">
+      Yes, please! Take me there!
+    </a>
+</div>

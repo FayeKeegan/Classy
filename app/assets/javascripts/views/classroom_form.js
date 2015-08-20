@@ -25,7 +25,12 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 		if (this.model.sections().length > 0){
 			Backbone.history.navigate("", { trigger: true })
 		} else {
-			this.createClassroomModal()
+			var newSubmitModal = new SeatingApp.Views.ClassroomsNewSubmitModal({
+				model: this.model
+			})
+			$("body").append(newSubmitModal.$el)
+			newSubmitModal.render()
+
 		}
 	},
 
