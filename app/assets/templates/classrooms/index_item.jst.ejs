@@ -7,7 +7,9 @@
 	</div>
 	<div class="row">
 		<div class='col col-xs-4'>
-			<input class="btn btn-xs btn-warning edit-classroom classroom-index-item-button" value="Edit">
+			<a href="#classrooms/<%= classroom.id %>/edit">
+				<input class="btn btn-xs btn-warning edit-classroom classroom-index-item-button" value="Edit">
+			</a>
 		</div>
 		<div class='col col-xs-4'>
 			
@@ -17,7 +19,9 @@
 		</div>
 	</div>
 	<div class="row">
+		<a href="#classrooms/<%= classroom.id %>/edit">
 		<div class='classroom-preview col col-lg-12'>
 		</div>
+		</a>
 	</div>
 </div>
