@@ -12,6 +12,7 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 
 		initialize: function(options) {
 			this.students = options.students;
+			this.sections = options.sections;
 			this.classrooms = options.classrooms;
 			this.listenTo(this.model, "sync", this.render);
 			this.listenTo(this.students, "add", this.addStudent);
@@ -83,7 +84,8 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 				var sectionData = {section: sectionData}
 				var section = new SeatingApp.Models.Section(sectionData)
 				section.save({}, {
-					success: function(){
+					success: function(section){
+						this.sections.add(section)
 						Backbone.history.navigate("", { trigger: true })
 					}.bind(this),
 					error: function(model, response){

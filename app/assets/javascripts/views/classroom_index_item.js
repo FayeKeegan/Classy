@@ -9,11 +9,19 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 	className: "classroom-index-item col-lg-3",
 
 	events:{
-		// "click .delete-seatingChart" : "deleteSeatingChart",
-		// "click .show-seatingChart" : "showSeatingChart",
-		// "click .edit-seatingChart" : "editSeatingChart",
+		"mouseenter .panel" : "highlightPanel",
+		"mouseleave .panel" : "unhighlightPanel",
 		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
 		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"
+	},
+
+	highlightPanel: function(e){
+
+		$(e.currentTarget).removeClass("panel-success").addClass("panel-info")
+	},
+
+	unhighlightPanel: function(e){
+		$(e.currentTarget).removeClass("panel-info").addClass("panel-success")
 	},
 
 	unhighlightDesk: function(e){

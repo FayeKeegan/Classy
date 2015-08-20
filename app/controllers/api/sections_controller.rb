@@ -11,7 +11,7 @@ class Api::SectionsController < ApplicationController
 	end
 
 	def create
-		@section = current_user.sections.new(section_params);
+		@section = current_user.sections.new(section_params)
 		if @section.save
 			render json: @section
 		else
