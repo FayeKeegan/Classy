@@ -1,7 +1,7 @@
 class Api::SectionsController < ApplicationController
 
 	def index
-			@sections = current_user.sections
+			@sections = current_user.sections.order(created_at: :desc)
 			render :index
 	end
 
@@ -17,7 +17,6 @@ class Api::SectionsController < ApplicationController
 		else
 			render json: @section.errors.full_messages, status: :unprocessable_entity
 		end
-		
 	end
 
 	def show

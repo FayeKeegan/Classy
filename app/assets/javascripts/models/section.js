@@ -11,7 +11,7 @@ parse: function (response) {
       delete response.students
     }
     if (response.classroom){
-      this.classroom().set(response.classroom)
+      this.classroom().set(response.classroom).parse(response.classroom)
       delete response.classroom
     }
     if (response.desks){

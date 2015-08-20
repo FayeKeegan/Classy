@@ -8,6 +8,9 @@ json.array! @sections do |section|
 	if (section.classroom)
 	  json.classroom do 
 			json.extract! section.classroom, :height, :width, :name, :id
+			json.desks section.classroom.desks do |desk|
+				json.extract! desk, :row, :column, :id
+			end
 		end
 		json.desks section.classroom.desks do |desk|
 			json.extract! desk, :row, :column, :id

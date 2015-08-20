@@ -47,6 +47,7 @@ SeatingApp.Views.SeatingChartIndexItem = Backbone.CompositeView.extend({
 	},
 
 	addClassroomPreview: function(){
+		// debugger
 		var view = new SeatingApp.Views.ClassroomShowSmall({
 			model: this.section
 		})
