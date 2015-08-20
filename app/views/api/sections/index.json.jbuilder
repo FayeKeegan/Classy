@@ -5,11 +5,13 @@ json.array! @sections do |section|
 	  json.name seating_chart.name
 	  json.section_id seating_chart.section_id
 	end
-  json.classroom do 
-		json.extract! section.classroom, :height, :width, :name, :id
-	end
-	json.desks section.classroom.desks do |desk|
-		json.extract! desk, :row, :column, :id
-	end
+	if (section.classroom)
+	  json.classroom do 
+			json.extract! section.classroom, :height, :width, :name, :id
+		end
+		json.desks section.classroom.desks do |desk|
+			json.extract! desk, :row, :column, :id
+		end
+	end 
 end
 
