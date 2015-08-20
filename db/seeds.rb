@@ -3,20 +3,17 @@ user1 = User.create!({
 	password: "password"
 })
 
-user2 = User.create!({
-	username: "MsJohnson",
-	password: "password"
-})
-
-cr1 = Classroom.create!({width: 10, height: 8, name: "Room 101"})
-cr2 = Classroom.create!({width: 10, height: 8, name: "Room 102"})
-cr3 = Classroom.create!({width: 10, height: 8, name: "Room 103"})
-cr4 = Classroom.create!({width: 10, height: 8, name: "Room 104"})
+cr1 = user1.classrooms.create!({width: 10, height: 8, name: "Room 101"})
+cr2 = user1.classrooms.create!({width: 10, height: 8, name: "Room 102"})
+cr3 = user1.classrooms.create!({width: 10, height: 8, name: "Room 103"})
+cr4 = user1.classrooms.create!({width: 10, height: 8, name: "Room 104"})
+cr5 = user1.classrooms.create!({width: 10, height: 8, name: "Room 105"})
+cr6 = user1.classrooms.create!({width: 10, height: 8, name: "Room 106"})
 
 sec1 = user1.sections.create!({name: "9th Grade Bio", classroom_id: cr1.id})
 sec2 = user1.sections.create!({name: "10th Grade Chemistry", classroom_id: cr2.id})
-sec3 = user2.sections.create!({name: "Algebra", classroom_id: cr3.id})
-sec4 = user2.sections.create!({name: "Pre Calc", classroom_id: cr4.id})
+sec3 = user1.sections.create!({name: "Algebra", classroom_id: cr3.id})
+sec4 = user1.sections.create!({name: "Pre Calc", classroom_id: cr4.id})
 
 desk_positions = [
 	[1, 1], [1, 2], [2, 1], [2, 2],
@@ -33,7 +30,7 @@ desk_positions_2 = [
 	[5, 6], [5, 7], [6, 6], [6, 7]
 ]
 
-[cr1, cr3].each do |classroom|
+[cr1, cr3, cr6].each do |classroom|
 	desk_positions.each do |desk_pos|
 		classroom.desks.create!({
 				row: desk_pos[0],
@@ -42,7 +39,7 @@ desk_positions_2 = [
 	end
 end
 
-[cr2, cr4].each do |classroom|
+[cr2, cr4, cr5].each do |classroom|
 	desk_positions_2.each do |desk_pos|
 		classroom.desks.create!({
 				row: desk_pos[0],

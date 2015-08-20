@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
 		foreign_key: :teacher_id,
 		primary_key: :id
 	)
+	has_many :classrooms
 	has_many :sectionings, through: :sections
 	has_many :students, through: :sectionings
-	has_many :classrooms, through: :sections
 	has_many :seating_charts, through: :sections
 
 	attr_reader :password

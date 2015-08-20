@@ -20,7 +20,7 @@ class Api::ClassroomsController < ApplicationController
 	end
 
 	def create
-		@classroom = Classroom.new(classroom_params)
+		@classroom = current_user.classrooms.new(classroom_params)
 		if @classroom.save
 			render json: @classroom
 		else
