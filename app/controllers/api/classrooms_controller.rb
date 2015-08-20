@@ -26,7 +26,6 @@ class Api::ClassroomsController < ApplicationController
 		else
 			render json: @classroom.errors.full_messages, status: :unprocessable_entity
 		end
-
 	end
 
 

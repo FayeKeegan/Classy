@@ -11,7 +11,8 @@ parse: function (response) {
       delete response.students
     }
     if (response.classroom){
-      this.classroom().set(response.classroom).parse(response.classroom)
+      this.classroom().set(response.classroom).parse(response.classroom);
+      this.classroom().trigger('sync');
       delete response.classroom
     }
     if (response.desks){
