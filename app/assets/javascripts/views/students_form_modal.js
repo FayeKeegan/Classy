@@ -33,7 +33,8 @@ SeatingApp.Views.StudentFormModal = Backbone.View.extend({
       error: function(student, response){
         if (response.responseText.indexOf("First name") !== -1){
           this.$(".first-field").css({"background-color": "red"});
-        } else if(response.responseText.indexOf("Last name") !== -1 ){
+        }
+        if (response.responseText.indexOf("Last name") !== -1 ){
           this.$(".last-field").css({"background-color": "red"});
         }
       }.bind(this)

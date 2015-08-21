@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>New Student</legend>
+      <div class="form-group">
+        <label for="new-student-first-name" class="col-lg-2 control-label">First Name</label>
+        <div class="col-lg-2">
+          <input type="text" class="form-control" name="student[first_name]">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="new-student-last-name" class="col-lg-2 control-label">Last Name</label>
+        <div class="col-lg-2">
+          <input type="text" class="form-control" name="student[last_name]">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="student-gender" class="col-lg-2 control-label">Gender</label>
+        <div class="col-lg-2">
+          <select class="form-control" id='student-gender' name="student[gender]">
+            <option selected=<%=(student.get("gender") === "M") %> >M</option>
+            <option selected=<%=(student.get("gender") === "F") %> >F</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="student-reading-level" class="col-lg-2 control-label">Reading Level</label>
+        <div class="col-lg-2">
+          <select class="form-control" id="select-reading-level" name="student[reading_level]">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="student-math-level" class="col-lg-2 control-label">Math Level</label>
+        <div class="col-lg-2">
+          <select class="form-control" id="select-math-level" name="student[math_level]">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+</div>
+

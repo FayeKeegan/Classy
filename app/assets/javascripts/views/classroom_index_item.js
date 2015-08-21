@@ -17,11 +17,11 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 
 	highlightPanel: function(e){
 
-		$(e.currentTarget).removeClass("panel-success").addClass("panel-info")
+		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary")
 	},
 
 	unhighlightPanel: function(e){
-		$(e.currentTarget).removeClass("panel-info").addClass("panel-success")
+		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info")
 	},
 
 	unhighlightDesk: function(e){
