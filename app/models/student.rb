@@ -1,9 +1,9 @@
 class Student < ActiveRecord::Base
 	validates :first_name, :last_name, :gender, presence: true
 
-	has_many :sectionings
+	has_many :sectionings, dependent: :destroy
 	has_many :sections, through: :sectionings
-	has_many :seat_assignments
+	has_many :seat_assignments, dependent: :destroy
 
 	def assign_to!(desk, seating_chart)
 		SeatAssignment.create!({

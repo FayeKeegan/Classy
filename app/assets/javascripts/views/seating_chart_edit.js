@@ -158,12 +158,12 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		$(".student-icon-draggable").each(function(i, student_icon){
 			$student_icon = $(student_icon);
     	if ($student_icon.hasClass("student-icon-assigned") ){
-    		$student_icon.children().remove()
+    		$student_icon.children().remove();
 				$(student_icon).append(
 					"<span class='glyphicon glyphicon-user' aria-hidden='true'></span> </div>"
-				).css({color: "#9933CC"})
+				).css({color: "#9933CC"});
 				$student_icon.detach();
-  			$student_icon.removeClass("student-icon-assigned")
+  			$student_icon.removeClass("student-icon-assigned");
   			var seatAssignmentId = $student_icon.attr("seat-assignment-id");
   			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId);
    			var desk = $("[desk-id=" + $student_icon.attr("assigned-desk-id") + "]");
@@ -187,7 +187,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		});
 		alert = alert.render().$el.addClass("info");
 		$("#alerts").html(alert);
-		var seatingChart = this.model
+		var seatingChart = this.model;
     $(".student-icon-draggable").draggable({
     	start: function(event, ui){
     		var $draggable= $(this);
@@ -227,31 +227,31 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     });
     $(".desk").droppable({
     	out: function(event, ui){   
-    		$(this).removeClass("danger") 		
+    		$(this).removeClass("danger") ;		
     	},
     	over: function(event, ui){
     		if ($(this).hasClass("info") && 
     				ui.draggable[0] !== event.target.children[0]
     				){
-    			$(this).addClass("danger")
+    			$(this).addClass("danger");
     		}
     	},
       drop: function( event, ui ) {
       	if (!$(this).hasClass("active")) {
-    			$(this).addClass("danger")
+    			$(this).addClass("danger");
     		} else {
 	      	var that = this;
-	      	var desk_div = $(event.target)
-		      	var desk_id = $(event.target).attr("desk-id")
-		      	var student_id = $(ui.draggable).attr("student-id")
-		      	var seating_chart_id = seatingChart.id
+	      	var desk_div = $(event.target);
+		      	var desk_id = $(event.target).attr("desk-id");
+		      	var student_id = $(ui.draggable).attr("student-id");
+		      	var seating_chart_id = seatingChart.id;
 		      	var seatAssignment = new SeatingApp.Models.SeatAssignment({
 		      		seating_chart_id: seating_chart_id,
 		      		student_id: student_id,
 		      		desk_id: desk_id
 		      	})
-		      	var student = seatingChart.students().get(student_id)
-		      	var name = student.get("first_name")
+		      	var student = seatingChart.students().get(student_id);
+		      	var name = student.get("first_name");
 		      	seatAssignment.save({},{
 		      		success: function(){
 		      			var alert = new SeatingApp.Views.DismissableAlert({
@@ -287,24 +287,24 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 
 	addGridToPage: function(){
 		for (var i = 0; i < this.model.classroom().get("height"); i++) {
-			var row = $("<tr>").addClass("classroom-row")
-			var find = $("#classroom-grid")
-			$("#classroom-grid").append(row)
+			var row = $("<tr>").addClass("classroom-row");
+			var find = $("#classroom-grid");
+			$("#classroom-grid").append(row);
 			for (var j = 0; j < this.model.classroom().get("width"); j++) {
-				var cell = $("<td>").addClass("classroom-square").attr("row-num", i).attr("col-num", j)
-				row.append(cell)
+				var cell = $("<td>").addClass("classroom-square").attr("row-num", i).attr("col-num", j);
+				row.append(cell);
 			}
 		}
 		this.addDesksToGrid();
 	},
 
 	addClassroomShowSubview: function(){
-		var view = new SeatingApp.Views.ClassroomShow({ model:this.model.classroom()})
+		var view = new SeatingApp.Views.ClassroomShow({ model:this.model.classroom()});
 		
 	},
 
 	addStudentIndexItem: function(student){
-		var view = new SeatingApp.Views.StudentIndexItemDraggable({ model: student })
+		var view = new SeatingApp.Views.StudentIndexItemDraggable({ model: student });
 		this.addSubview("#students-table", view)
 	}
 })
