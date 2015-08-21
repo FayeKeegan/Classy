@@ -16,32 +16,28 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		$(".student-icon-draggable").each(function(i, student_icon){
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
 			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).append("<span class='glyphicon glyphicon-user aria-hidden='true'></span>")
+			$(student_icon).removeClass("level1 level2 level3 level4 level5").text("")
 			$(student_icon).append(label);
 		})
 	},
 
-	showMathLevel: function(){
+	showLevel: function(category){
 		$(".student-icon-draggable").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
-			var math_level = this.model.students().get(id).get("math_level");
+			var level_num = this.model.students().get(id).get(category);
 			var label = $(student_icon).children().detach();
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).addClass("level" + math_level).text(math_level);
+			$(student_icon).addClass("level" + level_num).text(level_num);
 			$(student_icon).append(label);
 		}.bind(this))
 	},
 
+	showMathLevel: function(){
+		this.showLevel("math_level")
+	},
+
 	showReadingLevel: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
-			var id = $(student_icon).attr("student-id");
-			var reading_level = this.model.students().get(id).get("reading_level");
-			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).addClass("level" + reading_level).text(reading_level);
-			$(student_icon).append(label);
-		}.bind(this))
+		this.showLevel("reading_level")
 	},
 
 	shuffleUnassignedStudents: function(e){
@@ -154,23 +150,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 
 	placeAssignedStudents: function(){
 		this.model.seatAssignments().each(function(seatAssignment){
-			var deskId = seatAssignment.get("desk_id")
-			var studentId = seatAssignment.get("student_id")
-			var student = this.model.students().get(studentId)
-			var draggableStudent = $("[student-id=" + studentId + "].student-icon-draggable")[0]
-			var droppableDesk = $("[desk-id=" + deskId + "].desk")
-			droppableDesk.append(draggableStudent);
-			$(droppableDesk).removeClass("active").addClass("info");
-			var nameDiv = $("<div>")
-				.addClass("desk-label")
-				.text(student.get("first_name"))
-			$(draggableStudent)
-				.css({ top: 0, left: 0})
-				.addClass("student-icon-assigned")
-				.attr("seat-assignment-id", seatAssignment.id)
-				.attr("assigned-desk-id", deskId)
-				.addClass("student-icon-dragged")
-				.append(nameDiv)
+			this.placeAssignedStudent(seatAssignment)
 		}.bind(this))
 	},
 
