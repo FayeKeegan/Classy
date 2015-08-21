@@ -4,12 +4,13 @@ SeatingApp.Views.StudentsIndexRoot = Backbone.CompositeView.extend({
 	initialize: function(){
 		this.listenTo(this.collection, "sync", this.render);
 		this.collection.each(this.addStudentIndexRootItem.bind(this));
-		this.listenTo(this.collection, "add", this.addStudentIndexRootItem);
+		this.listenTo(this.collection, "add change", this.addStudentIndexRootItem);
 	},
 
 	addStudentIndexRootItem: function(student){
 		var studentIndexItem = new SeatingApp.Views.StudentsIndexRootItem({
-			model: student
+			model: student,
+			collection: this.collection
 		})
 		this.addSubview("#students-root-table-body", studentIndexItem);
 	},

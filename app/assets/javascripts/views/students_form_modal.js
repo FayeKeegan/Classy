@@ -1,5 +1,5 @@
-SeatingApp.Views.StudentsNewModal = Backbone.View.extend({
-  template: JST['students/new_modal'],
+SeatingApp.Views.StudentFormModal = Backbone.View.extend({
+  template: JST['students/form_modal'],
 
   events: {
     'submit form': 'createStudent',
@@ -34,7 +34,10 @@ SeatingApp.Views.StudentsNewModal = Backbone.View.extend({
   },
 
   render: function () {
-    var content = this.template()
+    debugger
+    var content = this.template({
+      student: this.model
+    })
     this.$el.html(content);
     return this;
   },

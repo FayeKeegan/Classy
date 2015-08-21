@@ -5,6 +5,15 @@ class Api::StudentsController < ApplicationController
 		render json: @students
 	end
 
+	def update
+		@student = Student.find(params[:id])
+		if @student.update_attributes(student_params)
+			render json: @student
+		else
+			render json: @student.errors.full_messages, status: :unprocessable_entity
+		end
+	end
+
 	def create
 		@student = Student.new(student_params)
 		if @student.save

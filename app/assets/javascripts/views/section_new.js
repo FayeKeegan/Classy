@@ -48,20 +48,20 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 
 		newClassroomModal: function(e){
 			e.preventDefault();
-			var classroom = new SeatingApp.Models.Classroom()
+			var classroom = new SeatingApp.Models.Classroom();
 			var newClassroomModal = new SeatingApp.Views.ClassroomNewModal({
 				collection: this.classrooms,
 				model: classroom
 			})
 			$('body').append(newClassroomModal.$el);
-			newClassroomModal.render()
+			newClassroomModal.render();
 		},
 
 		newStudentModal: function(e){
-			e.preventDefault()
-			var student = new SeatingApp.Models.Student()
-			var newStudentModal = new SeatingApp.Views.StudentsNewModal({
-				model : student,
+			e.preventDefault();
+			var student = new SeatingApp.Models.Student();
+			var newStudentModal = new SeatingApp.Views.StudentFormModal({
+				model: student,
 				collection: this.students
 			})
 			$('body').append(newStudentModal.$el);

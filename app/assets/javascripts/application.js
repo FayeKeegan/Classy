@@ -16,6 +16,8 @@
 //= require bootstrap
 //= require backbone
 //= require jquery-ui
+//= require jquery.serializejson.min
+//= require jquery.tablesort.min
 //= require seating_app
 //= require_tree ./utils
 //= require_tree ../templates
