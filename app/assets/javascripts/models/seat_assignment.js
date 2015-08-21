@@ -3,18 +3,18 @@ SeatingApp.Models.SeatAssignment = Backbone.Model.extend({
 
 	parse: function(response){
     if (response.student){
-      this.student().set(response.student)
-      delete response.student
+      this.student().set(response.student);
+      delete response.student;
     }
     if (response.desk){
       this.desk().set(response.desk);
-      delete response.desk
+      delete response.desk;
     }
     if (response.seatingChart){
       this.seatingChart().set(response.seatingChart);
-      delete response.seatingChart
+      delete response.seatingChart;
     }
-    return response
+    return response;
 	},
 
   seatingChart: function () {

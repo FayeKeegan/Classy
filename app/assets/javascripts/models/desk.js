@@ -3,8 +3,8 @@ SeatingApp.Models.Desk = Backbone.Model.extend({
 
 	parse: function (response) {
     if (response.seatAssignments){
-    	this.seatAssignments().set(response.seatAssignments, { parse: true })
-    	delete response.seatAssignments
+    	this.seatAssignments().set(response.seatAssignments, { parse: true });
+    	delete response.seatAssignments;
     }
     return response;
   },

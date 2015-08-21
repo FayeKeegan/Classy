@@ -19,7 +19,6 @@ SeatingApp.Views.StudentsNew = Backbone.View.extend({
 
 	createStudent: function (event) {
     event.preventDefault();
-    debugger
     var formData = $(event.currentTarget).serializeJSON();
     this.model.save(formData, {
       success: function (student) {

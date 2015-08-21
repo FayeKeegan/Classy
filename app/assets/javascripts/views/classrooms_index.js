@@ -9,6 +9,7 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 	},
 
 	classroomHighlight: function (e){
+		$(".body").animateScroll();
 		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info");
 	},
 

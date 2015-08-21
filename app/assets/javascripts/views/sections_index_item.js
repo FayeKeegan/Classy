@@ -21,7 +21,6 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		"mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight"
 	},
 
-
 	removeSeatingChartIndexItem: function(seatingChart){
 		this.removeModelSubview("#seating-charts-index", seatingChart);
 	},

@@ -4,10 +4,10 @@ SeatingApp.Collections.Desks = Backbone.Collection.extend({
 	model: SeatingApp.Models.Desk,
 	
 	getOrFetch: function(id){
-		var desks = this.get(id)
+		var desks = this.get(id);
 		if (!desks){
-			desks = new SeatingApp.Models.Desks({ id: id })
-			this.add(desks)
+			desks = new SeatingApp.Models.Desks({ id: id });
+			this.add(desks);
 		}
 		desks.fetch();
 		return desks;

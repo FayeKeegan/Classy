@@ -3,16 +3,16 @@ SeatingApp.Models.Classroom = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.desks){
-    	this.desks().set(response.desks, { parse: true })
-    	delete response.desks
+    	this.desks().set(response.desks, { parse: true });
+    	delete response.desks;
     }
     if (response.seatingCharts){
-      this.seatingCharts().set(response.seatingCharts)
-      delete response.seatingCharts
+      this.seatingCharts().set(response.seatingCharts);
+      delete response.seatingCharts;
     }
     if (response.sections){
-      this.sections().set(response.sections)
-      delete response.sections
+      this.sections().set(response.sections);
+      delete response.sections;
     }
     return response;
   },

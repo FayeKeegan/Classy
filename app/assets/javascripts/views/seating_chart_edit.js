@@ -17,7 +17,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
 			var label = $(student_icon).children().detach();
 			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).text(" ◯ ")
+			$(student_icon).append("<span class='glyphicon glyphicon-user aria-hidden='true'></span>")
 			$(student_icon).append(label);
 		})
 	},
@@ -138,7 +138,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var droppableDesk = $("[desk-id=" + deskId + "].desk")
 		droppableDesk.append(draggableStudent);
 		$(droppableDesk).removeClass("active").addClass("info");
-		if (draggableStudent.children.length == 0){
+		if (draggableStudent.children.length < 2){
 			var nameDiv = $("<div>")
 				.addClass("desk-label")
 				.text(student.get("first_name"))
@@ -180,14 +180,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var $grid = $(grid)
 		$(".student-icon-draggable").each(function(i, student_icon){
 			$student_icon = $(student_icon);
-			$student_icon.detach()
-			if ($student_icon.children.length < 1){
-    			var nameDiv = $("<div>")
-						.addClass("desk-label")
-						.text(student.get("first_name"))
-					$student_icon.append(nameDiv)
-    		}
-    	if ( $student_icon.hasClass("student-icon-assigned") ){
+    	if ($student_icon.hasClass("student-icon-assigned") ){
+				$student_icon.detach()
     			$student_icon.removeClass("student-icon-assigned")
     			var seatAssignmentId = $student_icon.attr("seat-assignment-id")
     			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId)
@@ -196,13 +190,13 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     				success: function(seatAssignment){
     					seatingChart.seatAssignments().remove(seatAssignment)
     					desk.removeClass("info").addClass("active")
+							$($grid).append($student_icon)
+							var randHeight = Math.floor(Math.random() * $grid.height())
+							var randWidth = Math.floor(Math.random() * $grid.width())
+							$student_icon.css({ top: randHeight, left: randWidth})
     				}
     			});
     		}
-			$($grid).append($student_icon)
-			var randHeight = Math.floor(Math.random() * $grid.height())
-			var randWidth = Math.floor(Math.random() * $grid.width())
-			$student_icon.css({ top: randHeight, left: randWidth})
 		})
 	},
 	
@@ -219,7 +213,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     		var studentId = $(this).attr("student-id");
     		var student = seatingChart.students().get(studentId);
     		var studentName = student.get("first_name");
-    		if (this.children.length < 1){
+    		if (this.children.length < 2){
     			var nameDiv = $("<div>")
 						.addClass("desk-label")
 						.text(student.get("first_name"));
