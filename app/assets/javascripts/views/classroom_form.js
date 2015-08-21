@@ -99,15 +99,16 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	highlightDesk: function(e) {
 		var square = $(e.currentTarget);
 		if ($(square).hasClass("desk")){
-			$(square).addClass("danger").text("Destroy Desk").css({"text-align": "center"});
+			$(square).addClass("danger").text("Destroy Desk").css({"text-align": "center"}).toggleClass("temp-desk");;
 		} else {
-			$(square).addClass("success").text("Add Desk").css({"text-align": "center"});
+			$(square).addClass("success").text("Add Desk").css({"text-align": "center"}).toggleClass("temp-desk");
+
 		}
 	},
 
 	unHighlightDesk: function(e) {
 		var square = $(e.currentTarget)
-		$(square).removeClass("success danger").text("")
+		$(square).removeClass("success danger").text("").toggleClass("temp-desk")
 	},
 
 	initialize: function(){

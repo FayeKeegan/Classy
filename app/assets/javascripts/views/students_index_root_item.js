@@ -4,12 +4,21 @@ SeatingApp.Views.StudentsIndexRootItem = Backbone.View.extend({
 	tagName: "tr",
 
 	events: {
-		"click td": "editStudentModal"
+		"click .glyphicon-edit": "editStudentModal",
+		"click .glyphicon-trash": "destroyStudent"
+	},
+
+	destroyStudent: function(e){
+		e.preventDefault()
+		this.model.destroy({
+			success: function(){
+				this.collection.remove(this.model)
+			}.bind(this)
+		})
 	},
 
 	editStudentModal: function(e){
 		e.preventDefault();
-		
 		var editStudentModal = new SeatingApp.Views.StudentFormModal({
 			model: this.model,
 			collection: this.collection

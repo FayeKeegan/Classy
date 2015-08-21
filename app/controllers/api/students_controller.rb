@@ -14,6 +14,13 @@ class Api::StudentsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@student = Student.find(params[:id])
+		@student.destroy!
+		render json: @student
+	end
+
+
 	def create
 		@student = Student.new(student_params)
 		if @student.save
