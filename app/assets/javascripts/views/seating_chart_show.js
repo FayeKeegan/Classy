@@ -22,35 +22,32 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 		this.$("#alerts").html(alert)
 	},
 
-	hideLevels: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
+hideLevels: function(){
+		$(".student-icon-draggable").each(function(i, student_icon){
+			$(student_icon).removeClass("level1 level2 level3 level4 level5");
 			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).text(" ◯ ")
+			$(student_icon).removeClass("level1 level2 level3 level4 level5").text("");
 			$(student_icon).append(label);
 		})
 	},
-	showMathLevel: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
+
+	showLevel: function(category){
+		$(".student-icon-draggable").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
-			var math_level = $(student_icon).attr("math-level");
+			var level_num = this.model.students().get(id).get(category);
 			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).addClass("level" + math_level).text(math_level);
+			$(student_icon).removeClass("level1 level2 level3 level4 level5");
+			$(student_icon).addClass("level" + level_num).text(level_num);
 			$(student_icon).append(label);
 		}.bind(this))
 	},
 
+	showMathLevel: function(){
+		this.showLevel("math_level");
+	},
+
 	showReadingLevel: function(){
-		$(".student-icon-draggable.student-icon-dragged").each(function(i, student_icon){
-			var id = $(student_icon).attr("student-id");
-			var reading_level = $(student_icon).attr("reading-level");
-			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5")
-			$(student_icon).addClass("level" + reading_level).text(reading_level);
-			$(student_icon).append(label);
-		}.bind(this))
+		this.showLevel("reading_level");
 	},
 
 	editSeatingChart: function(e){
@@ -132,10 +129,9 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var studentLabel = $("<div>").text(student.get("first_name")).addClass("desk-label")
 			var studentDiv = $("<div>")
 				.addClass("student-icon-draggable")
-				.addClass("student-icon-dragged")
 				.attr("math-level", student.get("math_level"))
 				.attr("reading-level", student.get("reading_level"))
-				.text(" ◯ ")
+				.append("<span class='glyphicon glyphicon-user' aria-hidden='true'></span>")
 			studentDiv.append(studentLabel)
 			occupied_square.append(studentDiv)
 		})
