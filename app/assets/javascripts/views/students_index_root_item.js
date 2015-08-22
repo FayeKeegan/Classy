@@ -19,12 +19,14 @@ SeatingApp.Views.StudentsIndexRootItem = Backbone.View.extend({
 
 	editStudentModal: function(e){
 		e.preventDefault();
+		var top = $('body').scrollTop();
 		var editStudentModal = new SeatingApp.Views.StudentFormModal({
 			model: this.model,
-			collection: this.collection
+			collection: this.collection,
 		})
-		$('body').append(editStudentModal.$el);
 		editStudentModal.render()
+		editStudentModal.$el.children().css({"position":"fixed"})
+		$('body').append(editStudentModal.$el);
 	},
 
 	initialize: function(){

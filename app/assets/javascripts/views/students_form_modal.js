@@ -7,7 +7,7 @@ SeatingApp.Views.StudentFormModal = Backbone.View.extend({
     'click .close': 'removeBtn'
   },
 
-  initialize: function () {
+  initialize: function (options) {
     $(document).on('keyup', this.handleKey.bind(this));
   },
 
@@ -43,7 +43,7 @@ SeatingApp.Views.StudentFormModal = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      student: this.model
+      student: this.model,
     })
     this.$el.html(content);
     return this;
