@@ -4,8 +4,8 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	events: {
 		"mouseenter .student-index-item": "highlightDesk",
 		"mouseleave .student-index-item": "unHighlightDesk",
-		"mouseenter .classroom-square" : "highlightStudent",
-		"mouseleave .classroom-square" : "unHighlightStudent",
+		"mouseenter .classroom-square.desk" : "highlightStudent",
+		"mouseleave .classroom-square.desk" : "unHighlightStudent",
 		"click .delete-chart-button" : "deleteSeatingChart",
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .show-math-level-button": "showMathLevel",
@@ -83,15 +83,20 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 
 	highlightStudent: function(e){
 		var studentId = $(e.currentTarget).attr("student-id");
-		var studentItem = $("div[student-id='" + studentId + "']").parent();
-		studentItem.addClass("info");
+		var studentItem = $("tr.student-index-item > [student-id='" + studentId + "'")
+			.first()
+			.parent()
+			.first()
+			.addClass("info")
 	},
 
 	unHighlightStudent: function(e){
 		var studentId = $(e.currentTarget).attr("student-id");
-		var studentItem = $("div[student-id='" + studentId + "']").parent();
-		studentItem.removeClass("info");
-		square.children();
+		var studentItem = $("tr.student-index-item > [student-id='" + studentId + "'")
+			.first()
+			.parent()
+			.first()
+			.removeClass("info")
 	},
 
 	initialize: function(){

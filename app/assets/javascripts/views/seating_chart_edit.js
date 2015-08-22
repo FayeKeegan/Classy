@@ -151,7 +151,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	detachAllStudents: function(){
-		// debugger
 		var seatingChart = this.model;
 		var grid = this.$("#classroom-grid")[0];
 		var $grid = $(grid);
