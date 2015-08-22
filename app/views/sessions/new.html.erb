@@ -4,24 +4,25 @@
 </div>
 
 <div class='container'>
-	<table class="table table-bordered splash-grid">
-		<% 5.times do |row_num| %>
-			<tr class="splash-grid-row">
-				<% 10.times do |col_num| %>
-					<td class='splash-grid-cell'
-							row-num="<%= row_num %>"
-							col-num="<%= col_num %>"> 
-					</td>
-				<% end %>
-			</tr>
-		<% end %>
-	</table>
+  <table class="table table-bordered splash-grid">
+    <% 5.times do |row_num| %>
+      <tr class="splash-grid-row">
+        <% 10.times do |col_num| %>
+            <td class='splash-grid-cell'
+
+              row-num="<%= row_num %>"
+              col-num="<%= col_num %>"> 
+           </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
 </div>
 <br><br>
 
-<div name="login-jumbotron" class='jumbotron'>
+<div id="login-form" name="login-jumbotron" class='jumbotron'>
 	<h3 class='col col-lg-offset-2'> Log In </h3>
-	<form class="form-horizontal" action="/session" method="POST">
+	<form  class="form-horizontal" action="/session" method="POST">
   <fieldset>
 	<input type ="hidden" name ="authenticity_token" value="<%=form_authenticity_token%>" >
     <div class="form-group">
@@ -85,8 +86,9 @@
   	}, 500)
 
     $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
-      var span = $("<span>").text("Log in to get started!")
-      $(this).removeClass("info").addClass("success").append(span)
+      var span = $("<span>").text("Log in to get started!").css({"text-align": "center"})
+      $(this).removeClass("info").addClass("success").html(span)
+      $("#login-form").animatescroll({scrollspeed: 2000})
     })
 
   	$(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
