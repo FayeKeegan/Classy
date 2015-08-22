@@ -10,6 +10,17 @@ class Api::SectionsController < ApplicationController
 		render :new
 	end
 
+	def destroy
+		@section = Section.find(params[:id])
+		if @section.destroy
+			render json: @section
+		else
+			render json: @section_params.errors.full_messages
+		end
+
+	end
+
+
 	def create
 		@section = current_user.sections.new(section_params)
 		if @section.save

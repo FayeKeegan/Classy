@@ -9,28 +9,27 @@ SeatingApp.Views.StudentsIndexRootItem = Backbone.View.extend({
 	},
 
 	destroyStudent: function(e){
-		e.preventDefault()
+		e.preventDefault();
 		this.model.destroy({
 			success: function(){
-				this.collection.remove(this.model)
+				this.collection.remove(this.model);
 			}.bind(this)
 		})
 	},
 
 	editStudentModal: function(e){
 		e.preventDefault();
-		var top = $('body').scrollTop();
 		var editStudentModal = new SeatingApp.Views.StudentFormModal({
 			model: this.model,
 			collection: this.collection,
 		})
-		editStudentModal.render()
-		editStudentModal.$el.children().css({"position":"fixed"})
+		editStudentModal.render();
+		editStudentModal.$el.children().css({"position":"fixed"});
 		$('body').append(editStudentModal.$el);
 	},
 
 	initialize: function(){
-		this.listenTo(this.model, "sync remove", this.render)
+		this.listenTo(this.model, "sync remove", this.render);
 	},
 
 

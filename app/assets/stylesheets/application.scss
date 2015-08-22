@@ -20,6 +20,10 @@
  @import 'bootstrap';
  @import "bootswatch/cyborg/bootswatch";
 
+ .destroy-section{
+  display: none;
+ }
+
 .m-background {
   background: rgba(92, 88, 88, 0.6);
   position: absolute;

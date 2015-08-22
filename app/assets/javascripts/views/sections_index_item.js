@@ -18,8 +18,36 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		"mouseenter #seating-chart-index-item" : "seatingChartHighlight",
 		"mouseleave #seating-chart-index-item" : "seatingChartUnhighlight",
 		"mouseenter #new-seating-chart-index-item" : "seatingChartHighlight",
-		"mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight"
+		"mouseleave #new-seating-chart-index-item" : "seatingChartUnhighlight",
+		"mouseenter .section-header": "showDeleteButton",
+		"mouseleave .section-header": "hideDeleteButton",
+		"click .destroy-section": "destroySectionModal"
 	},
+
+	destroySectionModal: function(e){
+		e.preventDefault();
+		debugger
+		var destroyModal = new SeatingApp.Views.SectionDestroyModal({
+			model: this.model
+		})
+		$('body').append(destroyModal.$el);
+		destroyModal.$el.children().css({"position":"fixed"});
+		destroyModal.render();
+	},
+
+
+	showDeleteButton: function(e){
+		e.preventDefault();
+		var destroyButton = $(e.target).find(".destroy-section")[0];
+		$(destroyButton).css({"display": "inline"});
+	},
+
+	hideDeleteButton: function(e){
+		e.preventDefault();
+		var destroyButton = $(e.target).find(".destroy-section")[0];
+		$(destroyButton).css({"display": "none"});
+	},
+
 
 	removeSeatingChartIndexItem: function(seatingChart){
 		this.removeModelSubview("#seating-charts-index", seatingChart);
