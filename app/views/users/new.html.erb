@@ -21,7 +21,7 @@
 </div>
 <br><br>
 
-<div class='jumbotron'>
+<div class='jumbotron' id='signup-form'>
   <h3 class='col col-lg-offset-2'> Sign Up </h3>
   <form class="form-horizontal" action="/users" method="POST">
   <fieldset>
@@ -40,10 +40,12 @@
     </div>
     <div class="form-group">
       <div class="col-lg-10 col-lg-offset-2">
-        <input type="submit" name="Log in" class='btn btn-default' >
-      <button class="btn btn-default">
-          <%= link_to "I'm already a User", new_session_url %>
-        </button>
+         <input type="submit" name="Log in" class='btn btn-default' >
+        <br>
+        <br>
+        <a class="btn btn-info old-user-button" href="/sessions/new">
+          I'm already a User
+        </a>
       </div>
     </div>
   </fieldset>
@@ -80,6 +82,12 @@
       var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-2-cell")
       selectedSquare.toggleClass("success")
     }, 500)
+
+    $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
+      var span = $("<span>").text("Sign up to get started!").css({"text-align": "center"})
+      $(this).removeClass("success").addClass("info").html(span)
+      $("#signup-form").animatescroll({scrollspeed: 3000})
+    })
 
     $(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
       $(this).addClass("active")

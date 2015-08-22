@@ -42,10 +42,10 @@
         <input type="submit" name="Log in" class='btn btn-default' >
         <br>
         <br>
-      	<button class="btn btn-default">
-      		<%= link_to "I'm a New User", new_user_url %>
-      	</button>
-      	<button class='btn btn-default guest-login'>
+        <a class="btn btn-info new-user-button" href="/users/new">
+          I'm a New User
+        </a>
+      	<button class='btn btn-success guest-login'>
       		Guest Login
 				</button>
       </div>
@@ -88,7 +88,7 @@
     $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
       var span = $("<span>").text("Log in to get started!").css({"text-align": "center"})
       $(this).removeClass("info").addClass("success").html(span)
-      $("#login-form").animatescroll({scrollspeed: 2000})
+      $("#login-form").animatescroll({scrollspeed: 3000})
     })
 
   	$(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
