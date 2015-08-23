@@ -68,7 +68,6 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   },
 
   createClassroom: function (event) {
-    debugger
     event.preventDefault();
     var classroom = this.model
     var formData = $(event.delegateTarget).find("form").serializeJSON()
@@ -97,7 +96,6 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
 
         }.bind(this),
         error: function(models, response){
-          debugger
           if (response.responseText.includes("Name can't be blank")){
             $(".form-group.classroom-name").css({color: "#cc0000"})
           }
