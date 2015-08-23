@@ -6,6 +6,19 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "sync", this.render)
 		this.collection.each(this.addClassroomIndexItem.bind(this));
 		this.listenTo(this.collection, "add", this.addClassroomIndexItem)
+		this.addNewClassroomSubview();
+	},
+
+	addNewClassroomSubview: function(){
+		var newClassroom = new SeatingApp.Models.Classroom({
+			height: 8,
+			width: 10,
+			name: "New Classroom",
+		})
+		var newClassroomSubview = new SeatingApp.Views.ClassroomNewSmall({
+			model: newClassroom
+		})
+		this.addSubview("#new-classroom-subview", newClassroomSubview)
 	},
 
 	classroomHighlight: function (e){
@@ -29,8 +42,4 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 		return this;
 	},
 
-	addClassroomNewSubview: function(){
-		// this.chartNewSubview = new SeatingApp.Views.ClassroomNewSubview();
-		// this.addSubview("#seating-charts-index", this.chartNewSubview);
-	}
 })

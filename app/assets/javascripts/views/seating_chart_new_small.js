@@ -2,13 +2,12 @@ SeatingApp.Views.SeatingChartNewSmall = Backbone.CompositeView.extend({
 	template: JST["seating_charts/new_small"],
 
 	events: {
-		"mouseenter .panel" : "higlightPanel",
-		"mouseleave .panel" : "unhiglightPanel",
+		"mouseenter .panel" : "highlightPanel",
+		"mouseleave .panel" : "unhighlightPanel",
 		"click .panel" : "newSeatingChartModal",
 		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
 		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"
 	},
-
 
 	className: "col col-lg-3 new-seating-chart",
 
@@ -42,14 +41,14 @@ SeatingApp.Views.SeatingChartNewSmall = Backbone.CompositeView.extend({
 	},
 
 
-	higlightPanel: function(e) {
+	highlightPanel: function(e) {
 		this.$(".btn").toggleClass("btn-info").toggleClass("btn-default")
 		this.$(".active").removeClass("active").addClass("info")
 		this.$(".panel.new-seating-chart-panel").removeClass("new-seating-chart-panel");
 		this.$(".panel-heading.new-seating-chart-panel-header").removeClass("new-seating-chart-panel-header")
 	},
 
-	unhiglightPanel: function(e){
+	unhighlightPanel: function(e){
 		this.$(".btn").toggleClass("btn-info").toggleClass("btn-default")
 		this.$(".info").removeClass("info").addClass("active")
 		this.$(".panel").addClass("new-seating-chart-panel");

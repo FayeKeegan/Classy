@@ -267,6 +267,18 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
     margin: 5px;
  }
 
+ .panel-heading.new-seating-chart-panel-header, .panel-heading.new-classroom-panel-header {
+  background-color: #181818;
+  border: none;
+ }
+
+ .panel.new-seating-chart-panel, .panel.new-classroom-panel {
+    border-style: dashed;
+    border-color: #222222;
+    border-width: thin;
+    background-color: transparent;
+ }
+
 
  .panel-heading.new-seating-chart-panel-header {
   background-color: #181818;
