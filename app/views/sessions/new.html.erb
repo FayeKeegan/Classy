@@ -28,13 +28,20 @@
     <div class="form-group">
       <label for="username-input" class="col-lg-2 control-label">Email</label>
       <div class="col-lg-2">
-        <input type="text" name="user[username]" id="username-input" value="<%=@user.username%>">
+        <input type="text"
+               name="user[username]"
+               id="username-input"
+               value="<%=@user.username%>"
+               class="form-control">
       </div>
     </div>
     <div class="form-group">
       <label for="password-input" class="col-lg-2 control-label">Password</label>
       <div class="col-lg-2">
-        <input type = "password" name="user[password]" id="password-input">
+        <input type="password"
+               name="user[password]"
+               id="password-input"
+               class="form-control">
       </div>
     </div>
     <div class="form-group">
@@ -97,11 +104,13 @@
   		$(this).removeClass("active")
   	});
 
-  	$(".guest-login").click(function(){
-  		$("#username-input").attr("value", "MrSmith")
-  		$("#password-input").attr("value", "password");
-  		$("form").submit();
-  	})
+
+    $(".guest-login").click(function(){
+      $("#username-input").attr("value", "MrSmith")
+      $("#password-input").attr("value", "password");
+      $("form").submit();  
+    })
+
   })
 </script>
 </div>
