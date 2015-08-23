@@ -20,13 +20,29 @@
  @import 'bootstrap';
  @import "bootswatch/cyborg/bootswatch";
 
+ .create-classroom-modal{
+    float: left;
+    margin-left: 42px;
+ }
  .destroy-section{
   display: none;
  }
 
+.m-content {
+  z-index: 2;
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color:#060606;
+  padding: 1pc;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+
 .m-background {
   background: rgba(92, 88, 88, 0.6);
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -79,16 +95,6 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
   margin: 0;
 }
 
-.m-content {
-  z-index: 2;
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  background-color:#060606;
-  padding: 1pc;
-  border: 1px solid;
-  border-radius: 5px;
-}
 
 .student-icon-draggable.level1 {
     background-color: rgb(10,37,50);

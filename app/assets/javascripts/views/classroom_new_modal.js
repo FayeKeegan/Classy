@@ -2,7 +2,7 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   template: JST['classrooms/new_modal'],
 
   events: {
-    'click .create-classroom': 'createClassroom',
+    'click .create-classroom-modal': 'createClassroom',
     'click .m-background': 'remove',
     'click .close': 'removeBtn',
     'mouseenter .classroom-square-modal': 'makeSquareActive',
@@ -68,13 +68,13 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
   },
 
   createClassroom: function (event) {
+    debugger
     event.preventDefault();
     var classroom = this.model
     var formData = $(event.delegateTarget).find("form").serializeJSON()
     var deskPositions = this.getDeskPositions() 
     if(deskPositions.length == 0){
       this.$("tr").addClass("danger")
-      this.$(".form-group.classroom-grid")
     } else {
       this.model.save(formData.classroom, {
         success: function (classroom) {
@@ -97,6 +97,7 @@ SeatingApp.Views.ClassroomNewModal = Backbone.View.extend({
 
         }.bind(this),
         error: function(models, response){
+          debugger
           if (response.responseText.includes("Name can't be blank")){
             $(".form-group.classroom-name").css({color: "#cc0000"})
           }

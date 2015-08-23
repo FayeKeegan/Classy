@@ -55,6 +55,8 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			})
 			$('body').append(newClassroomModal.$el);
 			newClassroomModal.render();
+			$("#classroom-name-input").focus();
+			// debugger
 		},
 
 		newStudentModal: function(e){
