@@ -10,9 +10,11 @@ class SessionsController < ApplicationController
 		if @user
 			login!(@user)
 			redirect_to "/"
-		else
-			redirect_to new_session_url
-		end
+		 else
+		 	@user = User.new({ username: user_params[:username] })
+      flash.now[:errors] = ["Invalid email and/or password"]
+      render :new
+    end
 	end
 
 	def destroy
