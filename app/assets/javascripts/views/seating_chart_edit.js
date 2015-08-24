@@ -41,7 +41,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	appendGenericAlert: function(body){
-		("#alerts").empty();
+		$("#alerts").empty();
 		var alert = new SeatingApp.Views.GenericAlert({
 				body: body
 			});
@@ -75,8 +75,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		      	});
 				seatAssignment.save({},{
 					success: function(seatAssignment){
-	    			seatingChart.seatAssignments().add(seatAssignment)
-	    			view.placeAssignedStudent(seatAssignment)
+	    			seatingChart.seatAssignments().add(seatAssignment);
+	    			view.placeAssignedStudent(seatAssignment);
 					}
 				})
 			}		
@@ -137,7 +137,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			$(draggableStudent).append(nameDiv)
 		}
 		$(draggableStudent)
-			.css({ top: 0, left: 0})
+			.css({ top: 0, left: 0, color: "white"})
 			.addClass("student-icon-assigned")
 			.attr("seat-assignment-id", seatAssignment.id)
 			.attr("assigned-desk-id", deskId)
@@ -168,7 +168,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
    			var desk = $("[desk-id=" + $student_icon.attr("assigned-desk-id") + "]");
   			seatAssignment.destroy({
   				success: function(seatAssignment){
-  					debugger
   					seatingChart.seatAssignments().remove(seatAssignment);
   					desk.removeClass("info").addClass("active");
   				}

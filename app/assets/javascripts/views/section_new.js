@@ -81,7 +81,6 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 		createSection: function(e){
 			this.$(".form-group").removeClass("has-error")
 			e.preventDefault();
-			debugger
 			var checkedIds = this.checkedIds()
 			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section;
 			if (sectionData.name === ""){
