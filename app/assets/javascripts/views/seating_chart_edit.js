@@ -23,6 +23,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 
 	showLevel: function(category){
 		$(".student-icon-draggable").each(function(i, student_icon){
+			debugger
 			var id = $(student_icon).attr("student-id");
 			var level_num = this.model.students().get(id).get(category);
 			var label = $(student_icon).children().detach();
@@ -40,9 +41,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.showLevel("reading_level");
 	},
 
-	appendGenericAlert: function(body){
+	appendOrangeAlert: function(body){
 		$("#alerts").empty();
-		var alert = new SeatingApp.Views.GenericAlert({
+		var alert = new SeatingApp.Views.OrangeAlert({
 				body: body
 			});
 		alert = alert.render().$el;
@@ -56,11 +57,11 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		var unassignedStudents = $(".student-icon-draggable:not(.student-icon-assigned)")
 		var emptyDesks = $(".desk.active");
 		if (unassignedStudents.length === 0 ){
-			this.appendGenericAlert("All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!")
+			this.appendOrangeAlert("All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!")
 		} else if (emptyDesks.length === 0){
-			this.appendGenericAlert("There aren't any empty desks! Shuffle puts unassigned students in empty desks. Drag a few students off of their desks to make room!")
+			this.appendOrangeAlert("There aren't any empty desks! Shuffle puts unassigned students in empty desks. Drag a few students off of their desks to make room!")
 		} else if (emptyDesks.length < unassignedStudents.length){
-			this.appendGenericAlert("There are fewer empty desks than students! Not all students have seats. Eek!")
+			this.appendOrangeAlert("There are fewer empty desks than students! Not all students have seats. Eek!")
 		} else {
 			$("#alerts").empty()
 			while (unassignedStudents.length > 0){
@@ -137,8 +138,8 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			$(draggableStudent).append(nameDiv)
 		}
 		$(draggableStudent)
-			.css({ top: 0, left: 0, color: "white"})
-			.addClass("student-icon-assigned")
+			.css({ top: 0, left: 0})
+			.addClass("student-icon-assigned student-icon-dragged")
 			.attr("seat-assignment-id", seatAssignment.id)
 			.attr("assigned-desk-id", deskId)
 			.addClass("student-icon-dragged")
@@ -160,9 +161,9 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
     		$student_icon.children().remove();
 				$(student_icon).append(
 					"<span class='glyphicon glyphicon-user' aria-hidden='true'></span> </div>"
-				).css({color: "#9933CC"});
+				)
 				$student_icon.detach();
-  			$student_icon.removeClass("student-icon-assigned");
+  			$student_icon.removeClass("student-icon-assigned student-icon-dragged");
   			var seatAssignmentId = $student_icon.attr("seat-assignment-id");
   			var seatAssignment = seatingChart.seatAssignments().getOrFetch(seatAssignmentId);
    			var desk = $("[desk-id=" + $student_icon.attr("assigned-desk-id") + "]");
@@ -289,7 +290,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			var find = $("#classroom-grid");
 			$("#classroom-grid").append(row);
 			for (var j = 0; j < this.model.classroom().get("width"); j++) {
-				var cell = $("<td>").addClass("classroom-square").attr("row-num", i).attr("col-num", j);
+				var cell = $("<td>").addClass("classroom-square-no-border").attr("row-num", i).attr("col-num", j);
 				row.append(cell);
 			}
 		}

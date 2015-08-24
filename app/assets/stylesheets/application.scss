@@ -24,6 +24,29 @@
     float: left;
     margin-left: 42px;
  }
+
+ table.large-classroom-grid{
+  border: 0 !important;
+ }
+
+ .table > tbody > tr > td.classroom-square-no-border{
+    position: relative;
+    height:60px;
+    width:75px;
+    border: 0;
+ }
+
+  .classroom-square {
+    /*padding: 2px;*/
+    position: relative;
+    height:60px;
+    width:75px;
+ }
+
+
+ .glyphicon{
+  top: 2px;
+ }
  .destroy-section{
   display: none;
  }
@@ -82,10 +105,6 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
   text-decoration: none;
 }
 
-.student-icon-draggable-start {
-  /*background-color: #9933CC;*/
-}
-
 .student-icon-draggable.ui-draggable-handle:not(.student-icon-dragged){
   color: #9933CC;
   font-weight: bold;
@@ -95,40 +114,39 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
   margin: 0;
 }
 
-
 .student-icon-draggable.level1 {
     background-color: rgb(10,37,50);
     border-radius:5px;
-    width: 75px;
-    height: 60px
+    width: 100%;
+    height: 100%
 }
 .student-icon-draggable.level2 {
     background-color: rgb(42,159,214);
     border-radius:5px;
-    width: 75px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
 }
 
 .student-icon-draggable.level3 {
     background-color: rgb(38,147,198);
     border-radius:5px;
-    width: 75px;
-    height: 60px
+    width: 100%;
+    height: 100%
 }
 
 .student-icon-draggable.level4 {
     color:black;
     background-color: rgb(91,181,223);
     border-radius:5px;
-    width: 75px;
-    height: 60px
+    width: 100%;
+    height: 100%
 }
 .student-icon-draggable.level5 {
     color: black;
     background-color: rgb(190,226,242);
     border-radius:5px;
-    width: 75px;
-    height: 60px
+    width: 100%;
+    height: 100%
 }
 
 .new-user-button {
@@ -173,7 +191,7 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
  }
 
   .student-icon-assigned {
-    color: black;
+    color: white;
   }
 
   .student-icon-dragging {
@@ -183,9 +201,9 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
 
   .student-icon-draggable{
     color: white;
-    padding: 8px 16px;
-    width: 75px;
-    height: 60px;
+    padding: 3px;
+    width: 100%;
+    height: 100%;
     top: 0;
     left: 0;
     position: absolute;
@@ -218,10 +236,10 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
 
   .desk-label {
     text-align: center;
-    width: 50px;
+    width: 100%;
     overflow: hidden;         
     text-overflow: ellipsis;
-    margin: 0 auto;
+    margin: 3px auto;
     padding: 0px;
   }
 
@@ -238,12 +256,6 @@ div.ui-draggable.student-icon-draggable:not(.student-icon-dragged){
   position: relative;
  }
 
- .classroom-square {
-    padding: 2px;
-    position: relative;
-    height:60px;
-    width:75px;
- }
 
  .student-selected {
     background-color: blue;

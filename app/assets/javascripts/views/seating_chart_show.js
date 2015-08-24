@@ -148,7 +148,7 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 			var find = $("#classroom-grid");
 			$("#classroom-grid").append(row);
 			for (var j = 0; j < this.model.classroom().get("width"); j++) {
-				var cell = $("<td>").addClass("classroom-square").attr("row-num", i).attr("col-num", j)
+				var cell = $("<td>").addClass("classroom-square-no-border").attr("row-num", i).attr("col-num", j)
 				row.append(cell);
 			}
 		}

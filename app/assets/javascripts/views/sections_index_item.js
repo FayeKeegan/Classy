@@ -26,7 +26,6 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 
 	destroySectionModal: function(e){
 		e.preventDefault();
-		debugger
 		var destroyModal = new SeatingApp.Views.SectionDestroyModal({
 			model: this.model
 		})
