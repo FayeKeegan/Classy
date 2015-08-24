@@ -16,7 +16,5 @@ class AlterSchema < ActiveRecord::Migration
     add_column :seating_charts, :section_id, :integer
 
    	remove_column :students, :section_id
-  
-  	drop_table :subjects
   end
 end
