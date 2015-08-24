@@ -1,42 +1,72 @@
 <div class="m-background"></div>
 <div class="m-content enter-edit-modal">
-  <form class="form-horizontal">
-    <button class="close">&times;</button>
-    <label for="first_name"> First Name </label>
-    <input class="first-field form-control"
-           type="text"
-           id="first_name"
-           name="student[first_name]"
-           value="<%=student.get("first_name") %>">
-    <label for="last"> Last Name </label>
-    <input class="last-field form-control"
-           type="text"
-           id="last_name"
-           name="student[last_name]"
-           value="<%=student.get("last_name") %>">
-    <br>
-    <label for="select-gender"> Gender </label>
-    <select class="form-control" id="select-gender" name="student[gender]">
-      <option selected=<%=(student.get("gender") === "M") %> >M</option>
-      <option selected=<%=(student.get("gender") === "F") %> >F</option>
-    </select>
-    <label for="select-reading-level"> Reading Level </label>
-    <select class="form-control" id="select-reading-level" name="student[reading_level]">
-      <option selected=<%=(student.get("reading_level") === "1") %> >1</option>
-      <option selected=<%=(student.get("reading_level") === "2") %> >2</option>
-      <option selected=<%=(student.get("reading_level") === "3") %> >3</option>
-      <option selected=<%=(student.get("reading_level") === "4") %> >4</option>
-      <option selected=<%=(student.get("reading_level") === "5") %> >5</option>
-    </select>
-    <label for='select-math-level'> Math Level </label>
-    <select class="form-control" id="select-math-level" name="student[math_level]">
-        <option selected=<%=(student.get("math_level") === "1") %> >1</option>
-        <option selected=<%=(student.get("math_level") === "2") %> >2</option>
-        <option selected=<%=(student.get("math_level") === "3") %> >3</option>
-        <option selected=<%=(student.get("math_level") === "4") %> >4</option>
-        <option selected=<%=(student.get("math_level") === "5") %> >5</option>
-      </select>
-      <br>
-    <input type="submit" class="btn btn-primary btn-sm" value="Submit">
-  </form>
+  <div class='col col-lg-12'>   
+    <div class='row'> 
+      <form class="form-horizontal">
+        <fieldset>
+          <legend> 
+            <%= (student.get("first_name"))? "Edit Student" : "New Student" %>
+          </legend>
+          <div class='form-group first-name-form-group'>
+            <label for="first_name" class="col-lg-5 control-label"> First Name </label>
+            <div class='col col-lg-7'>
+              <input class="first-field form-control"
+                     type="text"
+                     id="first_name"
+                     name="student[first_name]"
+                     value="<%=student.get("first_name") %>">
+            </div>
+          </div>
+          <div class="form-group last-name-form-group">
+            <label for="last" class="col-lg-5 control-label" > Last Name </label>
+            <div class='col-lg-7'>
+              <input class="last-field form-control"
+                     type="text"
+                     id="last_name"
+                     name="student[last_name]"
+                     value="<%=student.get("last_name") %>">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="select-gender" class="col-lg-5 control-label" >Gender</label>
+            <div class='col-lg-7'>
+              <select class="form-control" id="select-gender" name="student[gender]">
+                <option selected=<%=(student.get("gender") === "M") %> >M</option>
+                <option selected=<%=(student.get("gender") === "F") %> >F</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="select-reading-level" class="col-lg-5 control-label"> Reading Level </label>
+            <div class='col-lg-7'>
+              <select class="form-control" id="select-reading-level" name="student[reading_level]">
+                <option selected=<%=(student.get("reading_level") === "1") %> >1</option>
+                <option selected=<%=(student.get("reading_level") === "2") %> >2</option>
+                <option selected=<%=(student.get("reading_level") === "3") %> >3</option>
+                <option selected=<%=(student.get("reading_level") === "4") %> >4</option>
+                <option selected=<%=(student.get("reading_level") === "5") %> >5</option>
+              </select>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label for='select-math-level'class="col-lg-5 control-label"> Math Level </label>
+            <div class='col-lg-7'>
+              <select class="form-control" id="select-math-level" name="student[math_level]">
+                  <option selected=<%=(student.get("math_level") === "1") %> >1</option>
+                  <option selected=<%=(student.get("math_level") === "2") %> >2</option>
+                  <option selected=<%=(student.get("math_level") === "3") %> >3</option>
+                  <option selected=<%=(student.get("math_level") === "4") %> >4</option>
+                  <option selected=<%=(student.get("math_level") === "5") %> >5</option>
+                </select>
+            </div>
+          </div>
+          <div class="form-group" >
+            <div class="col col-lg-offset-5">
+              <input type="submit" class="btn btn-primary btn-sm" value="Submit">
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
 </div>

@@ -29,13 +29,14 @@ SeatingApp.Views.StudentFormModal = Backbone.View.extend({
       success: function (student) {
         this.collection.add(this.model);
         this.remove();
+        $("[student-id=" + student.id + "]:checkbox").prop("checked", true)
       }.bind(this),
       error: function(student, response){
         if (response.responseText.indexOf("First name") !== -1){
-          this.$(".first-field").css({"background-color": "red"});
+          this.$(".first-name-form-group").addClass("has-error");
         }
         if (response.responseText.indexOf("Last name") !== -1 ){
-          this.$(".last-field").css({"background-color": "red"});
+          this.$(".last-name-form-group").addClass("has-error");
         }
       }.bind(this)
     });
