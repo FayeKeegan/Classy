@@ -70,34 +70,35 @@ SeatingApp.Views.SectionNew = Backbone.CompositeView.extend({
 			$("#first_name").focus();
 		},
 
-		createSection: function(e){
-			this.$(".form-group").removeClass("has-error")
-			e.preventDefault();
-
-			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section;
+		checkedIds: function(){
 			var checkedStudents = $(".select-student:checked");
 			var checkedStudentIds = $.map(checkedStudents, function(student){
 				return $(student).attr("student-id");
 			})
-			if (checkedStudents.length === 0){
+			return checkedStudentIds;
+		},
+
+		createSection: function(e){
+			this.$(".form-group").removeClass("has-error")
+			e.preventDefault();
+			debugger
+			var checkedIds = this.checkedIds()
+			var sectionData = $(e.delegateTarget).find("form").serializeJSON().section;
+			if (sectionData.name === ""){
+				$(".form-group.section-name").addClass("has-error");
+			} 
+			if (checkedIds.length === 0){
 				this.$(".form-group.select-students").addClass("has-error");
 			} else {
-				sectionData.student_ids = checkedStudentIds
+				sectionData.student_ids = checkedIds
 				var sectionData = {section: sectionData};
 				var section = new SeatingApp.Models.Section(sectionData);
 				section.save({}, {
 					success: function(section){;
 						this.sections.add(section)
 						Backbone.history.navigate("", { trigger: true });
-					}.bind(this),
-					error: function(model, response){
-						if (response.responseText.includes("Name can't be blank")){
-							$(".form-group.classroom-name").css({color: "#cc0000"});
-							$(".form-group.section-name").addClass("has-error");
-						}
-					}
+					}.bind(this)
 				})
 			}
 		},
-
 })
