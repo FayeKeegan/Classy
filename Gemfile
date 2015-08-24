@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'newrelic_rpm'
 gem 'jquery-ui-rails'
 gem 'bcrypt'
 gem 'bootstrap-sass', '~> 3.3.5'
