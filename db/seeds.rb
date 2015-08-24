@@ -1,3 +1,8 @@
+guest_login = User.find_by_username("MrSmith")
+if(guest_login)
+	guest_login.destroy!
+end
+
 user1 = User.create!({
 	username: "MrSmith",
 	password: "password"
