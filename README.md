@@ -1,4 +1,4 @@
-# Seating App
+# Classy
 
 [Heroku link][heroku]
 
@@ -14,19 +14,19 @@ for later reference and use.
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [ ] Create accounts
-- [ ] Create sessions (log in)
-- [ ] Create/Edit/Destroy Classrooms
-- [ ] Create/Edit/Destroy Desks in Classrooms
-- [ ] Create/Edit/Destroy Students
-- [ ] Assign/Unassign Students to Sections
-- [ ] Assign/Unassign Students to Desks (i.e., make seating charts)
-- [ ] Create/Destroy Sections
-- [ ] Highlight relevant student data (Reading Level, Math Level)
-- [ ] Randomly Assign students to desks
-- [ ] Fix Some Students, Randomly Assign the Rest
-- [ ] Auto-Assign Students to Seats (randomly, and not-randomly)
-- [ ] Fix Some Students and auto-assign the rest
+- [X] Create accounts
+- [X] Create sessions (log in)
+- [X] Create/Edit/Destroy Classrooms
+- [X] Create/Edit/Destroy Desks in Classrooms
+- [X] Create/Edit/Destroy Students
+- [X] Assign/Unassign Students to Sections
+- [X] Assign/Unassign Students to Desks (i.e., make seating charts)
+- [X] Create/Destroy Sections
+- [X] Highlight relevant student data (Reading Level, Math Level)
+- [X] Randomly Assign students to desks
+- [X] Fix Some Students, Randomly Assign the Rest
+- [X] Shuffle Students
+- [X] Fix Some Students and Shuffle the rest
 
 ## Design Docs
 * [View Wireframes][views]
@@ -70,7 +70,7 @@ data (reading level, math level) while editing and viewing seating charts.
 
 [Details][phase-four]
 
-### Phase 5: Auto-assignment / Shuffle (~2 days)
+### Phase 5: Classrooms, Visualization, Shuffle (~2 days)
 At the end of this phase teachers will be able to destroy and edit classrooms and
 students. Seating chart creation will have better visual feedback so teachers
 can more easily user the drag-and-drop interface. Teachers will be able to restart

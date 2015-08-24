@@ -23,7 +23,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 
 	showLevel: function(category){
 		$(".student-icon-draggable").each(function(i, student_icon){
-			debugger
 			var id = $(student_icon).attr("student-id");
 			var level_num = this.model.students().get(id).get(category);
 			var label = $(student_icon).children().detach();
