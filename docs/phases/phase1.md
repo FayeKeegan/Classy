@@ -13,6 +13,7 @@
 
 ### Controllers
 * User
+* Session
 * Class
 * Section
 * Classroom

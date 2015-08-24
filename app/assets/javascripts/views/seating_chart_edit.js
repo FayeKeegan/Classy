@@ -182,7 +182,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	
 	onRender: function () {
 		var alert = new SeatingApp.Views.WarningAlert({
-			body: "Drag and drop students onto desks by picking up their circles!"
+			body: "Place students in desks by dragging and dropping!"
 		});
 		alert = alert.render().$el.addClass("info");
 		$("#alerts").html(alert);
