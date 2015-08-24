@@ -12,6 +12,21 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .start-over-button": "detachAllStudents"
 	},
 
+	initialize: function(){
+		this.listenTo(this.model, "sync", this.render);
+		this.model.students().each(this.addStudentIndexItem.bind(this));
+		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this));
+		this.addProgressBar();
+	},
+
+	addProgressBar: function(){
+		var view = new SeatingApp.Views.SeatingChartProgress({
+			seatAssignments: this.model.seatAssignments(),
+			students: this.model.students()
+		});
+		this.addSubview("#progress-bar", view)
+	},
+
 	hideLevels: function(){
 		$(".student-icon-draggable").each(function(i, student_icon){
 			$(student_icon).removeClass("level1 level2 level3 level4 level5");
@@ -86,12 +101,6 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	saveChart: function(e){
 		e.preventDefault();
 		Backbone.history.navigate("seating_charts/" + this.model.id, { trigger: true })
-	},
-
-	initialize: function(){
-		this.listenTo(this.model, "sync", this.render)
-		this.model.students().each(this.addStudentIndexItem.bind(this))
-		this.listenTo(this.model.students(), "add", this.addStudentIndexItem.bind(this))
 	},
 
 	editSeatingChart: function(e){
