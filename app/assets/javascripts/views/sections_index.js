@@ -4,6 +4,7 @@ SeatingApp.Views.SectionsIndex = Backbone.CompositeView.extend({
 	className: "sections-index",
 
 	initialize: function(options){
+
 		this.targetSection = options.targetSection
 		this.addSectionNewSubview();
 		this.listenTo(this.collection, "sync", this.render);
@@ -27,8 +28,9 @@ SeatingApp.Views.SectionsIndex = Backbone.CompositeView.extend({
 	},
 
 	scrollToTargetSection: function(){
-		if (this.targetSection){
-			$("#" + this.targetSection).animatescroll();
+		var targetDiv = $("#" + this.targetSection)[0]
+		if (targetDiv){
+			$(targetDiv).animatescroll()
 		}
 	},
 
@@ -36,7 +38,9 @@ SeatingApp.Views.SectionsIndex = Backbone.CompositeView.extend({
 		var content = this.template({ sections: this});
 		this.$el.html(content);
 		this.attachSubviews();
-		this.scrollToTargetSection();
+		if (this.targetSection){
+			this.scrollToTargetSection();
+		}
 		return this;
 	}
 })
