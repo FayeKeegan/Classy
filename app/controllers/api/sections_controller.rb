@@ -1,5 +1,6 @@
 class Api::SectionsController < ApplicationController
-
+	before_action :require_logged_in
+	
 	def index
 			@sections = current_user.sections.order(created_at: :desc)
 			render :index

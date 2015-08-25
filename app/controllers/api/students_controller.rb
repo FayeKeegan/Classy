@@ -1,5 +1,6 @@
 class Api::StudentsController < ApplicationController
-
+	before_action :require_logged_in
+	
 	def index
 		@students = current_user.students
 		render json: @students

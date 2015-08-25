@@ -1,5 +1,6 @@
 class Api::SeatingChartsController < ApplicationController
-
+	before_action :require_logged_in
+	
 	def index
 			@seating_charts = current_user.seating_charts
 			render :index

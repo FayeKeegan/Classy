@@ -1,5 +1,6 @@
 class Api::DesksController < ApplicationController
-
+	before_action :require_logged_in
+	
 	def create
 		@desk = Desk.new(desk_params)
 		if @desk.save

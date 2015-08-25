@@ -1,5 +1,6 @@
 class Api::ClassroomsController < ApplicationController
-
+	before_action :require_logged_in
+	
 	def index
 			@classrooms = current_user.classrooms.includes(:desks)
 			render :index
