@@ -20,6 +20,16 @@
  @import 'bootstrap';
  @import "bootswatch/cyborg/bootswatch";
 
+ .glyphicon.glyphicon-user.highlight {
+   transition: box-shadow 400ms;
+   box-shadow: 0 0 0 10px;
+ }
+
+ .glyphicon.glyphicon-user {
+   transition: box-shadow 400ms;
+   box-shadow: 0 0 0 0;
+ }
+
  .small-logo {
   width: 200px;
  }

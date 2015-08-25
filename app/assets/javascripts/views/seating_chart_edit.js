@@ -129,6 +129,14 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.addGridToPage();
 		this.placeAssignedStudents();
 		this.onRender();
+		setTimeout(function(){
+			var userIcons = $(".glyphicon.glyphicon-user");
+			userIcons.addClass("highlight");
+			setTimeout(function(){
+				userIcons.removeClass("highlight");
+			}, 500)
+		}, 0)
+
 		return this;
 	},
 
