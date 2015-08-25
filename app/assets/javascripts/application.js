@@ -11,12 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.serializejson.min
 //= require jquery_ujs
 //= require underscore
 //= require bootstrap
 //= require backbone
 //= require jquery-ui
-//= require jquery.serializejson.min
 //= require animatescroll.min
 //= require jquery.tablesort.min
 //= require seating_app

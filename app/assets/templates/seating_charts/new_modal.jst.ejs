@@ -1,36 +1,18 @@
 <div class="m-background"></div>
-
-<div class="m-content">
-    <button class="btn btn-xs btn-danger close">  &times;  </button>
-  <form >
-  	<div class='fnew-seating-chart-form-group'>
-	    <br>
-	    <br>
-	    <input type="submit" class="btn btn-primary" value="Create Seating Chart!">
-  	</div>
-  </form>
-</div>
-
-<div class="m-background"></div>
 <div class="m-content enter-edit-modal">
-  <div class='col col-lg-12'>   
+  <div class='col col-xs-12'>   
     <div class='row'> 
       <form class="form-horizontal">
         <fieldset>
           <legend> 
-            <%= (student.get("first_name"))? "Edit Student" : "New Student" %>
+            New Seating Chart
           </legend>
           <div class="form-group">
 				    <label for='seatingChart[name]'> Name: </label>
             <div class='col-lg-7'>
 				    <input class="text-field" class='form-control' type="text" name="seatingChart[name]" placeholder="e.g. Game Day...">
-              <select class="form-control" id="select-gender" name="student[gender]">
-                <option selected=<%=(student.get("gender") === "M") %> >M</option>
-                <option selected=<%=(student.get("gender") === "F") %> >F</option>
-              </select>
             </div>
           </div>
-
           <div class="form-group" >
             <div class="col col-lg-offset-5">
               <input type="submit" class="btn btn-primary btn-sm" value="Submit">
