@@ -80,38 +80,38 @@
 
 	<script>
   $(function(){
-  	setInterval(function(){
-	  	var randRow = Math.floor(Math.random() * 5)
-	  	var randCol = Math.floor(Math.random() * 10)
-	  	var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-cell")
-	  	selectedSquare.toggleClass("info")
-  	}, 500)
+  	// setInterval(function(){
+	  // 	var randRow = Math.floor(Math.random() * 5);
+	  // 	var randCol = Math.floor(Math.random() * 10);
+	  // 	var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-cell")
+	  // 	selectedSquare.toggleClass("info")
+  	// }, 500)
 
-  	setInterval(function(){
-	  	var randRow = Math.floor(Math.random() * 5)
-	  	var randCol = Math.floor(Math.random() * 10)
-	  	var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-2-cell")
-	  	selectedSquare.toggleClass("info")
-  	}, 500)
+  	// setInterval(function(){
+	  // 	var randRow = Math.floor(Math.random() * 5)
+	  // 	var randCol = Math.floor(Math.random() * 10)
+	  // 	var selectedSquare = $("td[row-num=" + randRow +  "][col-num=" + randCol + "].splash-grid-2-cell")
+	  // 	selectedSquare.toggleClass("info")
+  	// }, 500)
 
-    $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
-      var span = $("<span>").text("Log in to get started!").css({"text-align": "center"})
-      $(this).removeClass("info").addClass("success").html(span)
-      $("#login-form").animatescroll({scrollspeed: 3000})
-    })
+   //  $(".splash-grid-cell, .splash-grid-2-cell").click(function(){
+   //    var span = $("<span>").text("Log in to get started!").css({"text-align": "center"})
+   //    $(this).removeClass("info").addClass("success").html(span)
+   //    $("#login-form").animatescroll({scrollspeed: 3000})
+   //  })
 
-  	$(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
-  		$(this).addClass("active")
-  	}).mouseleave(function(){
-  		$(this).removeClass("active")
-  	});
+  	// $(".splash-grid-cell, .splash-grid-2-cell").mouseenter(function(){
+  	// 	$(this).addClass("active")
+  	// }).mouseleave(function(){
+  	// 	$(this).removeClass("active")
+  	// });
 
 
-    $(".guest-login").click(function(){
-      $("#username-input").attr("value", "MrSmith")
-      $("#password-input").attr("value", "password");
-      $("form").submit();  
-    })
+    // $(".guest-login").click(function(){
+    //   $("#username-input").attr("value", "MrSmith")
+    //   $("#password-input").attr("value", "password");
+    //   $("form").submit();  
+    // })
 
   })
 </script>
