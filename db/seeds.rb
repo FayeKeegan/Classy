@@ -37,6 +37,11 @@ desk_positions_2 = [
 	[5, 6], [5, 7], [6, 6], [6, 7]
 ]
 
+desk_positions_3 = [[1, 1], [1, 3], [1, 5], [1, 7],
+	  [3, 8], [3, 6], [3, 4], [3, 2], [5, 1], [5, 3], 
+	  [5, 5], [5, 7], [7, 2], [7, 4], [7, 6], [7, 8],
+	  [1, 9], [7, 0], [5, 9], [3, 0]]
+
 space_positions = [[2, 3], [2, 4], [2, 5], [2, 6],
 		[0, 1], [1, 2], [1, 7], [0, 8], [3, 2], [4, 1],
 		[3, 7], [4, 8], [4, 2], [5, 3], [5, 6], [4, 7],
@@ -53,7 +58,7 @@ space_positions.each do |space_pos|
 end
 
 
-[cr1, cr3, cr6].each do |classroom|
+[cr1, cr6].each do |classroom|
 	desk_positions.each do |desk_pos|
 		classroom.desks.create!({
 				row: desk_pos[0],
@@ -62,7 +67,16 @@ end
 	end
 end
 
-[cr2, cr4, cr5].each do |classroom|
+[cr3, cr5].each do |classroom|
+	desk_positions_3.each do |desk_pos|
+		classroom.desks.create!({
+				row: desk_pos[0],
+				column: desk_pos[1]
+			})
+	end
+end
+
+[cr2, cr4].each do |classroom|
 	desk_positions_2.each do |desk_pos|
 		classroom.desks.create!({
 				row: desk_pos[0],
