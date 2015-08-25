@@ -12,8 +12,31 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 		"mouseenter .panel" : "highlightPanel",
 		"mouseleave .panel" : "unhighlightPanel",
 		"mouseenter .classroom_square_preview.desk-small" : "highlightDesk",
-		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk"
+		"mouseleave .classroom_square_preview.desk-small" : "unhighlightDesk",
+		"click .request-delete-classroom": "destroyClassroomModal",
+		"click .delete-classroom-button": "delete-classroom"
 	},
+
+	destroyClassroomModal: function(e){
+		e.preventDefault();
+		var destroyModal = new SeatingApp.Views.ClassroomDestroyModal({
+			model: this.model,
+			collection: this.collection
+		})
+		$('body').append(destroyModal.$el);
+		destroyModal.render();
+	},
+
+
+	// deleteClassroom: function(e){
+	// 	e.preventDefault();
+	// 	this.model.destroy({
+	// 		success: function(){
+	// 			this.remove()
+	// 			this.collection.remove(this.model)
+	// 		}.bind(this)
+	// 	})
+	// },
 
 	highlightPanel: function(e){
 

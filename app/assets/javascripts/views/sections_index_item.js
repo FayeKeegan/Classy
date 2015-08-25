@@ -34,7 +34,6 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		destroyModal.render();
 	},
 
-
 	showDeleteButton: function(e){
 		e.preventDefault();
 		var destroyButton = $(e.target).find(".destroy-section")[0];
@@ -46,7 +45,6 @@ SeatingApp.Views.SectionIndexItem = Backbone.CompositeView.extend({
 		var destroyButton = $(e.target).find(".destroy-section")[0];
 		$(destroyButton).css({"display": "none"});
 	},
-
 
 	removeSeatingChartIndexItem: function(seatingChart){
 		this.removeModelSubview("#seating-charts-index", seatingChart);

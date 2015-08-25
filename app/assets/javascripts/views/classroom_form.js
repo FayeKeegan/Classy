@@ -14,7 +14,8 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	destroyClassroomModal: function(e){
 		e.preventDefault();
 		var destroyModal = new SeatingApp.Views.ClassroomDestroyModal({
-			model: this.model
+			model: this.model,
+			collection: this.collection
 		})
 		$('body').append(destroyModal.$el);
 		destroyModal.render();
@@ -23,7 +24,7 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	saveClassroom: function(e){
 		e.preventDefault();
 		if (this.model.sections().length > 0){
-			Backbone.history.navigate("", { trigger: true })
+			Backbone.history.navigate("classrooms", { trigger: true })
 		} else {
 			var newSubmitModal = new SeatingApp.Views.ClassroomsNewSubmitModal({
 				model: this.model

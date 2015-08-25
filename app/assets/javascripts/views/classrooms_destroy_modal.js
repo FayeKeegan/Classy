@@ -13,9 +13,12 @@ SeatingApp.Views.ClassroomDestroyModal = Backbone.View.extend({
     e.preventDefault();
     this.model.destroy({
       success: function(classroom){
-        Backbone.history.navigate("", { trigger: true });
+        Backbone.history.navigate("classrooms", { trigger: true });
+        if (this.collection){
+          this.collection.remove(classroom)
+        }
         view.remove()
-      }
+      }.bind(this)
     })
   },
 
