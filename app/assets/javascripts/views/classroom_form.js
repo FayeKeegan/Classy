@@ -116,12 +116,13 @@ SeatingApp.Views.ClassroomForm= Backbone.CompositeView.extend({
 	},
 	
 	render: function(){
+		var carefulMessage = this.model.desks().length === 0 ? "" : " ... But be careful! Destroying desks will also leave students who are seated there without a seat!"
 		var content = this.template({ classroom: this.model });
 		this.$el.html(content);
 		this.attachSubviews();
 		this.addGridToPage();
 		var alert = new SeatingApp.Views.DismissableAlert({
-					body: "Edit <strong>" + this.model.escape("name") +"</strong> by clicking in the grid! ... but be careful. Destroying desks will cause students assigned to those seats to no longer have a seat!"
+					body: "Edit <strong>" + this.model.escape("name") +"</strong> by clicking in the grid!" + carefulMessage
 				})
 				alert = alert.render().$el;
 				$("#alerts").append(alert);
