@@ -74,11 +74,12 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 			this.appendOrangeAlert("All students have been assigned to desks. Shuffle will only shuffle students that haven't yet been assigned.If you want to see this in action, drag some students off of their desks and try again!")
 		} else if (emptyDesks.length === 0){
 			this.appendOrangeAlert("There aren't any empty desks! Shuffle puts unassigned students in empty desks. Drag a few students off of their desks to make room!")
-		} else if (emptyDesks.length < unassignedStudents.length){
-			this.appendOrangeAlert("There are fewer empty desks than students! Not all students have seats. Eek!")
 		} else {
 			$("#alerts").empty()
-			while (unassignedStudents.length > 0){
+			if (emptyDesks.length < unassignedStudents.length){
+				view.appendOrangeAlert("There are fewer empty desks than students! Eek! Add more desks by clicking the gray 'Edit Desks' button")
+			}
+			while (unassignedStudents.length > 0 && emptyDesks.length > 0){
 				var deskDiv = emptyDesks.splice(Math.floor(Math.random() * emptyDesks.length), 1)[0]
 				var studentDiv = unassignedStudents.splice(Math.floor(Math.random() * unassignedStudents.length), 1)[0]
 				var deskId = $(deskDiv).attr("desk-id");
