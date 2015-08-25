@@ -4,8 +4,8 @@ SeatingApp.Views.SeatingChartShow = Backbone.CompositeView.extend({
 	events: {
 		"mouseenter .student-index-item": "highlightDesk",
 		"mouseleave .student-index-item": "unHighlightDesk",
-		"mouseenter .classroom-square.desk" : "highlightStudent",
-		"mouseleave .classroom-square.desk" : "unHighlightStudent",
+		"mouseenter .classroom-square-no-border.desk" : "highlightStudent",
+		"mouseleave .classroom-square-no-border.desk" : "unHighlightStudent",
 		"click .delete-chart-button" : "deleteSeatingChart",
 		"click .edit-chart-button" : "editSeatingChart",
 		"click .show-math-level-button": "showMathLevel",
