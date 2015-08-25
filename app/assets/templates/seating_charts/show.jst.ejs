@@ -7,7 +7,10 @@
 				<h3> <%= seatingChart.escape("name") %> </h3>
 			</div>
 			<div class="row">
-				<p class="lead"> <%= section.escape("name") %>  // <a href="#classrooms/<%=classroom.id %>/edit"> <%= classroom.escape("name") %></a>
+				<p class="lead">
+					<a href="#sections/<%=section.id%>"> <%= section.escape("name") %> </a>
+					//
+					<a href="#classrooms/<%=classroom.id %>/edit"> <%= classroom.escape("name") %></a>
 				</p>
 			</div>
 		</div>
