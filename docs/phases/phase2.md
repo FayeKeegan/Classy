@@ -1,7 +1,5 @@
 # Phase 2: 
 ## Rails
-### Models
-
 ### Controllers
 * API / Seating Charts
 * API / Sections
@@ -29,9 +27,12 @@
 
 ### Views
 * Sections
-  * index
-  * new
-  * show
+ * index
+ * index item
+
+* Seating Charts
+ * index item
+ * show
 
 ## Gems/Libraries
 * jbuilder
