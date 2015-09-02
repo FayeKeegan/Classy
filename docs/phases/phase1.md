@@ -2,33 +2,25 @@
 
 ## Rails
 ### Models
-* User
-* Class
-* Section
 * Classroom
 * Desk
-* Student
 * Seat Assignment
 * Seating Chart
+* Section
+* Sectioning
+* Student
+* User
 
 ### Controllers
 * User
 * Session
-* Class
-* Section
-* Classroom
-* Desk
-* Student
-* Seat Assignment
-* Seating Chart
 
 ### Views
-
-## Backbone
-### Models
-
-### Collections
-
-### Views
+* sessions
+  * new
+* users
+  * new
 
 ## Gems/Libraries
+* BCrypt
+* pg
