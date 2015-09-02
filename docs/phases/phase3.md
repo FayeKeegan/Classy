@@ -17,3 +17,5 @@
 ## Gems/Libraries
 * jQuery UI
 * jQuery UI -- Draggable, Droppable
+* bootstrap
+* bootswatch
