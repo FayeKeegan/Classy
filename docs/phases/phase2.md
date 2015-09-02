@@ -36,6 +36,4 @@
 
 ## Gems/Libraries
 * jbuilder
-* boostrap
-* bootswatch
 * faker
