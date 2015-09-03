@@ -1,18 +1,21 @@
 # Phase 3:
 
 ## Rails
-### Models
-
 ### Controllers
-
-### Views
+* API / Sections
+* API / Seating Charts
+* API / Seat Assignments
 
 ## Backbone
-### Models
-
-### Collections
-
 ### Views
-
+* Seating Chart
+  * edit
+* Students
+  * index item (draggable)
+  * index item
 
 ## Gems/Libraries
+* jQuery UI
+* jQuery UI -- Draggable, Droppable
+* bootstrap
+* bootswatch

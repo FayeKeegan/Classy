@@ -1,19 +1,20 @@
 # Phase 4:
 
 ## Rails
-### Models
 
 ### Controllers
-
+* API / Classrooms
 
 ### Views
-
+* Classrooms / Show
+* Section / New
 
 ## Backbone
 ### Models
-
-### Collections
+* Classroom
 
 ### Views
-
-## Gems/Libraries
+* Classroom / Edit
+* Classroom / Show
+* Classroom / Edit Modal
+* Section / New
