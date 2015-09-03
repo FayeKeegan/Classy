@@ -1,8 +1,22 @@
 # Classy
 
+## Description
+
+Classy is an original web application that allows users to create
+and manage classroom seating charts through a simple graphical
+interface. It was designed and built by me for my sister, a teacher
+in the bay area. It utilizes Rails, Backbone, JavaScript and jQuery. 
+
 [Heroku link][heroku]
 
 [heroku]: www.classy-classroom.com
+
+## Screen Shots
+
+* log in
+![login_image](../docs/screenshots/0_Login.png)
+![sections_index](../docs/screenshots/sections_index.png)
+
 
 ## Minimum Viable Product
 
