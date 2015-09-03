@@ -37,47 +37,58 @@ for later reference and use.
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Seating Chart Creation (~1 day)
+### Phase 1: User Authentication, Data Base Schema (~1-2 day)
 I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create classes, 
-create class rooms, create students for classrooms, and create seating charts
-(i.e., assign students to desks). The goal is to make sure that core funcionality
-is working properly, and that everything is pushed to heroku.
+App Academy. There will be rails models for classrooms, desks, seat assignments,
+seating chart, section, secitoning, student and user. There will be rails
+controllers for sessions and users.
 
 [Details][phase-one]
 
-### Phase 2: Creating Classes and Classrooms (~1 days)
-I will add API routes to serve class and classroom data as JSON, then add
-Backbone models and collections that fetch data from these routes. By the end
-of this phase, users will be able to create classes and classrooms (i.e.,
-place desks in a room) all in the backbone app. 
+### Phase 2: Viewing Classes and Classrooms (~1-2 days)
+Database includes rich seed data, and teachers can view their sections, along with
+the associated seating charts, and the seat assignmetns associated with those
+seating charts. API routes serve section, class and classooom data. Backbone
+models for sections, classes, classrooms and students are a created from the
+nested JSON data parsed from the API routes. 
 
 [Details][phase-two]
 
-### Phase 3: Creating Students, Seat Assignments and Seating Charts (~2 days)
-I will add API routes to serve student, seat assignment, and seating chart
-data as JSON, then addBackbone models and collections that fetch data from
-these routes. By the end of this phase, users will be able to create classes,
-classrooms, add students to the classes and assign them to desks. They will
-be able to save their seating charts.
+### Phase 3: Creating/Deleting/Editing Seating Charts (~1-2 day)
+Create, Destroy and Update routes added to the Seating Chart, Section,
+Seat Assignments controller. Users can use drag and drop interface
+to edit existing seating charts and create new seating charts, either
+through opening existing seating charts and dragging from the student
+list, or by dragging students off desks and onto them in the edit view.
+Additionally, basic visual improvements made to improve design of app.
 
 [Details][phase-three]
 
-### Phase 4: Editing and Deleting Seating Charts (~1-2 days)
-After completion of this phase, teachers will be able to edit and delete
-their seating charts. Teachers will be to easily visualize important student
-data (reading level, math level) while editing and viewing seating charts. 
+### Phase 4: Creating Classrooms and Sections (~1-2 day)
+Implement ability to create and destroy sections, and create, edit
+and destroy classrooms. Add relevant forms for creation, and various
+modals to warn users when destroying data that will trigger destruction
+of dependent data. Implement simple classroom creation interface - users
+are able to create new classrooms either in a small modal form, or 
+through the larger classroom view.
 
 [Details][phase-four]
 
-### Phase 5: Classrooms, Visualization, Shuffle (~2 days)
-At the end of this phase teachers will be able to destroy and edit classrooms and
-students. Seating chart creation will have better visual feedback so teachers
-can more easily user the drag-and-drop interface. Teachers will be able to restart
-their seating chart from scratch, and shuffle unassigned students to be seated
-randomly. Student table will be sortable.
+### Phase 5: Create, Edit, Destroy, View Students, Classrooms Index (~1 days)
+At the end of this phase teachers will be able to destroy and edit students.
+Students will be in sortable index page, and users will be able to edit and edit
+students from this index. There will also be a classrooms index, so teacher
+can view a list of all of their classrooms, with previews.
 
 [Details][phase-five]
+
+### Phase 6: Improve Seating Chart Creation (~1 days)
+Seating chart creation will have better visual feedback so teachers
+can more easily use the drag-and-drop interface. Teachers will be able to restart
+their seating chart from scratch using, shuffle unassigned students and color code
+student draggables so teachers can quickly determine math and reading level
+mix of various groups.
+
 
 ### Bonus Features (TBD)
 - [ ] Seating charts can be auto-generated based on simple algorithm
