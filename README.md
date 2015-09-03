@@ -14,8 +14,8 @@ in the bay area. It utilizes Rails, Backbone, JavaScript and jQuery.
 ## Screen Shots
 
 * log in
-![login_image](../docs/screenshots/0_Login.png)
-![sections_index](../docs/screenshots/sections_index.png)
+![login_image](docs/screenshots/0_Login.png)
+![sections_index](docs/screenshots/sections_index.png)
 
 
 ## Minimum Viable Product
