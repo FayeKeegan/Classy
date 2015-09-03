@@ -1,19 +1,23 @@
 # Phase 4:
 
 ## Rails
-### Models
 
 ### Controllers
-
+* API / Classrooms
+* API / Students
 
 ### Views
-
+* Students / Index
+* Classrooms / Index
 
 ## Backbone
 ### Models
+* Student
 
 ### Collections
+* Students
+* Classrooms
 
 ### Views
-
-## Gems/Libraries
+* Students Index
+* Classrooms Index
