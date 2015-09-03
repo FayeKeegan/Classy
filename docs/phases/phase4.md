@@ -4,20 +4,17 @@
 
 ### Controllers
 * API / Classrooms
-* API / Students
 
 ### Views
-* Students / Index
-* Classrooms / Index
+* Classrooms / Show
+* Section / New
 
 ## Backbone
 ### Models
-* Student
-
-### Collections
-* Students
-* Classrooms
+* Classroom
 
 ### Views
-* Students Index
-* Classrooms Index
+* Classroom / Edit
+* Classroom / Show
+* Classroom / Edit Modal
+* Section / New
