@@ -47,8 +47,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	showMathLevel: function(){
-		// this.showLevel("math_level");
-		this.showGender();
+		this.showLevel("math_level");
 	},
 
 	showReadingLevel: function(){
