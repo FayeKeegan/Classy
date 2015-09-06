@@ -8,6 +8,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
 		"click .show-math-level-button": "showMathLevel",
 		"click .show-reading-level-button": "showReadingLevel",
+		"click .show-gender-button": "showGender",
 		"click .remove-level-button": "revertIcons",
 		"click .start-over-button": "detachAllStudents"
 	},
@@ -55,6 +56,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 	},
 
 	showGender: function(){
+		this.revertIcons();
 		$(".student-icon-draggable").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
 			var gender = this.model.students().get(id).get("gender");
