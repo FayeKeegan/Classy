@@ -8,7 +8,7 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		"click .shuffle-students-button" : "shuffleUnassignedStudents",
 		"click .show-math-level-button": "showMathLevel",
 		"click .show-reading-level-button": "showReadingLevel",
-		"click .remove-level-button": "hideLevels",
+		"click .remove-level-button": "revertIcons",
 		"click .start-over-button": "detachAllStudents"
 	},
 
@@ -27,32 +27,42 @@ SeatingApp.Views.SeatingChartEdit = Backbone.CompositeView.extend({
 		this.addSubview("#progress-bar", view)
 	},
 
-	hideLevels: function(){
+	revertIcons: function(){
 		$(".student-icon-draggable").each(function(i, student_icon){
-			$(student_icon).removeClass("level1 level2 level3 level4 level5");
 			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5").text("");
+			$(student_icon).removeClass("level1 level2 level3 level4 level5 gender-M gender-F").text("");
 			$(student_icon).append(label);
 		})
 	},
 
 	showLevel: function(category){
+		this.revertIcons();
 		$(".student-icon-draggable").each(function(i, student_icon){
 			var id = $(student_icon).attr("student-id");
 			var level_num = this.model.students().get(id).get(category);
 			var label = $(student_icon).children().detach();
-			$(student_icon).removeClass("level1 level2 level3 level4 level5");
 			$(student_icon).addClass("level" + level_num).text(level_num);
 			$(student_icon).append(label);
 		}.bind(this))
 	},
 
 	showMathLevel: function(){
-		this.showLevel("math_level");
+		// this.showLevel("math_level");
+		this.showGender();
 	},
 
 	showReadingLevel: function(){
 		this.showLevel("reading_level");
+	},
+
+	showGender: function(){
+		$(".student-icon-draggable").each(function(i, student_icon){
+			var id = $(student_icon).attr("student-id");
+			var gender = this.model.students().get(id).get("gender");
+			var label = $(student_icon).children().detach();
+			$(student_icon).addClass("gender-" + gender).text(gender);
+			$(student_icon).append(label);
+		}.bind(this))
 	},
 
 	appendOrangeAlert: function(body){
