@@ -2,8 +2,8 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 	template: JST["classrooms/index_item"],
 
 	initialize: function(options){
-		this.addClassroomPreview()
-		this.listenTo(this.model, "sync remove", this.render)
+		this.addClassroomPreview();
+		this.listenTo(this.model, "sync remove", this.render);
 	},
 
 	className: "classroom-index-item col-lg-3",
@@ -27,28 +27,17 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 		destroyModal.render();
 	},
 
-
-	// deleteClassroom: function(e){
-	// 	e.preventDefault();
-	// 	this.model.destroy({
-	// 		success: function(){
-	// 			this.remove()
-	// 			this.collection.remove(this.model)
-	// 		}.bind(this)
-	// 	})
-	// },
-
 	highlightPanel: function(e){
 
-		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary")
+		$(e.currentTarget).removeClass("panel-info").addClass("panel-primary");
 	},
 
 	unhighlightPanel: function(e){
-		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info")
+		$(e.currentTarget).removeClass("panel-primary").addClass("panel-info");
 	},
 
 	unhighlightDesk: function(e){
-		$(e.currentTarget).removeClass("success").addClass("info")
+		$(e.currentTarget).removeClass("success").addClass("info");
 	},
 
 
@@ -64,7 +53,7 @@ SeatingApp.Views.ClassroomIndexItem = Backbone.CompositeView.extend({
 	},
 
 	render: function(){
-		var content = this.template({ classroom: this.model })
+		var content = this.template({ classroom: this.model });
 		this.$el.html(content);
 		this.attachSubviews();
 		return this;

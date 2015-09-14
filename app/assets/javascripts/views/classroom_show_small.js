@@ -4,6 +4,7 @@ SeatingApp.Views.ClassroomShowSmall = Backbone.View.extend({
 	initialize: function(){
 		this.render();
 		this.listenTo(this.model, 'sync', this.render);
+		this.listenTo(this.model.desks(), 'sync', this.render);
 	},
 
 	render: function () {

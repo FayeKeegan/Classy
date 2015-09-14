@@ -6,11 +6,11 @@ SeatingApp.Views.ClassroomsIndex = Backbone.CompositeView.extend({
 		this.listenTo(this.collection, "sync", this.render)
 		this.collection.each(this.addClassroomIndexItem.bind(this));
 		this.listenTo(this.collection, "add", this.addClassroomIndexItem)
-		this.listenTo(this.collection, "remove", this.removeClassroomSubview)
+		this.listenTo(this.collection, "remove", this.removeClassroomIndexItem)
 		this.addNewClassroomSubview();
 	},
 
-	removeClassroomSubview: function(classroom){
+	removeClassroomIndexItem: function(classroom){
 		this.removeModelSubview("#classrooms-index", classroom);
 	},
 

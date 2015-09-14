@@ -4,6 +4,7 @@ SeatingApp.Models.Classroom = Backbone.Model.extend({
   parse: function (response) {
     if (response.desks){
     	this.desks().set(response.desks, { parse: true });
+      this.desks().trigger('sync');
     	delete response.desks;
     }
     if (response.seatingCharts){
